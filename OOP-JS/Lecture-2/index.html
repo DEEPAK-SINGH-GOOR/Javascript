@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1> Constructor Prototype Object </h1>
+    <!-- <script>
+
+        class hello 
+        {
+            constructor()
+            {
+                let name;
+                console.log("Congratulations");
+            }
+            hello(){
+                console.log("Hello"+ this.name);
+            }
+        }
+        let a = new hello();
+        a.name = "Aman";
+        a.hello();
+    </script> -->
+    <script>
+        class student 
+        {
+            constructor(name)
+            {
+                this.stdentname = name;
+                console.log("Constructor Function");
+            }
+            hello()
+            {
+                console.log("Hello " + this.stdentname);
+            }
+        }
+        let a = new student("Aman Gupta");
+        a.hello();
+    </script>
+</body>
+</html>

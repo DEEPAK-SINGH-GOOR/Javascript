@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <style>
+        li{
+            border: 2px solid black;
+        }
+        th{
+            border: 2px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+
+    <form id="studentData">
+        <input type="text" id="name" placeholder="User Name"><br>
+        <input type="text" id="course" placeholder="Course"><br>
+        <input type="text" id="grid" placeholder="grid">
+        <input type="submit">
+    </form>
+    
+    <div >
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Course</th>
+                <th>Grid</th>
+            </tr>
+        </table>
+        <tbody>
+            <tr>
+                <div id="view">
+
+                </div>
+            </tr>
+        </tbody>
+    </div>
+
+</body>
+<script src="./index.js"></script>
+</html>

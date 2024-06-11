@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        * {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            border-radius: 3px;
+        }
+
+        #child {
+            max-width: 600px;
+            margin: auto;
+            margin-top: 100px;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.319);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        #form {
+            text-align: center;
+            width: auto;
+        }
+
+        input {
+            height: 40px;
+            width: 250px;
+            font-size: 20px;
+        }
+
+        button {
+            height: 40px;
+            width: 260px;
+            font-size: 20px;
+            background-color: rgb(73, 199, 73);
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+    <div id="child">
+        <h1>Employee Management </h1>
+        <form id="form">
+            <input type="text" id="name" placeholder="Enter Name"><br><br>
+            <input type="text" id="salary" placeholder="Enter Salary"><br><br>
+            <input type="text" id="department" placeholder="Enter Department"><br><br>
+            <input type="text" id="experience" placeholder="Enter Experience"><br><br>
+            <button id="Hire">Hire</button>
+        </form>
+    </div>
+    <div class="employee-list">
+        <h2>Employees</h2>
+        <ul id="employeeList"></ul>
+    </div>
+</body>
+<script src="./script.js"></script>
+
+</html>

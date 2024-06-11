@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product_Append</title>
+</head>
+
+<body>
+    <style>
+        #product {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 80px;
+        }
+        
+        #product div {
+            text-align: center;
+            border: 1px solid rgb(0, 0, 0);
+            border-radius: 15px;
+            padding: 20px;
+        }
+        
+        #product div img:hover {
+            transform: scale(0.9);
+            transition: 0.5s;
+        }
+        
+        #product div img {
+            width: 200px;
+            height: 330px;
+
+        }
+        
+        #product i {
+            font-size: 15px;
+        }
+    
+        .buy{
+            margin-top: 30px;
+            padding: 8px 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 21px;
+        }
+        
+        .buy:hover {
+            background-color: #0056b3;
+            transition: background-color 0.3s;
+        } 
+    </style>
+
+    <div id="product">
+
+    </div>
+
+
+</body>
+<script src="./script.js"></script>
+
+</html>

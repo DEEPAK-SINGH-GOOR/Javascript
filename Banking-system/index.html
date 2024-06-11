@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product List</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+    <div id="product"></div>
+    <div id="main1">
+        <form id="employeeForm">
+            <input type="text" id="name" placeholder="Enter Name" required><br><br>
+            <input type="text" id="number" placeholder="Enter Number" required><br><br>
+            <input type="text" id="exp" placeholder="Enter Experience" required><br><br>
+            <input type="email" id="email" placeholder="Enter Email" required><br><br>
+            <input type="text" id="deposite" placeholder="Enter Deposite" required><br><br>
+            <h2>RE-DEPOSITE-AMOUNT</h2>
+            <input type="text" id="rename" placeholder="Enter Rename" required><br><br>
+            <input type="number" id="redeposite" placeholder="Enter Redeposite" required><br><br>
+            <button id="submit">Submit</button>
+        </form>
+    </div>
+    <div id="main2">
+        <!-- Secound Table -->
+        <table>
+            <thead>
+                <tr id="border">
+                    <th>Employee Name</th>
+                    <th>Employee Number</th>
+                    <th>Experience</th>
+                    <th>Email</th>
+                    <th>Deposite</th>
+                </tr>
+            </thead>
+            <tbody id="output">
+                
+            </tbody>
+        </table>
+       </div>
+       <style>
+         #main1
+        {
+            text-align: center;
+            border: 1px solid black;
+            padding-bottom:15px;
+            padding-top: 80px;
+        }
+        #main2
+        {
+            text-align: center;
+            border: 1px solid black;
+            padding-bottom:15px;
+            padding-top: 80px;
+            display: flex;
+            justify-content: center;
+        }
+        input
+        {
+            height: 30px;
+            width: 200px;
+        }
+        select
+        {
+            height: 30px;
+            width: 200px;
+        }
+        button
+        {
+            height: 30px;
+            width: 200px;
+        }
+        th
+        {
+            border: 1px solid black;
+            background: #ffd000;
+            padding: 10px;
+           
+        }
+       
+        table,td,th{
+            border: 1px solid black;
+            
+        }
+        /* Products */
+        #product {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 80px;
+        }
+
+        #product div {
+            text-align: center;
+            border: 1px solid rgb(0, 0, 0);
+            border-radius: 15px;
+            padding: 20px;
+        }
+
+        #product div img:hover {
+            transform: scale(0.9);
+            transition: 0.5s;
+        }
+
+        #product div img {
+            width: 200px;
+            height: 330px;
+
+        }
+
+        #product i {
+            font-size: 15px;
+        }
+
+        .buy {
+            margin-top: 30px;
+            padding: 8px 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 21px;
+            height: 50px;
+        }
+
+        .buy:hover {
+            background-color: #0056b3;
+            transition: background-color 0.3s;
+        }
+    </style>
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,100 @@
+#product {
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+
+}
+
+#product div {
+    text-align: center;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 15px;
+    padding: 20px;
+    margin: 10px;
+}
+
+/* div img in js*/
+#product img {
+    width: 100%;
+    height: auto;
+    width: 200px;
+    height: 330px;
+}
+
+/*Btn section */
+.buy,
+.delete {
+    margin-top: 15px;
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 21px;
+}
+
+.buy:hover {
+    background-color: #003165;
+    transition: background-color 0.3s;
+}
+
+.delete {
+    margin-left: 6px;
+    background-color: #ff0019;
+}
+
+.delete:hover {
+    background-color: #75000c;
+}
+
+/*inputt section*/
+#list {
+    border: 3px solid #000;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 20px 0;
+    padding: 20px;
+}
+
+#list2 {
+
+    border: 3px solid #000;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    padding: 20px;
+}
+
+input {
+    width: 200px;
+    height: 50px;
+    border: 3px solid #000;
+    border-radius: 10px;
+    margin: 10px 0;
+}
+
+label {
+    font-size: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin: 10px;
+}
+
+/* clock */
+#clock {
+    font-size: 30px;
+}
+
+/* Marquee */
+#color {
+    background: #000;
+    color: #fff;
+}

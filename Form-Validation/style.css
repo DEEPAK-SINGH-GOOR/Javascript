@@ -1,0 +1,75 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.form {
+    background-color: #ffffff93;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+.form label {
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+#contact, #cpassword, #password, #userid, #email {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 0px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.form input[type="submit"] {
+    width: 100%;
+    padding: 0px;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 4px;
+    color: #ffffff;
+    font-weight: bold;
+    cursor: pointer;
+    height: 40px;
+}
+
+.form input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+label {
+    font-size: 25px;
+}
+
+input {
+    height: 30px;
+    width: 200px;
+}
+
+#submit {
+    font-size: 20px;
+    width: 100px;
+}
+
+
+#userid-message,#contact-message,#password-message,#password-message,#cpassword-message,#email-message{
+    color: red;
+}
+body{
+    background: url('https://e1.pxfuel.com/desktop-wallpaper/581/154/desktop-wallpaper-backgrounds-for-login-page-login-page.jpg');
+    background-repeat: no-repeat;
+    /* display: block; */
+    background-size:cover;
+    background-position: center;
+    height: 800px;
+}

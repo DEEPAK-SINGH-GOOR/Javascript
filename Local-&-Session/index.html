@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Program-1</title>
+</head>
+
+<body>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items:end;
+            /* border: 3px solid #000; */
+            height: 90px;
+
+        }
+
+        .feature {
+            margin: 20px;
+        }
+
+        p {
+            font-size: 2rem;
+            margin: 10px 0;
+            color: #ffffff;
+        }
+
+        button{
+            padding: 8px;
+            font-size: 20px;
+            color: white;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: flex;
+        }
+        #btn4{
+            background: #ff0000;
+        }
+        #btn4:hover{
+            background: #c00000;
+        }
+        
+        button:hover {
+            background-color: #0056b3;
+            transition: background-color 0.3s;
+            transform: scale(0.95);
+            transition: 0.9s;
+        }
+        p{
+            font-size: 20px;
+            padding-left: 5px;
+        }
+        #main{
+            text-align: center;
+            border: 3px solid #000; 
+            padding: 20px;
+        }
+    </style>
+    <div id="main">
+        <div>
+            <img src="https://www.hdwallpapers.in/download/red_bmw_m3_competition_m_xdrive_luxury_car_4k_hd_cars-HD.jpg"
+                class="rounded mx-auto d-block" alt="" height="60%" width="66%">
+        </div>
+    <div class="container">
+       
+        <div class="feature">
+            <button id="btn1"><p>Like</p><p id="count1">0</p></button>
+        </div>
+        <div class="feature">
+            <button id="btn2"><p>Share</p><p id="count2">0</p></button>
+        </div>
+        <div class="feature">
+            <button id="btn3"><p>Download</p><p id="count3">0</p></button>
+        </div>
+        <div class="feature">
+            <button id="btn4"><p>Subscribe</p><p id="count4">0</p></button>
+        </div>
+    </div>
+    <script src="./script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,8 @@
+#clock1{
+    font-size: 100px
+}
+#clock1style{
+    display: flex;
+    justify-content: center;
+    border: 3px solid #000;
+}

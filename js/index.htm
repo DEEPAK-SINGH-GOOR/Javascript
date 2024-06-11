@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            margin: 0px;
+            padding:  0px;
+            box-sizing: border-box;
+        }
+
+        body{
+            height: 100vh;
+            width: 100%;
+            display: grid;
+            place-items: center;
+            background:  linear-gradient(112.1deg, rgba(32, 38, 57,0.5) 11.4%, rgba(63, 76, 119,0.4) 70.2%);;
+        }
+        form{
+            background: linear-gradient(109.6deg, rgba(0, 0, 0, 0.93) 11.2%, rgb(63, 61, 61) 78.9%);
+            color: white;
+            margin:10rem 0 0 0 ;
+            width: 20rem;
+             display: grid;
+            place-items: center;
+            border :2px solid black;
+            padding: 2rem 4rem;
+            border-radius: 1rem;
+            box-shadow: 5px 6px 6px rgba(63, 63, 63, 0.5);
+        }
+        table{
+            margin: -12rem 0 0 0 ;
+            width: 55rem;
+            
+            & thead{
+                background-color: rgba(128, 136, 122, 0.93);
+            }
+        }
+        td{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    
+    <form action="" id="formdata">
+        <input type="text" name="ename" id="ename" placeholder="enter employee name ..."><br><br>
+        <select name="jrole" id="jrole">
+            <option>select</option>
+            <option value="jr1">jr1</option>
+            <option value="jr2">jr2</option>
+            <option value="jr3">jr3</option>
+        </select><br><br>
+        <select name="dpartment" id="dpartment">
+            <option>select</option>
+            <option value="d1">d1</option>
+            <option value="d2">d2</option>
+            <option value="d3">d3</option>
+        </select><br><br>
+        <input type="text" id="salary" placeholder="enter monthaly salary ..."><br><br>
+        <input type="text" id="expirence" placeholder="enter prev work expirence in year ..."><br><br>
+        <input type="text" id="email" placeholder="enter contact email ..."><br><br>
+        <input type="submit" value="register"  style="padding: 0.3rem; border-radius:0.6rem;width:12rem; background:rgba(230, 219, 219, 0.5);color:white;font-weight: 600;" id="save">
+    </form><br><br><br>
+
+    <table id="tbdata" border="1" cellspacing="0" cellpadding="5px">
+        <thead>
+            <tr>
+            <th>name</th>
+            <th>jobe role</th>
+            <th>dpartment</th>
+            <th>salary</th>
+            <th>expirence</th>
+            <th>senior/junior</th>
+            <th>email</th>
+            <th id="deleteall">action</th>
+            </tr>
+        </thead>
+        <tbody id="tbody">
+
+        </tbody>
+    </table>
+
+    <h3 id="co_salary"></h3>
+    <h3 id="total_emp"></h3>
+    <script src="index.js"></script>
+</body>
+</html>
