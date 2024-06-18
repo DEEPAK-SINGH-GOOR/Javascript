@@ -1,11 +1,10 @@
 
 function voting(age) {
     if (age >= 18) {
-        throw new Error("You Can Vote :18  Your Age:"+ age);
+        throw new Error("You Can Vote :18  Your Age:" + age);
     }
-    else
-    {
-        throw new Error("Age must be between :18  Your Age:"+ age);
+    else {
+        throw new Error("Age must be between :18  Your Age:" + age);
     }
     return age;
 }

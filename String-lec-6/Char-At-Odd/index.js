@@ -1,4 +1,5 @@
-let str="white"
+let str="white";
+//       01234
 
 for(let i=0;i<str.length;i++)
 {

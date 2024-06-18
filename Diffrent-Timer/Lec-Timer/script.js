@@ -1,14 +1,14 @@
-let min1 = 5;
-let sec = 59;
+let min1 = 0;
+let sec = 9;
 
 let id = setInterval(() => {
     sec = sec -1;
-    if (sec === 0) 
+    if (sec < 0) 
         {
             min1 =min1 - 1;
             sec = 59
         }
-    else if (sec <= 0 && min1 <= 0) {
+    else if (sec == 0 && min1 == 0) {
         clearInterval(id);
     }  
     // Changes

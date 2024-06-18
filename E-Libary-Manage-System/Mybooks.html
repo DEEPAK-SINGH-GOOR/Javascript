@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Books Page</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <h1>myBooks</h1>
+    <!-- navbar-section -->
+    <div id="navbar"></div>
+    <br><br><br>
+        <!-- My Books Table -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Author</th>
+                    <th>Description</th>
+                    <th>Added Date</th>
+                    <th>Category</th>
+                </tr>
+            </thead>
+            <tbody id="output"></tbody>
+        </table>
+    </div>
+
+    <script type="module">
+        import { exportnavbar } from './navbar.js';
+        exportnavbar();
+    </script>
+    <script src="myBooks.js"></script>
+</body>
+
+</html>

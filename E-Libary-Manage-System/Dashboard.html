@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Page</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <h1>Dashboard</h1>
+    <!-- navbar-section -->
+    <div id="navbar"></div>
+
+    <div id="main2">
+        <!-- <h1>Dashboard</h1> -->
+        <!-- Book List Table -->
+        <table>
+
+
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Author</th>
+                    <th>Description</th>
+                    <th>Added Date</th>
+                    <th>Category</th>
+                    <th>Buy</th>
+                    <th>Add</th>
+                </tr>
+            </thead>
+            <tbody id="output">
+            </tbody>
+        </table>
+        <div id="totalBooks"></div>
+    </div>
+
+    <script type="module">
+        import { exportnavbar } from './navbar.js';
+        exportnavbar();
+    </script>
+    <script src="dashboard.js"></script>
+</body>
+
+</html>

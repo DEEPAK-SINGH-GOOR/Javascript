@@ -25,7 +25,6 @@ document.getElementById('btn').addEventListener('click', () => {
             clearInterval(id);
             alert("Timeout");
         }
-
         clock2.innerHTML = `${hour}:${minute}:${sec}`;
     }, 1000);
 });

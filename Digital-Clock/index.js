@@ -1,11 +1,11 @@
-const hour = document.getElementById('hour')
+const hour = document.getElementById('hour');
 
-const minute = document.getElementById('minute')
+const minute = document.getElementById('minute');
 
-const second = document.getElementById('second')
+const second = document.getElementById('second');
 
 /// Changes
-const you = document.getElementById('you')
+const you = document.getElementById('you');
 
 let monthName=[
     'January',
@@ -31,10 +31,10 @@ const clock = setInterval(()=> {
     let sec = toyou.getSeconds()
 
     you.innerHTML = `${d} ${monthName[m]} ${y} `
-    hour.textContent = h
-    minute.textContent = min
-    second.textContent = sec
+    hour.innerHTML = h
+    minute.innerHTML = min
+    second.innerHTML = sec
     if (h > 12) {
-        hour.textContent = h - 12
+        hour.innerHTML = h - 12
     }
 })

@@ -15,21 +15,18 @@ console.log("Warning");
 */
 // ----------- > USING TRY & CATCH FUNCTION < ----------
 
-/*
+
 function divide(a, b) {
     if (b === 0) {
-        throw new error("Invalid division");
+        throw new Error("Invalid division: divisor cannot be zero");
     }
     return a / b;
 }
-
 try {
     console.log(divide(10, 0));
-}
-catch (error) {
+} catch (error) {
+   
     console.log("Error:", error.message);
 }
+console.log("After handling the error, this line can run.");
 
-
-console.log("After Error Message Can Run : Warning");
-*/
