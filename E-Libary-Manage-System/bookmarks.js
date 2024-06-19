@@ -1,8 +1,5 @@
 const bookdata = () => {
-    document.getElementById("output").innerHTML = "";
-
     let myBooks = JSON.parse(localStorage.getItem('bookmarks')) || [];
-
     myBooks.map((info) => {
         let tr = document.createElement("tr");
 
