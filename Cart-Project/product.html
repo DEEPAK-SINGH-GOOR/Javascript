@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background: #f2f2f2;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.product-container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: row;
+    max-width: 800px;
+    width: 100%;
+}
+
+.product-image img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+.product-details {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.product-details h1 {
+    margin: 0 0 10px;
+}
+
+.product-description {
+    margin: 0 0 20px;
+    color: #555;
+}
+
+.product-price {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0 0 20px;
+}
+
+.add-to-cart-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    background: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.add-to-cart-btn:hover {
+    background: #0056b3;
+}
+
+    </style>
+    <div class="product-container">
+        <div class="product-image">
+            <img src="https://fossil.scene7.com/is/image/FossilPartners/FS6029_main?$sfcc_fos_medium$" alt="Product Image">
+        </div>
+        <div class="product-details">
+            <h1>Product Name</h1>
+            <p class="product-description">This is a brief description of the product. It highlights the key features and benefits of the product to attract potential buyers.</p>
+            <p class="product-price">$99.99</p>
+            <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+    </div>
+    
+   </body>
+</html>
