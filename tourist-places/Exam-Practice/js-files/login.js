@@ -1,5 +1,7 @@
+let myBooks = JSON.parse(localStorage.getItem('myBooks')) || [];
+
 const bookdata = () => {
-    let myBooks = JSON.parse(localStorage.getItem('myBooks')) || [];
+    
     myBooks.map((info) => {
         let tr = document.createElement("div");
 
