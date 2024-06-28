@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Capturing Example</title>
+    <style>
+        .parent {
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+
+        .child {
+            padding: 10px;
+            border: 1px solid #eee;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <div class="child">Child 1</div>
+        <div class="child">Child 2</div>
+        <div class="child">Child 3</div>
+    </div>
+
+    <script>
+        // Event capturing example
+        const parentDiv = document.querySelector('.parent');
+
+        parentDiv.addEventListener('click', function(event) {
+            console.log('Capturing phase:', event.target.textContent);
+        }, true); // Setting the third parameter to true enables capturing
+
+        parentDiv.addEventListener('click', function(event) {
+            console.log('Bubbling phase:', event.target.textContent);
+        });
+    </script>
+</body>
+</html>
