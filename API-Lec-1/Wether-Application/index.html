@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="/">
+</head>
+
+<body>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #f0f0f0;
+        }
+
+        #city {
+            color: rgb(0, 72, 255);
+            font-weight: bolder;
+        }
+
+        .weather-app {
+            position: relative;
+            /* Ensure relative positioning for containing the absolute pseudo-element */
+            text-align: center;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            transition: background 0.5s ease-in-out;
+            overflow: hidden;
+            /* Hide overflow to prevent blurred image from leaking out */
+
+            /* Original background image */
+            background-image: url("https://img.freepik.com/premium-photo/illustration-cloud-rain-dark-background-heavy-rain-rainy-season-paper-cut-craft-style-vector-illustration_1036693-20328.jpg");
+            background-size: cover;
+        }
+
+        .weather-app::before {
+            content: '';
+            /* Required for pseudo-elements */
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("https://img.freepik.com/premium-photo/illustration-cloud-rain-dark-background-heavy-rain-rainy-season-paper-cut-craft-style-vector-illustration_1036693-20328.jpg");
+            background-size: cover;
+            filter: blur(5px);
+            /* Adjust the blur radius as needed */
+            z-index: -1;
+            /* Ensure the pseudo-element is behind the content */
+        }
+
+
+        .input-container,
+        .background-url {
+            margin-bottom: 20px;
+        }
+
+        input {
+            padding: 10px;
+            border: 1px solid #cccccc00;
+            border-radius: 5px;
+            width: calc(100% - 22px);
+            margin-bottom: 10px;
+
+        }
+
+        #blur-bg {
+            background-color: #ff0000;
+            z-index: 400;
+        }
+
+        button {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background: #007bff;
+            color: white;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        .weather-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .weather-info img {
+            width: 100px;
+            height: 100px;
+            margin-right: 20px;
+        }
+
+        .weather-info div {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .weather-info p {
+            margin: 5px 0;
+        }
+
+        #city-name {
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            color: #000000;
+        }
+
+        #temperature,
+        #description,
+        #humidity {
+            font-size: 1.2em;
+            margin: 10px 0;
+            color: #ffffff;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        #temperature::before,
+        #description::before,
+        #humidity::before {
+            content: '• ';
+            color: #007bff;
+            font-weight: normal;
+        }
+
+        #temperature {
+            color: #ff5733;
+            /* Specific color for temperature */
+        }
+
+        #description {
+            color: #3498db;
+            /* Specific color for description */
+        }
+
+        #humidity {
+            color: #27ae60;
+            /* Specific color for humidity */
+        }
+    </style>
+    <div id="blur-bg">
+        <div class="weather-app">
+
+            <h2 id="city">Enter City Name</h2>
+            <br>
+            <div class="input-container">
+                <input type="text" id="city-input" placeholder="Enter city name">
+                <button onclick="fetchWeather()">Get Weather</button>
+            </div>
+            <div class="weather-container">
+                <h1 id="city-name">Weather Information</h1>
+                <div class="weather-info">
+                    <div>
+                        <p id="temperature"></p>
+                        <p id="description"></p>
+                        <p id="humidity"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
