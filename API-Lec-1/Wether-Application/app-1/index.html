@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
     <link rel="stylesheet" href="/">
 </head>
-
 <body>
     <style>
         body {
@@ -28,7 +26,6 @@
 
         .weather-app {
             position: relative;
-            /* Ensure relative positioning for containing the absolute pseudo-element */
             text-align: center;
             padding: 30px;
             border-radius: 15px;
@@ -36,29 +33,8 @@
             width: 300px;
             transition: background 0.5s ease-in-out;
             overflow: hidden;
-            /* Hide overflow to prevent blurred image from leaking out */
-
-            /* Original background image */
-            background-image: url("https://img.freepik.com/premium-photo/illustration-cloud-rain-dark-background-heavy-rain-rainy-season-paper-cut-craft-style-vector-illustration_1036693-20328.jpg");
             background-size: cover;
         }
-
-        .weather-app::before {
-            content: '';
-            /* Required for pseudo-elements */
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: url("https://img.freepik.com/premium-photo/illustration-cloud-rain-dark-background-heavy-rain-rainy-season-paper-cut-craft-style-vector-illustration_1036693-20328.jpg");
-            background-size: cover;
-            filter: blur(5px);
-            /* Adjust the blur radius as needed */
-            z-index: -1;
-            /* Ensure the pseudo-element is behind the content */
-        }
-
 
         .input-container,
         .background-url {
@@ -71,12 +47,6 @@
             border-radius: 5px;
             width: calc(100% - 22px);
             margin-bottom: 10px;
-
-        }
-
-        #blur-bg {
-            background-color: #ff0000;
-            z-index: 400;
         }
 
         button {
@@ -97,12 +67,13 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            flex-direction: column;
         }
 
         .weather-info img {
             width: 100px;
             height: 100px;
-            margin-right: 20px;
+            margin: 20px 0;
         }
 
         .weather-info div {
@@ -141,22 +112,18 @@
 
         #temperature {
             color: #ff5733;
-            /* Specific color for temperature */
         }
 
         #description {
             color: #3498db;
-            /* Specific color for description */
         }
 
         #humidity {
             color: #27ae60;
-            /* Specific color for humidity */
         }
     </style>
     <div id="blur-bg">
-        <div class="weather-app">
-
+        <div class="weather-app" id="weather-app">
             <h2 id="city">Enter City Name</h2>
             <br>
             <div class="input-container">
@@ -171,11 +138,11 @@
                         <p id="description"></p>
                         <p id="humidity"></p>
                     </div>
+                    <img id="weather-icon" src="" alt="Weather Icon">
                 </div>
             </div>
         </div>
     </div>
     <script src="script.js"></script>
 </body>
-
 </html>
