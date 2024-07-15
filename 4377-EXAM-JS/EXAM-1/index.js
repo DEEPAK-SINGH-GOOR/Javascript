@@ -79,8 +79,8 @@ const deleteAllData = () => {
     employee = [];
     uimaker();
 };
-document.getElementById("datdataDelaDelete").addEventListener("click", deleteAllData); //Delete all
+document.getElementById("dataDelete").addEventListener("click", deleteAllData); //Delete all
 
-// const EmployeeCount = () => {
-//     document.getElementById("totalemployee").innerHTML = `Total Employee: ${employee.length}`;
-// };
+const EmployeeCount = () => {
+    document.getElementById("totalemployee").innerHTML = `Total Employee: ${employee.length}`;
+};
