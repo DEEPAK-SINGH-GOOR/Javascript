@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h1>Api -Method</h1>
+    <form id="myform">
+        <input type="text" id="titletext" placeholder="title"><br>
+
+        <input type="text" id="bodytext" placeholder="body"><br>
+
+        <input type="text" id="userid" placeholder="userid"><br>
+
+
+        <input type="submit" id="saveform"><br>
+    </form>
+</body>
+<script>
+    if (window.fetch) {
+        
+    }
+    else{
+        
+    }
+
+
+
+    document.getElementById("saveform").addEventListener('click', function (e) {
+        e.preventDefault();
+        // var obj = {
+        //     title: document.getElementById("titletext").value,
+        //     body: document.getElementById("bodytext").value,
+        //     userId: document.getElementById("userid").value,
+        // }
+        fetch('https://jsonplaceholder.typicode.com/posts', {
+            method: 'POST',
+            body: new FormData(document.getElementById("myform")),
+            headers: {
+                'Content-type': 'application/x-www-form-urlencoded',
+            },
+        })
+            .then((response) => response.json())
+            .then((json) => console.log(json));
+    })
+
+</script>
+
+</html>

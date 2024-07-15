@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Introduction 
+        fetch(file)
+        {
+            method:"post " When Insert Data
+            method:"put " When update Data
+            method:"delete " When delete Data
+            defalut Value Get
+            body:data,     Form Data / JSON Data / Text
+            
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+
+        when send data by form 'content-type':'application/x-www-form-urlencoded
+        '
+    -->
+</head>
+
+<body>
+    <h1>API - Fecth</h1>
+</body>
+<script>
+    fetch("content/student_data.json")
+        .then((response) => response.json())
+        .then((data) => {
+            for (var x in data) {
+                var a = `${data[x].name} , ${data[x].age},${data[x].city} <br>`;
+                document.write(a);
+            }
+        })
+
+        .catch((error) => document.write("Can't Fetch Product"));
+
+</script>
+
+</html>

@@ -1,0 +1,179 @@
+* {
+    padding: 0px;
+    margin: 0px;
+
+}
+
+i {
+    color: black;
+    font-size: 20px;
+}
+
+#navv {
+    background-color: #ffedeb;
+    padding-top: 0px;
+}
+
+#swip {
+    padding-top: 0px;
+}
+
+/* #word
+{
+    font-weight: 600;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+} */
+a {
+    text-decoration: none;
+    color: black;
+    font-weight: 800;
+}
+
+#word:hover {
+    text-decoration: underline;
+    color: red;
+}
+
+#pre {
+    font-size: 20px;
+}
+
+/* #mini-cont
+{
+    display: flex;
+} */
+#dark {
+    background-color: #121212;
+}
+
+h6:hover {
+    color: red;
+    cursor: pointer;
+}
+
+.card:hover {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+#image {
+    height: 900px;
+    width: 100%;
+    position: relative;
+    /* Add position relative for the ::after pseudo-element */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #121212;
+}
+
+#image::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("https://t3.ftcdn.net/jpg/04/12/47/76/360_F_412477644_k8JFeErj5OSJoLyjNtRxbmdGyvwUxcfX.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.5;
+    /* Adjust opacity value as needed */
+}
+
+#word2 {
+    font-size: 80px;
+    color: #ffffff;
+}
+
+#change1,
+#change2,
+#change3,
+#change4 {
+    color: #fff;
+    margin: 10px;
+}
+
+#change1:hover {
+    color: #0e03a8;
+}
+
+#change2:hover {
+    color: #808080;
+}
+
+#change3:hover {
+    color: #c300ff;
+}
+
+#change4:hover {
+    color: #ff0000;
+}
+
+.dropdown-menu:hover {
+    display: block;
+}
+
+#Footer {
+    height: 500px;
+    background: #101010;
+}
+
+#foot {
+    margin-top: 30px;
+    height: 400px;
+    background: #101010;
+}
+
+h1:hover {
+    cursor: pointer;
+    color: #ff0000;
+}
+
+h5:hover {
+    color: #ff0000;
+    text-decoration: underline;
+}
+
+/*  */
+ 
+
+#product-row {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 20px; /* Adjust gap as needed */
+
+  }
+  .card {
+    border: 1px solid #ddd;
+    padding: 20px;
+    text-align: center;
+    
+  }
+
+  @media (min-width: 576px) {
+    #product-row {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 768px) {
+    #product-row {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (min-width: 992px) {
+    #product-row {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  @media (min-width: 1200px) {
+    #product-row {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }

@@ -95,14 +95,14 @@ const uimaker = () => {
         let td5 = document.createElement("td");;
         td5.innerHTML = info.deposite;
 
-        // let td6 = document.createElement("tr");
-        // td6.innerHTML = info.rename;
+        let td6 = document.createElement("tr");
+        td6.innerHTML = info.rename;
 
         let td7 = document.createElement("td");
         td7.innerHTML = info.redeposite + info.deposite;
 
-        // let td8 = document.createElement("td");
-        // td8.innerHTML = info.redeposite;
+        let td8 = document.createElement("td");
+        td8.innerHTML = info.redeposite;
 
         let tr = document.createElement("tr");
         tr.append(td1, td2, td3, td4, td7);

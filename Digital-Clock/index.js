@@ -21,20 +21,21 @@ let monthName=[
     'November',
     'December'
 ]
-const clock = setInterval(()=> { 
-    let toyou = new Date()
-    let d = toyou.getDate()
-    let m = toyou.getMonth()
-    let y = toyou.getFullYear()
-    let h = toyou.getHours()
-    let min = toyou.getMinutes()
-    let sec = toyou.getSeconds()
+const clock = setInterval(() => { 
+    let currentDate = new Date();
+    let d = currentDate.getDate();
+    let m = currentDate.getMonth();
+    let y = currentDate.getFullYear();
+    let h = currentDate.getHours();
+    let min = currentDate.getMinutes();
+    let sec = currentDate.getSeconds();
 
-    you.innerHTML = `${d} ${monthName[m]} ${y} `
-    hour.innerHTML = h
-    minute.innerHTML = min
-    second.innerHTML = sec
+    you.innerHTML = `${d} ${monthName[m]} ${y}`;
+    hour.innerHTML = h;
+    minute.innerHTML = min;
+    second.innerHTML = sec;
+
     if (h > 12) {
-        hour.innerHTML = h - 12
+        hour.innerHTML = h - 12;
     }
-})
+});

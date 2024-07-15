@@ -48,11 +48,11 @@ const uimaker = () => {
 
         document.getElementById("output").append(tr);
     });
-    //----->
-    document.getElementById('totalemployee').innerText = "total_employee :" + employee.length ;
-    document.getElementById('totalsalary').innerText = empsalary ;
+
+    document.getElementById('totalemployee').innerText = "total_employee :" + employee.length;
+    document.getElementById('totalsalary').innerText = empsalary;
     EmployeeCount();
-    //
+   
 };
 
 const Employeelist = (e) => {
@@ -66,9 +66,9 @@ const Employeelist = (e) => {
         email: document.getElementById("email").value
     };
 
-     data.salary = Number(data.salary); 
+    data.salary = Number(data.salary);
 
-    empsalary += data.salary; 
+    empsalary += data.salary;
     employee.push(data);
     uimaker();
 };
@@ -79,7 +79,7 @@ const deleteAllData = () => {
     employee = [];
     uimaker();
 };
-document.getElementById("dataDelete").addEventListener("click", deleteAllData); //Delete all
+document.getElementById("datdataDelaDelete").addEventListener("click", deleteAllData); //Delete all
 
 // const EmployeeCount = () => {
 //     document.getElementById("totalemployee").innerHTML = `Total Employee: ${employee.length}`;

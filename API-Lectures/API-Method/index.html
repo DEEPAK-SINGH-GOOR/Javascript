@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Introduction 
+    Fetch Method 1) Insert 2) Upadate 3) Read 4) Delete
+    1) Get 2) Post 3) Put 4) Petch 5) Delete
+    
+    fetch();
+    fetch(file / url) it return promise two types of pass or fail 
+    .then(); 
+
+    syntax fetch(file / url).then(function (response) {
+        return response.data; two format text() / json();
+    }).then(function(result)){
+        log(result);
+    }).catch(function (error){
+        log(error);
+    }); 
+
+
+    to handle errors
+
+
+
+    -->
+</head>
+
+<body>
+    <h1>API - Fecth</h1>
+</body>
+<script>
+    fetch("https://fakestoreapi.com/products")
+        .then((response) => response.json())
+        .then((data) => {
+            for (var x in data) {
+                console.log(data);
+                document.write(`${data[x].title},${data[x].id} ,${data[x].rating.count}<br><br>`);
+            }
+        })
+        .catch((error) => document.write("Can't Fetch Product"));
+
+</script>
+
+</html>

@@ -1,108 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <style>
-        #main1
-        {
+        #main1 {
             text-align: center;
             border: 1px solid black;
-            padding-bottom:15px;
+            padding-bottom: 15px;
             padding-top: 80px;
         }
-        #main2
-        {
+
+        #main2 {
             text-align: center;
             border: 1px solid black;
-            padding-bottom:15px;
+            padding-bottom: 15px;
             padding-top: 80px;
             display: flex;
             justify-content: center;
         }
-        input
-        {
+
+        input {
             height: 30px;
             width: 200px;
         }
-        select
-        {
+
+        select {
             height: 30px;
             width: 200px;
         }
-        button
-        {
+
+        button {
             height: 30px;
             width: 200px;
         }
-        th
-        {
+
+        th {
             border: 1px solid black;
             background: #ffd000;
             padding: 10px;
-           
+
         }
-       
-        table,td,th{
+
+        table,
+        td,
+        th {
             border: 1px solid black;
-            
+
         }
     </style>
 
-   <div id="main1">
-    <h1>Here a New Employee</h1>
-    <form id="EmployeeData">
-    <input type="text" id="name" placeholder="Employee Name"><br><br>
+    <div id="main1">
+        <h1>Here a New Employee</h1>
+        <form id="EmployeeData">
+            <input type="text" id="name" placeholder="Employee Name"><br><br>
 
-    <select id="jobrole" name="Select">
-        <option value="role">Select Job Role</option>
-        <option value="sde-1">SDE-1</option>
-        <option value="sde-2">SDE-2</option>
-        <option value="manger">HR Manager</option>
-    </select><br><br>
+            <select id="jobrole" name="Select">
+                <option value="role">Select Job Role</option>
+                <option value="sde-1">SDE-1</option>
+                <option value="sde-2">SDE-2</option>
+                <option value="manger">HR Manager</option>
+            </select><br><br>
 
-    <select id="department" name="Select">
-        <option value="departmentoption">Select Department</option>
-        <option value="hr">HR</option>
-        <option value="engineering">Engineering</option>
-    </select><br><br>
-    
-    <input type="number" id="salary" placeholder="Monthly Salary"><br><br>
-    <input type="number" id="exp" placeholder="Work Experience"><br><br>
-    <input type="email" id="email" placeholder="Contact Email"><br><br>
+            <select id="department" name="Select">
+                <option value="departmentoption">Select Department</option>
+                <option value="hr">HR</option>
+                <option value="engineering">Engineering</option>
+            </select><br><br>
 
-    <button id="submit">Hire</button>
-</form>
-   </div>
-   <div id="main2">
-    <!-- Secound Table -->
-    <table>
-        <thead>
-            <tr id="border">
-                <th>Employee Name</th>
-                <th>Job Role </th>
-                <th>Department</th>
-                <th>Salary</th>
-                <th>Work Experience</th>
-                <th>Contact Email</th>
-                <th>Role Type</th>
-                <th>Fire Employee</th>
-                <th id="dataDelete">Delete All</th>
+            <input type="number" id="salary" placeholder="Monthly Salary"><br><br>
+            <input type="number" id="exp" placeholder="Work Experience"><br><br>
+            <input type="email" id="email" placeholder="Contact Email"><br><br>
 
-            </tr>
-        </thead>
-        <tbody id="output">
-            
-        </tbody>
-    </table>
-   </div>
-   <div id="main1">
-   <h3 id="totalsalary"></h3>
-    <h3 id="totalemployee"></h3>
-</div>
+            <button id="submit">Hire</button>
+        </form>
+    </div>
+    <div id="main2">
+        <!-- Secound Table -->
+        <table>
+            <thead>
+                <tr id="border">
+                    <th>Employee Name</th>
+                    <th>Job Role </th>
+                    <th>Department</th>
+                    <th>Salary</th>
+                    <th>Work Experience</th>
+                    <th>Contact Email</th>
+                    <th>Role Type</th>
+                    <th>Fire Employee</th>
+                    <th id="dataDelete">Delete All</th>
+
+                </tr>
+            </thead>
+            <tbody id="output">
+
+            </tbody>
+        </table>
+    </div>
+    <div id="main1">
+        <h3 id="totalsalary"></h3>
+        <h3 id="totalemployee"></h3>
+    </div>
 </body>
 <script src="./index.js"></script>
+
 </html>
