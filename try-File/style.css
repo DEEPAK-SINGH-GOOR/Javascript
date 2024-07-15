@@ -1,0 +1,154 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(to right, #000000, #ffffff);
+    font-family: Arial, sans-serif;
+}
+
+.player-container {
+    position: relative; /* Ensure relative positioning for the pseudo-element */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    max-width: 400px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.player-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background-image: url('https://static.vecteezy.com/system/resources/previews/026/764/451/non_2x/marketing-growth-chart-graphic-background-widescreen-with-neon-lights-generative-ai-free-photo.jpg'); */
+    background-size: cover;
+    background-color: #ddd;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(4px); 
+    z-index: -1;
+}
+.audio-player {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    width: 100%;
+    
+}
+
+.album-cover {
+    width: 50%;
+    max-width: 150px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.track-info {
+    text-align: center;
+    margin: 10px 0;
+}
+
+.track-title {
+    font-size: 20px;
+    margin: 10px 0 5px;
+}
+
+.track-artist {
+    font-size: 18px;
+    color: #666;
+}
+
+.audio {
+    width: 100%;
+    outline: none;
+    margin-top: 20px;
+    display: none; /* Hide default controls */
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.control-btn {
+    background: none;
+    border: none;
+    font-size: 30px;
+    margin: 0 0px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.control-btn:hover {
+    transform: scale(1.1);
+}
+
+.progress-container {
+    width: 90%;
+    height: 10px;
+    background: #ddd;
+    border-radius: 5px;
+    margin-top: 20px;
+    overflow: hidden;
+}
+
+.progress {
+    width: 0;
+    height: 100%;
+    background: #ff5f6d;
+    transition: width 0.1s;
+}
+
+.music-list {
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    max-height: 200px;
+}
+
+.music-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.music-item:hover {
+    background: #f9f9f9;
+}
+
+.music-thumbnail {
+    width: 50px;
+    height: 50px;
+    margin-right: 20px;
+    border-radius: 5px;
+}
+
+.music-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.music-title {
+    font-size: 18px;
+    margin: 0;
+}
+
+.music-artist {
+    font-size: 14px;
+    color: #666;
+}

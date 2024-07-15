@@ -1,207 +1,154 @@
-@import url("https://fonts.googleapis.com/css?family=Open+Sans&display=swap");
 body {
-  margin: 0px;
-  font-family: "Open Sans", sans-serif;
-}
-h4 {
-  margin: 0px;
-}
-
-i{
-  font-size: 40px;
-}
-.container {
-  position: absolute;
   display: flex;
-  justify-content: space-evenly;
-  margin: auto;
-  padding: 20px;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  width: 70%;
-  height: 80vh;
-  background-color: rgba(223, 227, 255, 0.4);
-  border-radius: 20px;
-  box-shadow: 2px 4px 8px 0px rgba(24, 128, 248, 0.568);
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background: linear-gradient(to right, #000000, #ffffff);
+  font-family: Arial, sans-serif;
 }
 
-#musicPlayer{
-  margin: auto;
-  display: contents;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-
-}
-
-.musicPlayerWrapper {
+.player-container {
+  position: relative; /* Ensure relative positioning for the pseudo-element */
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  width: 70%;
   align-items: center;
-  padding: 20px;
-
-}
-
-.musicPlayer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 400px;
-
-}
-.playerThumbnail {
-  width: 60%;
+  width: 50%;
+  max-width: 400px;
   border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 }
-.progressBar {
-  position: relative;
-  width: 90%;
-  height: 5px;
-  margin-top: 30px;
-  border-radius: 2.5px;
-  background-color: rgba(107, 88, 153);
-}
-.progressBarMain {
+
+.player-container::before {
+  content: '';
   position: absolute;
-  width: 0%;
-  bottom: 0px;
-  height: 5px;
-  margin-top: 30px;
-  border-radius: 2.5px;
-  background-color: rgb(38, 146, 218);
-}
-.btnContainer {
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-  width: 40%;
-}
-.btnWrapper {
-  display: flex;
+  top: 0;
+  left: 0;
   width: 100%;
-  justify-content: space-evenly;
-  align-items: center;
+  height: 100%;
+  /* background-image: url('https://static.vecteezy.com/system/resources/previews/026/764/451/non_2x/marketing-growth-chart-graphic-background-widescreen-with-neon-lights-generative-ai-free-photo.jpg'); */
+  background-size: cover;
+  background-color: #ddd;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: blur(4px); 
+  z-index: -1;
 }
-.playBtn {
-  font-size: 45px;
-}
-.btnWrapper i {
-  font-size: 25px;
-  color: rgba(21, 18, 75, 0.5);
-  cursor: pointer;
-}
-.btnWrapper i:hover {
-  color:  rgba(19, 14, 99, 0.836);
-}
-
-
-
-.pauseBtn {
-  display: none !important;
-}
-
-.musicTitle {
-  text-align: center;
-  margin: 0px;
-  padding: 10px;
-}
-.musicTitle h2 {
-  margin: 10px;
-  padding: 0px;
-  font-size: 25px;
-}
-
-.musicTitle h6 {
-  margin: 10px;
-  padding: 0px;
-  font-size: 15px;
-}
-.musicListWrapper {
-  margin: 0px;
-  width: 30%;
-  height: 80vh;
-  overflow-y: auto;
-  overflow-x: auto; 
-  padding-left: 20px;
-  border-left: solid 1px rgba(203, 209, 209, 0.678);
-}
-
-#musicList::-webkit-scrollbar {
-  width: 5px;
-  background-color: #f5f5f5;
-  cursor: pointer;
-
-}
-#musicList::-webkit-scrollbar-track {
-  background-color: rgb(255, 223, 238, 0.4);
-  cursor: pointer;
-  /* height: 300px; */
-  text-align: end;
-}
-
-#musicList::-webkit-scrollbar-thumb {
-  background-color: rgba(75, 14, 42, 0.4);
-  height: 30px;
-  width: 6px;
-  cursor: pointer;
-}
-
-.listWrapper {
+.audio-player {
   display: flex;
-  width: 90%;
-  padding: 20px 0px;
-  border-bottom: solid 1px rgba(203, 209, 209, 0.678);
-}
-
-.listThumbnail {
-  width: 100px;
-  border-radius: 10px;
-}
-
-.listTitle {
-  display: flex;
-  justify-content: flex-start;
   flex-direction: column;
-  align-items: flex-start;
-  margin-left: 10px;
+  align-items: center;
+  padding: 20px;
+  width: 100%;
+  
 }
 
-.listTitle h2 {
-  margin-bottom: 10px;
-  padding: 0px;
+.album-cover {
+  width: 50%;
+  max-width: 150px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.track-info {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.track-title {
+  font-size: 20px;
+  margin: 10px 0 5px;
+}
+
+.track-artist {
   font-size: 18px;
-  color: rgb(149, 155, 155);
-  font-weight: 600;
+  color: #666;
 }
 
-.listTitle h6 {
-  margin: 0px;
-  padding: 0px;
-  font-size: 15px;
-  font-weight: lighter;
-  color: rgb(149, 155, 155);
+.audio {
+  width: 100%;
+  outline: none;
+  margin-top: 20px;
+  display: none; /* Hide default controls */
 }
 
-#bottom
-{
-    background-color: rgba(223, 227, 255, 0.4);
-    height: 100px !important;
-    width: auto;
-    display: flex;
-    justify-content:center;
-    align-items: center;
-    border: 1px solid black;
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 20px;
 }
-button
-{
-    margin: 10px;
+
+.control-btn {
+  background: none;
+  border: none;
+  font-size: 30px;
+  margin: 0 0px;
+  cursor: pointer;
+  transition: transform 0.2s;
 }
-.controls
-{
-    margin: 30px;
+
+.control-btn:hover {
+  transform: scale(1.1);
+}
+
+.progress-container {
+  width: 90%;
+  height: 10px;
+  background: #ddd;
+  border-radius: 5px;
+  margin-top: 20px;
+  overflow: hidden;
+}
+
+.progress {
+  width: 0;
+  height: 100%;
+  background: #ff5f6d;
+  transition: width 0.1s;
+}
+
+.music-list {
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  max-height: 200px;
+}
+
+.music-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.music-item:hover {
+  background: #f9f9f9;
+}
+
+.music-thumbnail {
+  width: 50px;
+  height: 50px;
+  margin-right: 20px;
+  border-radius: 5px;
+}
+
+.music-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.music-title {
+  font-size: 18px;
+  margin: 0;
+}
+
+.music-artist {
+  font-size: 14px;
+  color: #666;
 }
