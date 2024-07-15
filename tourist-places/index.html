@@ -15,23 +15,50 @@
 </head>
 
 <body>
- 
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/project/index.html"><img src="https://png.pngtree.com/png-clipart/20230319/original/pngtree-travel-logo-design-template-for-business-and-company-png-image_8995704.png" alt="" height="50px"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./index-file/sigin.html">sign in</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./index-file/Wish-List.html">Wish-List</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search" id="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+                        id="searchValue" />
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
     <div id="navbar"></div>
-    <!-- slider-section -->z
+    <!-- slider-section -->
     <div id="center">
         <form id="signin-form">
             <h2> Tourist - Places</h2>
             <label for="name">Place Name</label>
-            <input type="text" id="name" placeholder="Place Name">
+            <input type="text" id="name" placeholder="Place Name" required>
 
             <label for="img">Book Image</label>
-            <input type="text" id="img" placeholder="Place Image Url">
+            <input type="text" id="img" placeholder="Place Image Url" required>
 
             <label for="desc">Description</label>
-            <input type="text" id="Description" placeholder="Description ">
+            <input type="text" id="Description" placeholder="Description " required>
 
             <label for="desc">Travel-Cost</label>
-            <input type="text" id="Cost" placeholder="Travel-Cost ">
+            <input type="text" id="Cost" placeholder="Travel-Cost " required>
 
             <button type="submit">Submit</button>
         </form>

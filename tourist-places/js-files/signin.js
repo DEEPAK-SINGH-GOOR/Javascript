@@ -11,15 +11,13 @@ document.getElementById("signin-form").addEventListener("submit", (e) => {
     signdata.push(bookdata);
     localStorage.setItem('signdata', JSON.stringify(signdata));
     alert("Sign-IN successfully!");
-    bookdata();
-    Window.location.href = '/tourist-places/Exam-Practice/index.html';
-    bookdata();
+
+    window.location.href = '../index.html';
 });
 
 const wishlist = (info) => {
     let library = JSON.parse(localStorage.getItem('library')) || [];
     library.push(info);
     localStorage.setItem('library', JSON.stringify(library));
-    alert("Place Add To Wish List" );
-    bookdata(); 
+    alert("Place Add To Wish List");
 };

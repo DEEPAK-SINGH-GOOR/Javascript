@@ -16,51 +16,57 @@ const bookdata = () => {
         td3.innerHTML = info.Description;
 
         let td4 = document.createElement("b");
-        td4.innerHTML = info.Cost;
+        td4.innerHTML = `Traveling Cost : ${info.Cost}`;
 
         let td5 = document.createElement("button");
         td5.innerHTML = "Book Now";
         td5.style.backgroundColor = "blue";
+        td5.style.color = "white";
         td5.addEventListener("click", () => {
             mybook(index);
         });
 
-        let td6 = document.createElement("button");
-       
-        td6.style.backgroundColor = "green";
+        let td6 = document.createElement("div");
         
-        td6.innerHTML= "Like";
-        td6.addEventListener("click", () => {
-            likeBook(index);
-        });
-     
-        let td7 = document.createElement("b");
-        let like = document.createElement("span");
-        like.id = `like-${index}`;
-        like.textContent = info.likes || 0;
-        td7.append(like);
+        let likeButton = document.createElement("button");
+        likeButton.classList.add('like-button');
+        likeButton.innerHTML = 'Like ' + (info.likes || 0);
 
-        tr.append(td1, td2, td3, td4, td5, td6, td7);
+        likeButton.addEventListener("click", () => {
+            likeBook(index, likeButton);
+        });
+
+        td6.appendChild(likeButton);
+
+        tr.append(td1, td2, td3, td4, td5, td6);
         document.getElementById("output").append(tr);
+
+        initializeLike(index, likeButton);
     });
 };
-
 
 const mybook = (index) => {
     const book = library[index];
     myBooks.push(book);
     localStorage.setItem('myBooks', JSON.stringify(myBooks));
-    alert("Place added successfully to Book-Secition!");
-    window.location.href = "/tourist-places/Exam-Practice/index-file/login.html";
+    alert("Place added successfully to Book-Section!");
+    window.location.href = "./login.html";
 };
 
-const likeBook = (index) => {
+const likeBook = (index, likeButton) => {
     library[index].likes = library[index].likes ? library[index].likes + 1 : 1;
     localStorage.setItem('library', JSON.stringify(library));
+    sessionStorage.setItem(`likes-${index}`, library[index].likes);
 
-    let likeElement = document.getElementById(`like-${index}`);
-    if (likeElement) {
-        likeElement.textContent = library[index].likes;
+    likeButton.innerHTML = 'Like ' + library[index].likes;
+};
+
+const initializeLike = (index, likeButton) => {
+    const sessionLikes = sessionStorage.getItem(`likes-${index}`);
+    if (sessionLikes) {
+        library[index].likes = +sessionLikes;
+        localStorage.setItem('library', JSON.stringify(library));
+        likeButton.innerHTML = 'Like ' + library[index].likes;
     }
 };
 
