@@ -3,44 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    
+    <title>Student Data Form</title>
+
 </head>
 <body>
     <style>
-        li{
-            border: 2px solid black;
-        }
-        th{
-            border: 2px solid black;
-            border-collapse: collapse;
-        }
+        /* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input-field {
+    width: 80%;
+    padding: 10px 15px;
+    margin: 10px 0;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.input-field:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.25);
+    outline: none;
+}
+
+.submit-button {
+    width: 85%;
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+    background-color: #218838;
+}
+
+.table-container {
+    margin-top: 30px;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 12px;
+    border: 2px solid #ddd;
+    text-align: center;
+}
+
+th {
+    background-color: #f8f8f8;
+    color: #333;
+    font-weight: bold;
+}
+
+td {
+    background-color: #fff;
+}
+
+tbody tr:nth-child(even) td {
+    background-color: #f9f9f9;
+}
+
     </style>
-
-    <form id="studentData">
-        <input type="text" id="name" placeholder="User Name"><br>
-        <input type="text" id="course" placeholder="Course"><br>
-        <input type="text" id="grid" placeholder="grid">
-        <input type="submit">
-    </form>
-    
-    <div >
-        <table>
-            <tr>
-                <th>Name</th>
-                <th>Course</th>
-                <th>Grid</th>
-            </tr>
-        </table>
-        <tbody>
-            <tr>
-                <div id="view">
-
-                </div>
-            </tr>
-        </tbody>
+    <div class="container">
+        <h1>Student Data Form</h1>
+        <form id="studentData">
+            <input type="text" id="name" placeholder="User Name" class="input-field"><br>
+            <input type="text" id="course" placeholder="Course" class="input-field"><br>
+            <input type="text" id="grid" placeholder="Grid" class="input-field"><br>
+            <input type="submit" value="Submit" class="submit-button">
+        </form>
+        
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Course</th>
+                        <th>Grid</th>
+                    </tr>
+                </thead>
+                <tbody id="view">
+                    <!-- Dynamic content will be added here -->
+                </tbody>
+            </table>
+        </div>
     </div>
-
 </body>
 <script src="./index.js"></script>
 </html>

@@ -1,36 +1,21 @@
-let student=[]
-
-const uimaker=()=>{
-    document.getElementById("view").innerHTML=""
-
-        for(let i=0;i<student.length;i++){
-            // Name
-            let name=document.createElement("li")
-            // name.innerHTML=student[i].name
-            document.getElementById("view").append(student[i].name)
-            // Course
-
-            let course=document.createElement("li")
-            document.getElementById("view").append(student[i].course)
-            // Grid
-            
-            let grid=document.createElement("li")
-            document.getElementById("view").append(student[i].grid)
-        }
-       // console.log("uimaker");
-}
-   
-const studentlist = (e) => {
+document.getElementById('studentData').addEventListener('submit', function(e) {
     e.preventDefault();
-    let data =
-    {
-        name: document.getElementById("name").value,
-        course: document.getElementById("course").value,
-        grid: document.getElementById("grid").value
-    }
-    console.log(data);
-    student.push(data)
-    uimaker();
     
-}
-document.getElementById("studentData").addEventListener("submit", studentlist)
+    const name = document.getElementById('name').value;
+    const course = document.getElementById('course').value;
+    const grid = document.getElementById('grid').value;
+    
+    const table = document.getElementById('view');
+    const newRow = document.createElement('tr');
+    
+    newRow.innerHTML = `
+        <td>${name}</td>
+        <td>${course}</td>
+        <td>${grid}</td>
+    `;
+    
+    table.appendChild(newRow);
+    
+    // Clear the form fields
+    document.getElementById('studentData').reset();
+});

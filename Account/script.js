@@ -67,4 +67,5 @@ class Account {
 }
 
 let myaccount = new Account(123456, 'Deeper', 'Main Branch', '0');
+
 console.log(myaccount.branchname); // Main Branch

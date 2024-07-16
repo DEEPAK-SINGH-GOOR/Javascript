@@ -4,35 +4,810 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Custom Audio Player</title>
-    <link rel="stylesheet" href="./style.css">
+    <title>YouTubE -Dark</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
-    <div class="player-container">
-        <div id="audioPlayer" class="audio-player">
-            <img id="albumCover" class="album-cover" src="" alt="Album Cover">
-            <div class="track-info">
-                <h2 id="trackTitle" class="track-title"></h2>
-                <h4 id="trackArtist" class="track-artist"></h4>
-            </div>
-            <audio id="audio" class="audio" controls></audio>
-            <div class="controls">
-                <button id="randomBtn" class="control-btn">🔀</button>
-                <button id="prevBtn" class="control-btn">⏮</button>
-               
-                <button id="playBtn" class="control-btn">▶️</button>
-                <button id="pauseBtn" class="control-btn" style="display:none;">⏸</button>
-                <button id="nextBtn" class="control-btn">⏭</button>
-                <button id="undoBtn" class="control-btn">↩️</button>
-            </div>
-            <div class="progress-container">
-                <div id="progress" class="progress"></div>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .containar {
+            width: 1300px;
+            overflow: hidden;
+            margin: auto;
+        }
+
+        .clearfix::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        .left {
+            float: left;
+        }
+
+        .right {
+            float: right;
+        }
+
+
+        /* header */
+        .header-section {
+            background: #fff;
+            position: fixed;
+            left: 0;
+            top: 0;
+            z-index: 99;
+            width: 100%;
+
+        }
+
+        .header-bottom-content {
+            margin-top: 50px;
+        }
+
+        .left-area {
+            width: 20%;
+            float: left;
+            overflow: hidden;
+        }
+
+        .center-area {
+            width: 60%;
+            float: left;
+            overflow: hidden;
+        }
+
+        .right-rea {
+            width: 20%;
+            float: left;
+            overflow: hidden;
+        }
+
+        .left-area ul li {
+            display: inline-block;
+        }
+
+        .fa.fa-bars {
+            font-size: 27px;
+            color: #ff0000;
+            margin-top: 9px;
+            position: relative;
+            margin-right: 48px;
+            padding: 8px 1px;
+        }
+
+        .youtub-logo {
+            margin-top: -32px;
+            position: absolute;
+            height: 45px;
+        }
+
+        .youtub-text {
+            margin-left: 43px;
+            text-decoration: none;
+            margin-top: -23px;
+            position: absolute;
+            font-size: 23px;
+            color: #444;
+        }
+
+        .src-box {
+            display: inline-block;
+            padding: 4px 27px;
+            margin-top: 17px;
+            width: 74%;
+            font-size: 20px;
+            margin-right: -5px;
+            border: 1px solid #999;
+
+        }
+
+        .src-box:focus {
+            outline: none;
+        }
+
+
+        .right-rea ul li {
+            display: inline-block;
+        }
+
+        #src-area {
+            position: absolute;
+            padding: 4.5px 26px;
+            margin-top: 17px;
+            margin-left: 4px;
+            background: #fff;
+            border: 1px solid #999;
+            font-size: 19px;
+        }
+
+        #src-area:focus {
+            outline: none;
+        }
+
+        .right-rea ul li a i {
+            margin-top: 23px;
+            padding: 0px 22px;
+            font-size: 27px;
+            color: #606060;
+        }
+
+        .right-rea span {
+            background: rgba(46, 4, 235, 0.459);
+            margin-left: 230px;
+            position: absolute;
+            margin-top: -41px;
+            height: 41px;
+            width: 44px;
+            text-align: center;
+            border-radius: 50%;
+        }
+
+        .right-rea span a {
+            margin-top: 3px;
+            position: absolute;
+            margin-left: -10px;
+            font-size: 28px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        /* header-end--- */
+        /* header-bottom */
+        .header-bottom-content {
+            width: 100%;
+            background: #fff;
+        }
+
+        .slider-section {
+            width: 20%;
+            height: 1100px;
+            background-color: #fff;
+        }
+
+        .slider-content {
+            height: 100%;
+            width: 100%;
+            background-color: #fff;
+            overflow-y: auto;
+        }
+
+        .slider-menu {
+            margin-top: 20px;
+            width: 100%;
+            height: auto;
+            border-bottom: 1px solid #999;
+        }
+
+        /*  */
+        .slider-menu ul li a i {
+            color: #999;
+            font-size: 25px;
+            margin-bottom: 18px;
+            margin-left: 15px;
+        }
+
+        .slider-menu ul li span {
+            margin-left: 16px;
+            font-size: 20px;
+            color: #444;
+        }
+
+        .slider-menu ul li a {
+            text-decoration: none;
+        }
+
+        .slider-menu ul li img {
+            border-radius: 50%;
+            height: 35px;
+            width: 38px;
+            margin-left: 12px;
+            margin-bottom: -8px;
+        }
+
+        .slider-menu ul li {
+            padding-top: 10px;
+        }
+
+        .slider-menu ul li:hover {
+            background: rgba(69, 62, 75, 0.219);
+        }
+
+        .spaisal-text {
+            margin-top: 3px;
+            position: relative;
+            left: 57px;
+            top: -28px;
+            margin-left: 10px;
+            color: #444;
+            font-size: 19px;
+        }
+
+        /* top-menu */
+        .top-menu {
+            background: #fff;
+            border-top: 1px solid #eee;
+            margin-top: 12px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .top-menu {
+            position: fixed;
+            left: 20%;
+            top: 40px;
+            z-index: 99;
+            width: 100%;
+        }
+
+        .vidio-section {
+            margin-top: 70px;
+        }
+
+        .top-menu ul li {
+            display: inline-block;
+            padding: 15px 20px;
+            font-size: 16px;
+        }
+
+        .top-menu ul li a {
+            display: block;
+            text-decoration: none;
+            color: #444;
+            border: 1px solid #999;
+            padding: 2px 10px;
+            border-radius: 10px;
+        }
+
+        .top-menu ul li a:hover {
+            background: rgb(226, 222, 222);
+        }
+
+        .top-menu ul li a:focus {
+            background: #999;
+        }
+
+        .slider-menu p {
+            color: #444;
+            padding: 10px;
+        }
+
+
+
+
+        /* vedio-right-menu right */
+        .vedio-right-menu {
+            width: 80%;
+            float: left;
+        }
+
+        .video {
+            margin-right: 30px;
+
+        }
+
+        .vidio-section {
+            width: 100%;
+
+        }
+
+        .video {
+            width: 22%;
+            float: left;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .vedio-photo img {
+            width: 100%;
+            height: auto;
+        }
+
+        .vedio-photo span {
+            position: relative;
+            top: -25px;
+            left: 164px;
+            color: #fff;
+            background: black;
+            padding: 3px 5px;
+        }
+
+        .vedio-container p img {
+            border-radius: 50%;
+            height: 30px;
+            margin-top: -17px;
+            float: left;
+        }
+
+        .vedio-container p a {
+            float: left;
+            width: 84%;
+            margin-left: 35px;
+            margin-top: -32px;
+            color: black;
+            font-weight: bold;
+            text-decoration: none;
+            margin-bottom: 3px;
+        }
+
+        .bottom-text {
+            color: #333;
+            margin-left: 37px;
+            margin-top: 0px;
+        }
+
+        .bottom-p {
+            color: #444;
+            font-size: 17px;
+            line-height: 1.45;
+        }
+
+        .slider-menu a {
+            text-decoration: none;
+        }
+
+        .copyight {
+            color: #999;
+            margin-left: 25px;
+        }
+
+        .video-container {
+            display: inline-block;
+            width: 320px;
+            margin: 10px;
+        }
+
+        /* The End */
+    </style>
+    <!-- Header -->
+    <div class="header-section">
+        <div class="containar">
+            <div class="header-area">
+                <div class="left-area">
+                    <ul>
+                        <li><a href="#"><i class="fa fa-bars" aria-hidden="true"></i></a></li>
+
+                        <li><a href="#"><img class="youtub-logo" src="./IMG/youtub logo.png" alt=""></a></li>
+
+                        <li><a class="youtub-text" href="#">YouTub</a></li>
+                    </ul>
+                </div>
+                <div class="center-area">
+                    <div class="search-box">
+                        <input class="src-box" type="text" placeholder="Search">
+                        <button id="src-area" type="submit"><i class="fa fa-search" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="right-rea">
+                    <ul>
+                        <li><a href="#"><i class="fa fa-video-camera" aria-hidden="true"></i>
+                            </a></li>
+                        <li><a href="#"><i class="fa fa-th" aria-hidden="true"></i>
+                            </a></li>
+                        <li><a href="#"><i class="fa fa-bell" aria-hidden="true"></i>
+                            </a></li>
+
+                    </ul>
+                    <span class="profile-lofgo"><a href="">R</a></span>
+                </div>
             </div>
         </div>
-        <div id="musicList" class="music-list"></div>
     </div>
-    <script src="./script.js"></script>
+    <!-- header-end -->
+    <div class="header-bottom-content clearfix">
+        <div class="slider-section left">
+            <div class="slider-content">
+                <div class="slider-menu">
+                    <ul>
+                        <li><a href="#"> <i class="fa fa-home" aria-hidden="true"></i> <span>Home</span></a></li>
+                        <li><a href="#"> <i class="fa fa-fire" aria-hidden="true"></i> <span>Trending</span></a></li>
+                        <li><a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i>
+                                <span>Subscriptions</span></a></li>
+                    </ul>
+                </div>
+                <div class="slider-menu">
+                    <ul>
+                        <li><a href="#"> <i class="fa fa-home" aria-hidden="true"></i> <span>Librayu</span></a></li>
+                        <li><a href="#"> <i class="fa fa-history" aria-hidden="true"></i>
+                                <span>History</span></a></li>
+                        <li><a href="#"><i class="fa fa-play" aria-hidden="true"></i>
+                                <span>Your Vedios</span></a></li>
+                        <li><a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i>
+                                <span>Wathc Later</span></a></li>
+                        <li><a href="#"><i class="fa fa-thumbs-up" aria-hidden="true"></i>
+                                <span>Like Vedios</span></a></li>
+                        <li><a href="#"><i class="fa fa-sort-desc" aria-hidden="true"></i>
+                                <span>Show More</span></a></li>
+
+                    </ul>
+                </div>
+                <div class="slider-menu">
+                    <ul>
+                        <li>
+                            <img src="./IMG/rose.jpg" alt="">
+                            <div class="spaisal-text">
+                                Rose Tv24
+                            </div>
+                        </li>
+                        <li>
+                            <img src="./IMG/jillue.jpg" alt="">
+                            <div class="spaisal-text">
+                                Developer Jillur
+                            </div>
+                        </li>
+                        <li>
+                            <img src="./IMG/hero.jpg" alt="">
+                            <div class="spaisal-text">
+                                Gajendra Verma
+                            </div>
+                        </li>
+                        <li>
+                            <img src="./IMG/jonker.jpg" alt="">
+                            <div class="spaisal-text">
+                                Jhanker Mahabyub
+                            </div>
+                        </li>
+                        <li>
+                            <img src="./IMG/unnamed (2).jpg" alt="">
+                            <div class="spaisal-text">
+                                T-Sharts
+                            </div>
+                        </li>
+                        <li>
+                            <img src="./IMG/unnamed (5).jpg" alt="">
+                            <div class="spaisal-text">
+                                Naimless
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="slider-menu">
+                    <p>MORE FROM YOUTUB</p>
+                    <ul>
+                        <li><a href="#"> <i class="fa fa-gamepad" aria-hidden="true"></i>
+                                <span>Gaming</span></a></li>
+                        <li><a href="#"> <i class="fa fa-lightbulb-o" aria-hidden="true"></i>
+
+                                <span>Live</span></a></li>
+                        <li><a href="#"><i class="fa fa-grav" aria-hidden="true"></i>
+
+                                <span>fashion&beauty</span></a></li>
+                        <li><a href="#"><i class="fa fa-lightbulb-o" aria-hidden="true"></i>
+                                <span>Leadring</span></a></li>
+                        <li><a href="#"><i class="fa fa-info-circle" aria-hidden="true"></i>
+                                <span>Help</span></a></li>
+                        <li><a href="#"><i class="fa fa-cog" aria-hidden="true"></i>
+                                <span>Seattings</span></a></li>
+                    </ul>
+                </div>
+                <div class="slider-menu">
+                    <p><a class="bottom-p" href="">AboutPressCopyrightContact usCreatorsAdvertiseDevelopers
+                        </a></p>
+                    <p><a class="bottom-p" href="">TermsPrivacyPolicy & SafetyHow YouTube worksTest new features</a></p>
+                    <a class="copyight" href="">© 2020 Google LLC</a>
+                </div>
+            </div>
+        </div>
+        <!--  -->
+        <div class="vedio-right-menu right">
+            <div class="top-menu">
+                <ul>
+                    <li><a class="active" href="#">All recommendations</a></li>
+                    <li><a href="#">Web Development</a></li>
+                    <li><a href="#">Web Desing</a></li>
+                    <li><a href="#">Natok</a></li>
+                    <li><a href="#">Asian Music</a></li>
+                    <li><a href="#">Motivation</a></li>
+                    <li><a href="#">Website</a></li>
+                </ul>
+            </div>
+            <br><br>
+            <div id="videos-container"></div>
+        </div>
+    </div>
+   
+    <script>
+        // Data from the YouTube API response with video IDs
+        var videoData = {
+            "kind": "youtube#searchListResponse",
+            "etag": "QdGYZYmMNnb6UdJqKYi9nOklbjo",
+            "nextPageToken": "CCgQAA",
+            "regionCode": "IN",
+            "pageInfo": {
+                "totalResults": 743767,
+                "resultsPerPage": 40
+            },
+
+            "items": [
+                {
+                    "kind": "youtube#searchResult",
+                    "etag": "aHjQmzL8N-wAurGjC_Rfff0PsEA",
+                    "id": {
+                        "kind": "youtube#video",
+                        "videoId": "E2oTVgVZIlE"
+                    }
+                },
+                // {
+                //     "kind": "youtube#searchResult",
+                //     "etag": "bcrB3Rm7NtkVWFmU0lIgf78IvGM",
+                //     "id": {
+                //         "kind": "youtube#video",
+                //         "videoId": "w-ffHX0ffqY"
+                //     }
+                // },
+                // {
+                //     "kind": "youtube#searchResult",
+                //     "etag": "UEl2RoHqOpf7WveKnHuf7kuV-lQ",
+                //     "id": {
+                //         "kind": "youtube#playlist",
+                //         "playlistId": "PLDviSxN-S7XJxu9gd6evigdoHgGfCBGoQ"
+                //     }
+                // },
+                // {
+                //     "kind": "youtube#searchResult",
+                //     "etag": "mchzqqLtYafstea5_pfxfnm0-iQ",
+                //     "id": {
+                //         "kind": "youtube#video",
+                //         "videoId": "vjT3UbYDD_A"
+                //     }
+                // },
+                // {
+                //     "kind": "youtube#searchResult",
+                //     "etag": "-qfshc4FKWkzkKJIVMCMgFarTEE",
+                //     "id": {
+                //         "kind": "youtube#video",
+                //         "videoId": "9g0PQlWJ-0Y"
+                //     }
+                // },
+                // {
+                //     "kind": "youtube#searchResult",
+                //     "etag": "d1jS00GkoD0pDg7nGv27Wjsn08g",
+                //     "id": {
+                //         "kind": "youtube#video",
+                //         "videoId": "tdsKsfHEaTc"
+                //     }
+                // },
+                // {
+                //     "kind": "youtube#searchResult",
+                //     "etag": "pLRLzHs5rvLWjIFIeDWi--JfxQ0",
+                //     "id": {
+                //         "kind": "youtube#playlist",
+                //         "playlistId": "PL64OquyxwZ4dJ0MFnSjDZLTCW0S2C5bV6"
+                //     }
+                // },
+                // {
+                //     "kind": "youtube#searchResult",
+                //     "etag": "rYp2lnUk6zZudqdOz9mBgJ3Nn2o",
+                //     "id": {
+                //         "kind": "youtube#video",
+                //         "videoId": "G2AxwfRZ_Gc"
+                //     }
+                // },
+                // {
+                //     "kind": "youtube#searchResult",
+                //     "etag": "hivBhQAcmtsAuSDFvPT2_Gyho0Y",
+                //     "id": {
+                //         "kind": "youtube#video",
+                //         "videoId": "TGuf92Xh9RM"
+                //     }
+                // },
+                // {
+                //     "kind": "youtube#searchResult",
+                //     "etag": "ZX6MGJbdKDhaxlhfNpY-WmYkGA4",
+                //     "id": {
+                //         "kind": "youtube#video",
+                //         "videoId": "ICStIZtsC2A"
+                //     }
+                // },
+                // {
+                //     "kind": "youtube#searchResult",
+                //     "etag": "8cwpj_TFjmtBFoVHsyDDA_5M7Pw",
+                //     "id": {
+                //         "kind": "youtube#video",
+                //         "videoId": "sZeoSB-FkLo"
+                //     }
+                // },
+                // {
+                //     "kind": "youtube#searchResult",
+                //     "etag": "7sfYxXME3Ym5btVOg1vrzXfsvoE",
+                //     "id": {
+                //         "kind": "youtube#video",
+                //         "videoId": "5n-7U4oU9Ok"
+                //     }
+                // },
+                // {
+                //     "kind": "youtube#searchResult",
+                //     "etag": "lsKmD8YyIMr3cZmNTSerRbfk7bk",
+                //     "id": {
+                //         "kind": "youtube#video",
+                //         "videoId": "knS13uUMPJI"
+                //     }
+                // },
+                // {
+                //     "kind": "youtube#searchResult",
+                //     "etag": "neI-Uo1cTyCdWTkKwpAPangPta4",
+                //     "id": {
+                //         "kind": "youtube#playlist",
+                //         "playlistId": "PLMZc2fKxKpv_YJY7E8j2JMzFKwajmJOsC"
+                //     }
+                // },
+                // {
+                //     "kind": "youtube#searchResult",
+                //     "etag": "NIp1C2nMcvz7ZwmFyADTKavJgBs",
+                //     "id": {
+                //         "kind": "youtube#video",
+                //         "videoId": "FN2JwL-zai0"
+                //     }
+                // },
+                // {
+                //     "kind": "youtube#searchResult",
+                //     "etag": "P_Vu90bPX-e3eMOo_3aCc_dorK4",
+                //     "id": {
+                //         "kind": "youtube#video",
+                //         "videoId": "F-ZWSTBt-yE"
+                //     }
+                // },
+                // {
+                //     "kind": "youtube#searchResult",
+                //     "etag": "BYoWQqssnRF2XgmDhcPJe_UWX9Q",
+                //     "id": {
+                //         "kind": "youtube#video",
+                //         "videoId": "80ctf3VZC1Q"
+                //     }
+                // },
+                // {
+                //     "kind": "youtube#searchResult",
+                //     "etag": "Sm6EES82y1fvwFwnhGJlKGHdK44",
+                //     "id": {
+                //         "kind": "youtube#video",
+                //         "videoId": "BmiLYB8-X2g"
+                //     }
+                // },
+                // {
+                //     "kind": "youtube#searchResult",
+                //     "etag": "ko8ayCc6HTEJ3X1VHGfYFgPpP10",
+                //     "id": {
+                //         "kind": "youtube#playlist",
+                //         "playlistId": "PL4llTvj1XmskkSoXe4QiToqyp-vhLgGam"
+                //     }
+                // },
+                // {
+                //     "kind": "youtube#searchResult",
+                //     "etag": "XrzECmypBwOLUaUwZNchqeQxRQY",
+                //     "id": {
+                //         "kind": "youtube#video",
+                //         "videoId": "0CxSPOFAaMU"
+                //     }
+                // },
+                // {
+                //     "kind": "youtube#searchResult",
+                //     "etag": "ZNIL22iZ7u4rZlcILDGhQenyWMI",
+                //     "id": {
+                //         "kind": "youtube#video",
+                //         "videoId": "D9jCKxPIUPU"
+                //     }
+                // },
+                // {
+                //     "kind": "youtube#searchResult",
+                //     "etag": "ulS6LeEXtEIwerPIY7T4-wyYP2k",
+                //     "id": {
+                //         "kind": "youtube#video",
+                //         "videoId": "VNY805OIc24"
+                //     }
+                // },
+                // {
+                //     "kind": "youtube#searchResult",
+                //     "etag": "bq-pSM9ZQpH2hRT8mx6Ovl6EXDU",
+                //     "id": {
+                //         "kind": "youtube#video",
+                //         "videoId": "vGUz2c528Mc"
+                //     }
+                // },
+                // {
+                //     "kind": "youtube#searchResult",
+                //     "etag": "gGfTgC1SthHF_cUcCtUMjOKAb6o",
+                //     "id": {
+                //         "kind": "youtube#video",
+                //         "videoId": "YlGElXeic7M"
+                //     }
+                // },
+                // {
+                //     "kind": "youtube#searchResult",
+                //     "etag": "n8fDrybP5Ut1GWoLzFHKmWfqAcM",
+                //     "id": {
+                //         "kind": "youtube#video",
+                //         "videoId": "zq6tEFXl1xI"
+                //     }
+                // },
+                // {
+                //     "kind": "youtube#searchResult",
+                //     "etag": "49VT9IBxOOlUzFuxzOe-L4SNtFY",
+                //     "id": {
+                //         "kind": "youtube#video",
+                //         "videoId": "1Qs8jmUQex8"
+                //     }
+                // },
+                // {
+                //     "kind": "youtube#searchResult",
+                //     "etag": "X0BCOToqb4Y6gxfRRb9EVsWz4RI",
+                //     "id": {
+                //         "kind": "youtube#video",
+                //         "videoId": "FyBMHl3XAgc"
+                //     }
+                // },
+                // {
+                //     "kind": "youtube#searchResult",
+                //     "etag": "8zoQHguIa7zfXb9_g-RkzazmGZI",
+                //     "id": {
+                //         "kind": "youtube#video",
+                //         "videoId": "jt2FFoJg31Q"
+                //     }
+                // },
+                // {
+                //     "kind": "youtube#searchResult",
+                //     "etag": "gKfDaVFCA5Dz_yV-kScERm-HORA",
+                //     "id": {
+                //         "kind": "youtube#video",
+                //         "videoId": "ZtHHDQbfbzw"
+                //     }
+                // },
+                // {
+                //     "kind": "youtube#searchResult",
+                //     "etag": "d_ywyOBdQURP9xHf8YQMzL7MtaY",
+                //     "id": {
+                //         "kind": "youtube#video",
+                //         "videoId": "mkkE1c39QQ4"
+                //     }
+                // },
+                {
+                    "kind": "youtube#searchResult",
+                    "etag": "zVXWrDFlDsIXu3I0l9f3t3tnPQE",
+                    "id": {
+                        "kind": "youtube#video",
+                        "videoId": "M88VUeoHq3M"
+                    }
+                },
+                {
+                    "kind": "youtube#searchResult",
+                    "etag": "HWvQXYgmV63gOZBQaBRcDNGC0pI",
+                    "id": {
+                        "kind": "youtube#video",
+                        "videoId": "DARqIfKJzQ0"
+                    }
+                },
+
+            ]
+        };
+
+        // Function to create and append a video iframe for each video ID
+        function createVideoPlayer(videoId) {
+            var videoContainer = document.createElement('div');
+            videoContainer.className = 'video-container';
+
+            var iframe = document.createElement('iframe');
+            iframe.width = '320';
+            iframe.height = '180';
+            iframe.src = 'https://www.youtube.com/embed/' + videoId;
+            iframe.frameborder = '0';
+            iframe.allowFullscreen = true;
+
+            videoContainer.appendChild(iframe);
+            document.getElementById('videos-container').appendChild(videoContainer);
+        }
+
+        // Load each video
+        videoData.items.forEach(function (item) {
+            if (item.id.kind === 'youtube#video') {
+                createVideoPlayer(item.id.videoId);
+            }
+        });
+    </script>
 </body>
 
 </html>

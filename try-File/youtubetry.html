@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My YouTube Clone</title>
+</head>
+
+<body>
+    <style>
+        /* styles.css */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #ff0000;
+            padding: 10px 20px;
+            color: white;
+        }
+
+        .logo {
+            font-size: 24px;
+        }
+
+        nav input {
+            padding: 5px;
+            font-size: 16px;
+        }
+
+        nav button {
+            padding: 5px 10px;
+            font-size: 16px;
+            background-color: white;
+            color: #ff0000;
+            border: none;
+            cursor: pointer;
+        }
+
+        main {
+            display: flex;
+            margin-top: 20px;
+        }
+
+        aside {
+            width: 20%;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        aside ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        aside li {
+            padding: 10px 0;
+            cursor: pointer;
+        }
+
+        .videos {
+            width: 40%;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .video-card {
+            width: 45%;
+            background-color: #f9f9f9;
+            padding: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-card img {
+            width: 100%;
+        }
+
+        .video-card h3 {
+            font-size: 18px;
+        }
+
+        .video-player {
+            width: 40%;
+            padding: 20px;
+        }
+
+        video {
+            width: 100%;
+            max-height: 300px;
+        }
+
+        .video-player h3 {
+            font-size: 24px;
+        }
+
+        .video-player p {
+            font-size: 16px;
+            color: #666;
+        }
+    </style>
+    <header>
+        <div class="logo">MyYouTube</div>
+        <nav>
+            <input type="text" placeholder="Search">
+            <button>Search</button>
+        </nav>
+    </header>
+
+    <main>
+        <aside>
+            <ul>
+                <li>Home</li>
+                <li>Trending</li>
+                <li>Subscriptions</li>
+                <li>Library</li>
+            </ul>
+        </aside>
+
+        <section class="videos">
+            <div class="video-card">
+                <img src="https://via.placeholder.com/150" alt="Video Thumbnail">
+                <h3>Video Title 1</h3>
+            </div>
+            <div class="video-card">
+                <img src="https://via.placeholder.com/150" alt="Video Thumbnail">
+                <h3>Video Title 2</h3>
+            </div>
+            <div class="video-card">
+                <img src="https://via.placeholder.com/150" alt="Video Thumbnail">
+                <h3>Video Title 3</h3>
+            </div>
+        </section>
+
+        <section class="video-player">
+            <video controls>
+                <source src="video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <h3>Video Title</h3>
+            <p>Video description goes here.</p>
+        </section>
+    </main>
+</body>
+
+</html>

@@ -4,103 +4,176 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Javascript</title>
+  <title>Video Player Integration</title>
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
-
   <style>
     body {
-      font-family: Arial, sans-serif; /* Apply the desired font family */
+      font-family: 'Arial', sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container-fluid {
+      padding: 20px;
+    }
+
+    h2 {
+      color: #343a40;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .table-hover tbody tr:hover {
+      background-color: #e9ecef;
     }
 
     a {
-      transition: all ease-in-out 0.5s !important;
+      color: #007bff;
+      text-decoration: none;
+      transition: all ease-in-out 0.3s;
     }
 
     a:hover {
-      font-size: 22px !important;
-      color: rgb(3, 171, 255) !important;
+      font-size: 18px;
+      color: #0056b3;
+    }
+
+    .video-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .video-container {
+      border: 1px solid #dee2e6;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+    }
+
+    .video-container:hover {
+      transform: translateY(-5px);
+    }
+
+    iframe {
+      display: block;
     }
   </style>
 </head>
 
 <body>
   <div class="container-fluid">
-    <div class="container my-5 border-bottom border-dark center-text">
-      <h2 class="fw-bolder fs-1">Javascript</h2>
-    </div>
+    <h2 class="fw-bolder fs-1">Javascript Projects</h2>
 
-    <div class="container my-4 center-text">
-      <ul class="fs-5">
-        <li class="fw-bold my-2">
-          <a class="text-decoration-none text-primary-emphasis" href="./tourist-places/Exam-Practice/index.html">Tourist
-            - Place <span class="fw-bolder">Exam - 5 </span>
-          </a>
-          <br><br>
-          <a class="text-decoration-none text-primary-emphasis" href="./API-Lec-1/intro/index.html">Tourist - Place
-            <span class="fw-bolder">API</span>
-          </a>
-          <br><br>
-          <a class="text-decoration-none text-primary-emphasis" href="./API-Lec-1/API-EXAM/index.html">API - EXAM<span
-              class="fw-bolder">API - EXAM</span>
-          </a>
-          <br><br>
-          <a class="text-decoration-none text-primary-emphasis"
-            href="/Javascript/API-Lec-1/Wether-Application/app-2/index.html">Weather App<span class="fw-bolder">API -
-              EXAM</span>
-          </a>
-          <br><br>
-          <a class="text-decoration-none text-primary-emphasis" href="./Audio-player/index.html"><span
-              class="fw-bolder">Audio Player</span>
-          </a>
-          <br><br>
-          <a class="text-decoration-none text-primary-emphasis" href="./tourist-places/index.html"><span
-              class="fw-bolder">Tourist-places</span>
-          </a>
-          <br><br>
-          <a class="text-decoration-none text-primary-emphasis" href="./Quiz-App-Exam/Exam-3/index.html"><span
-              class="fw-bolder">Quiz-App-Exam</span>
-          </a>
-          <br><br>
-          <a class="text-decoration-none text-primary-emphasis" href="./Quiz-App-Exam/Exam-3/index.html"><span
-              class="fw-bolder">Quiz-App-Exam</span>
-          </a>
-          <br><br>
-          <a class="text-decoration-none text-primary-emphasis" href="./Cart-Project/index.html"><span
-              class="fw-bolder">localStorage-Project</span>
-          </a>
-          <br><br>
-          <a class="text-decoration-none text-primary-emphasis" href="./4377-EXAM-JS/EXAM-1/index.html"><span
-              class="fw-bolder">OOPS</span>
-          </a>
-          <br><br>
-          <a class="text-decoration-none text-primary-emphasis" href="./E-Libary-Manage-System/index.html"><span
-              class="fw-bolder">Libary</span>
-          </a>
-          <br><br>
-          <a class="text-decoration-none text-primary-emphasis" href="./News-EXAM/index.html"><span
-              class="fw-bolder">News-EXAM</span>
-          </a>
-          <br><br>
-          <a class="text-decoration-none text-primary-emphasis" href="./Banking-system/index.html"><span
-              class="fw-bolder">Banking-System</span>
-          </a>
-          <br><br>
-          <a class="text-decoration-none text-primary-emphasis" href="./Dragon-Exam-JS/index.html"><span
-              class="fw-bolder">Dragon-EXAM</span>
-          </a>
-          <br><br>
-          <a class="text-decoration-none text-primary-emphasis" href="./YouTube/index.html"><span
-              class="fw-bolder">YouTube-Project</span>
-          </a>
-        </li>
-      </ul>
-    </div>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td><a href="./Product_append/index.html">Products</a></td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td><a href="./Table-10/index.html">Table</a></td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td><a href="./4377-EXAM-JS/EXAM-1/index.html">Coding Evaluation</a></td>
+        </tr>
+        <tr>
+          <th scope="row">4</th>
+          <td><a href="./Dice/index.html">Create a Dice</a></td>
+        </tr>
+        <tr>
+          <th scope="row">5</th>
+          <td><a href="./clock-file/Diffrent-Timer/lec-Timer-2/index.html">Counter</a></td>
+        </tr>
+        <tr>
+          <th scope="row">6</th>
+          <td><a href="./Dragon-Exam-JS/index.html">Dragon</a></td>
+        </tr>
+        <tr>
+          <th scope="row">7</th>
+          <td><a href="./clock-file/Digital-Clock/index.html">Make a Counter</a></td>
+        </tr>
+        <tr>
+          <th scope="row">8</th>
+          <td><a href="./Quiz-App-Exam/Exam-3/index.html">Quiz App</a></td>
+        </tr>
+        <tr>
+          <th scope="row">9</th>
+          <td><a href="./4377-EXAM-JS/EXAM-1/index.html">OOPs</a></td>
+        </tr>
+        <tr>
+          <th scope="row">10</th>
+          <td><a href="./Banking-system/index.html">Banking-System</a></td>
+        </tr>
+        <tr>
+          <th scope="row">11</th>
+          <td><a href="./Like-Share-App/index.html">Liker App</a></td>
+        </tr>
+        <tr>
+          <th scope="row">12</th>
+          <td><a href="./News-EXAM/index.html">News App</a></td>
+        </tr>
+        <tr>
+          <th scope="row">13</th>
+          <td><a href="./Cart-Project/index.html">localStorage-Project</a></td>
+        </tr>
+        <tr>
+          <th scope="row">14</th>
+          <td><a href="./E-Libary-Manage-System/index.html">Libary-Exam</a></td>
+        </tr>
+        <tr>
+          <th scope="row">15</th>
+          <td><a href="./tourist-places/index.html">Tourist-Exam</a></td>
+        </tr>
+        <tr>
+          <th scope="row">16</th>
+          <td><a href="./API-Lectures/intro/index.html">Api-Fetch</a></td>
+        </tr>
+        <tr>
+          <th scope="row">17</th>
+          <td><a href="./API-Lectures/API-EXAM/index.html">Weather-App</a></td>
+        </tr>
+        <tr>
+          <th scope="row">18</th>
+          <td><a href="./API-Lectures/API-EXAM/index.html">Api- Exam</a></td>
+        </tr>
+        <tr>
+          <th scope="row">19</th>
+          <td><a href="./JBL-Webiste/index.html">Final-Project</a></td>
+        </tr>
+        <tr>
+          <th scope="row">20</th>
+          <td><a href="./Audio-player/index.html">Audio-Player</a></td>
+        </tr>
+        <tr>
+          <th scope="row">21</th>
+          <td><a href="./YouTube/index.html">YouTube</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div id="videos-container" class="video-list"></div>
   </div>
-</body>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-  integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script>
+      
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
 
 </html>
