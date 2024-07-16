@@ -177,3 +177,8 @@ h5:hover {
       grid-template-columns: repeat(4, 1fr);
     }
   }
+.btn-danger,i
+{
+    margin: 5px;
+    color: white;
+}

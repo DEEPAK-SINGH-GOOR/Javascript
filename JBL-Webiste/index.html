@@ -217,6 +217,7 @@
             <h6 class="text-primary">Speacker and Dolby Atmos</h6>
             <h5 id="word">$ 75,00</h5>
             <a href="#" class="btn btn-danger">Order Now</a>
+            <a href="#" class="btn btn-danger" id="orderPro">Add To Cart <i class="fa-solid fa-cart-shopping text-dark"></i></a>
           </div>
         </div>
       </div>
@@ -232,6 +233,7 @@
             <h6 class="text-primary">Speacker and Dolby Atmos</h6>
             <h5 id="word">$ 500</h5>
             <a href="#" class="btn btn-danger">Order Now</a>
+            <a href="#" class="btn btn-danger" id="orderPro">Add To Cart <i class="fa-solid fa-cart-shopping text-dark"></i></a>
           </div>
         </div>
 
@@ -247,6 +249,7 @@
             <h6 class="text-primary">Speacker and Dolby Atmos</h6>
             <h5 id="word">$ 4,500</h5>
             <a href="#" class="btn btn-danger">Order Now</a>
+            <a href="#" class="btn btn-danger" id="orderPro">Add To Cart <i class="fa-solid fa-cart-shopping text-dark"></i></a>
           </div>
         </div>
 
@@ -262,6 +265,7 @@
             <h6 class="text-primary">Speacker and Dolby Atmos</h6>
             <h5 id="word">$ 5,000</h5>
             <a href="#" class="btn btn-danger">Order Now</a>
+            <a href="#" class="btn btn-danger" id="orderPro">Add To Cart <i class="fa-solid fa-cart-shopping text-dark"></i></a>
           </div>
         </div>
 
@@ -364,147 +368,148 @@
   };
   // Product data
   const products = [
-    {
-      img: 'https://in.jbl.com/dw/image/v2/BFND_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dwfea2c1ef/1.JBL_Tune_770NC_Product%20Image_Hero_Black.png?sw=320&sh=320',
-      cardTitle: 'JBL Tune 770NC',
-      cardText: 'Adapative Noise Cancellation wireless ',
-      textPrimary: 'Wireless',
-      price: '$649.',
-      orderLink: '#'
-    },
-    {
-      img: 'https://in.jbl.com/dw/image/v2/BFND_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dwadfd9daa/1_JBL_FLIP6_HERO_BLUE_29399_x1.png?sw=320&sh=320',
-      cardTitle: 'JBL Flip 6',
-      cardText: 'Adapative Noise Cancellation wireless ',
-      textPrimary: 'Wireless',
-      price: '$150',
-      orderLink: '#'
-    },
-    {
-      img: 'https://in.jbl.com/dw/image/v2/BFND_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dw1b7739f6/01.JBL_Tune%20Beam_Product%20Image_Hero_Black.png?sw=320&sh=320',
-      cardTitle: 'JBL Tune Bean',
-      cardText: 'Adapative Noise Cancellation wireless ',
-      textPrimary: 'Wireless',
-      price: '$200',
-      orderLink: '#'
-    },
-    {
-      img: 'https://in.jbl.com/dw/image/v2/BFND_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dwb44a1b56/1.JBL_Live%20Pro%202_Product%20image_Hero_Blue.png?sw=320&sh=320',
-      cardTitle: 'JBL Live Pro Product',
-      cardText: 'Ture wireless product  voice cancellation',
-      textPrimary: 'Wireless',
-      price: '$25.44',
-      orderLink: '#'
-    },
-    {
-      img: 'https://in.jbl.com/dw/image/v2/BFND_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dw0c49e244/JBL_GO_4_HERO_RED_48157_x4%20(1).png?sw=320&sh=320',
-      cardTitle: 'JBL Go 4',
-      cardText: 'Ture wireless product  voice cancellation',
-      textPrimary: 'Wireless',
-      price: '$30.45',
-      orderLink: '#'
-    },
-    {
-      img: 'https://in.jbl.com/dw/image/v2/BFND_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dwe8214719/JBL_Tune_310C_ProductImage_Hero_Blue.png?sw=320&sh=320',
-      cardTitle: 'JBL  Tune 305 USB',
-      cardText: 'Ture wireless product  voice cancellation',
-      textPrimary: 'Wireless',
-      price: '$35.78',
-      orderLink: '#'
-    },
-    {
-      img: 'https://in.jbl.com/dw/image/v2/BFND_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dw1fc9b516/JBL_AUTHENTICS_500_HERO_42813_x3.png?sw=320&sh=320',
-      cardTitle: 'JBL Authenics 500',
-      cardText: 'Ture wireless product  voice cancellation',
-      textPrimary: 'Wireless',
-      price: '$30.45',
-      orderLink: '#'
-    },
-    {
-      img: 'https://in.jbl.com/dw/image/v2/BFND_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dw1896cd87/JBL_Tune_305C_USBC_Product%20Image_Hero_Black.png?sw=320&sh=320',
-      cardTitle: 'JBL  Tune 310 USB',
-      cardText: 'Ture wireless product  voice cancellation',
-      textPrimary: 'Wireless',
-      price: '$35.78',
-      orderLink: '#'
+      {
+        img: 'https://in.jbl.com/dw/image/v2/BFND_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dwfea2c1ef/1.JBL_Tune_770NC_Product%20Image_Hero_Black.png?sw=320&sh=320',
+        cardTitle: 'JBL Tune 770NC',
+        cardText: 'Adaptive Noise Cancellation wireless',
+        textPrimary: 'Wireless',
+        price: '$649',
+        orderLink: '#'
+      },
+      {
+        img: 'https://in.jbl.com/dw/image/v2/BFND_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dwadfd9daa/1_JBL_FLIP6_HERO_BLUE_29399_x1.png?sw=320&sh=320',
+        cardTitle: 'JBL Flip 6',
+        cardText: 'Adaptive Noise Cancellation wireless',
+        textPrimary: 'Wireless',
+        price: '$150',
+        orderLink: '#'
+      },
+      {
+        img: 'https://in.jbl.com/dw/image/v2/BFND_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dw1b7739f6/01.JBL_Tune%20Beam_Product%20Image_Hero_Black.png?sw=320&sh=320',
+        cardTitle: 'JBL Tune Beam',
+        cardText: 'Adaptive Noise Cancellation wireless',
+        textPrimary: 'Wireless',
+        price: '$200',
+        orderLink: '#'
+      },
+      {
+        img: 'https://in.jbl.com/dw/image/v2/BFND_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dwb44a1b56/1.JBL_Live%20Pro%202_Product%20image_Hero_Blue.png?sw=320&sh=320',
+        cardTitle: 'JBL Live Pro Product',
+        cardText: 'True wireless product with voice cancellation',
+        textPrimary: 'Wireless',
+        price: '$25.44',
+        orderLink: '#'
+      },
+      {
+        img: 'https://in.jbl.com/dw/image/v2/BFND_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dw0c49e244/JBL_GO_4_HERO_RED_48157_x4%20(1).png?sw=320&sh=320',
+        cardTitle: 'JBL Go 4',
+        cardText: 'True wireless product with voice cancellation',
+        textPrimary: 'Wireless',
+        price: '$30.45',
+        orderLink: '#'
+      },
+      {
+        img: 'https://in.jbl.com/dw/image/v2/BFND_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dwe8214719/JBL_Tune_310C_ProductImage_Hero_Blue.png?sw=320&sh=320',
+        cardTitle: 'JBL Tune 305 USB',
+        cardText: 'True wireless product with voice cancellation',
+        textPrimary: 'Wireless',
+        price: '$35.78',
+        orderLink: '#'
+      },
+      {
+        img: 'https://in.jbl.com/dw/image/v2/BFND_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dw1fc9b516/JBL_AUTHENTICS_500_HERO_42813_x3.png?sw=320&sh=320',
+        cardTitle: 'JBL Authenics 500',
+        cardText: 'True wireless product with voice cancellation',
+        textPrimary: 'Wireless',
+        price: '$30.45',
+        orderLink: '#'
+      },
+      {
+        img: 'https://in.jbl.com/dw/image/v2/BFND_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dw1896cd87/JBL_Tune_305C_USBC_Product%20Image_Hero_Black.png?sw=320&sh=320',
+        cardTitle: 'JBL Tune 310 USB',
+        cardText: 'True wireless product with voice cancellation',
+        textPrimary: 'Wireless',
+        price: '$35.78',
+        orderLink: '#'
+      }
+    ];
+
+    const productContainer = document.getElementById('product-row');
+
+    function createProductCard(product) {
+      const productCard = document.createElement('div');
+      productCard.className = 'card';
+      productCard.style.width = '18rem';
+
+      const img = document.createElement('img');
+      img.src = product.img;
+      img.className = 'card-img-top';
+      img.alt = 'Product Image';
+
+      const cardBody = document.createElement('div');
+      cardBody.className = 'card-body';
+
+      const cardTitle = document.createElement('h5');
+      cardTitle.className = 'card-title';
+      cardTitle.textContent = product.cardTitle;
+
+      const cardText = document.createElement('p');
+      cardText.className = 'card-text';
+      cardText.textContent = product.cardText;
+
+      const textPrimary = document.createElement('p');
+      textPrimary.className = 'text-primary';
+      textPrimary.textContent = product.textPrimary;
+
+      const price = document.createElement('h5');
+      price.className = 'card-title';
+      price.textContent = product.price;
+
+      const orderLink = document.createElement('a');
+      orderLink.href = product.orderLink;
+      orderLink.className = 'btn btn-danger';
+      orderLink.textContent = 'Order Now';
+
+      cardBody.appendChild(cardTitle);
+      cardBody.appendChild(cardText);
+      cardBody.appendChild(textPrimary);
+      cardBody.appendChild(price);
+      cardBody.appendChild(orderLink);
+
+      productCard.appendChild(img);
+      productCard.appendChild(cardBody);
+
+      return productCard;
     }
-  ];
 
-  const productContainer = document.getElementById('product-row');
-
-  function createProductCard(product) {
-
-    const productCard = document.createElement('div');
-    productCard.className = 'card';
-    productCard.style.width = '18rem';
-
-    const img = document.createElement('img');
-    img.src = product.img;
-    img.className = 'card-img-top';
-    img.alt = 'Product Image';
-
-    const cardBody = document.createElement('div');
-    cardBody.className = 'card-body';
-
-    const cardTitle = document.createElement('h5');
-    cardTitle.className = 'card-title';
-    cardTitle.textContent = product.cardTitle;
-
-    const cardText = document.createElement('p');
-    cardText.className = 'card-text';
-    cardText.textContent = product.cardText;
-
-    const textPrimary = document.createElement('h6');
-    textPrimary.className = 'text-primary';
-    textPrimary.textContent = product.textPrimary;
-
-    const price = document.createElement('h5');
-    price.id = 'word';
-    price.textContent = product.price;
-
-    const orderLink = document.createElement('a');
-    orderLink.href = product.orderLink;
-    orderLink.className = 'btn btn-danger';
-    orderLink.textContent = 'Order Now';
-
-    cardBody.appendChild(cardTitle);
-    cardBody.appendChild(cardText);
-    cardBody.appendChild(textPrimary);
-    cardBody.appendChild(price);
-    cardBody.appendChild(orderLink);
-
-    productCard.appendChild(img);
-    productCard.appendChild(cardBody);
-
-    return productCard;
-  }
-
-  // Append product cards to container
-  products.forEach(product => {
+    products.forEach(product => {
+      const productCard = createProductCard(product);
+      productContainer.appendChild(productCard);
+    }); products.forEach(product => {
     const productCard = createProductCard(product);
     productContainer.appendChild(productCard);
   });
 
-  //
-  // document.getElementById("signin-form").addEventListener("submit", (e) => {
-  //   e.preventDefault();
 
-  //   const newBook = {
-  //     productCard: document.getElementById("productCard").value,
-  //     img: document.getElementById("img").value,
-  //     cardTitle: document.getElementById("cardTitle").value,
-  //     cardText: document.getElementById("cardText").value,
-  //     textPrimary: document.getElementById("textPrimary ").value,
-  //     price: document.getElementById("price").value,
-  //     orderLink: document.getElementById("orderLink ").value,
-  //   };
+  Fdocument.getElementById("signin-form").addEventListener("submit", (e) => {
+    e.preventDefault();
 
-  //   let library = JSON.parse(localStorage.getItem('library')) || [];
-  //   library.push(newBook);
-  //   localStorage.setItem('library', JSON.stringify(library));
-  //   alert("Book added successfully!");
+    const newBook = {
+      productCard: document.getElementById("productCard").value,
+      img: document.getElementById("img").value,
+      cardTitle: document.getElementById("cardTitle").value,
+      cardText: document.getElementById("cardText").value,
+      textPrimary: document.getElementById("textPrimary ").value,
+      price: document.getElementById("price").value,
+      orderLink: document.getElementById("orderLink ").value,
+    };
 
-  // });
+    let library = JSON.parse(localStorage.getItem('library')) || [];
+    library.push(newBook);
+    localStorage.setItem('library', JSON.stringify(library));
+    alert("Book added successfully!");
+
+  });
 </script>
 
 </html>
