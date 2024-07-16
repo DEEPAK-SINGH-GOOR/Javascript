@@ -1,30 +1,38 @@
-import getValue from "../components/helper.js";
-let userData = JSON.parse(localStorage.getItem("user"))
-
-const handleData = (e) => {
-    e.preventDefault();
-
-    let user = {
-        email: getValue("email"),
-        password: getValue("password"),
-    }
-    if (userData) {
-        if (userData.email != user.email) {
-            alert("user not found: " + user.email)
-        }
-
-        else if (userData.password != user.password) {
-            alert("password mismatch: " + user.password)
-        }
-        else {
-            alert("login success: " + user.username)
-            localStorage.setItem("isLogin", true);
-        }
-    }
-    else {
-        alert("please sign up ")
-
-        setTimeout(() => { window.location.href = "/project/pages/Signup.html" }, 300)
-    }
+let products = JSON.parse(localStorage.getItem('products')) || [];
+const delet = (index) => {
+    products.splice(index, 1);
+    uimaker(products);
+    localStorage.setItem('products', JSON.stringify(products));
 }
-document.getElementById("userData").addEventListener("submit", handleData)
+
+const uimaker = (data) => {
+    document.getElementById('output').innerHTML = ""
+    data.map((ele, data) => {
+        let img = document.createElement('img');
+        img.src = ele.img;
+
+        let title = document.createElement('h3');
+        title.innerHTML = ele.title;
+
+        let price = document.createElement('p');
+        price.innerHTML = ele.price;
+
+        let category = document.createElement('span');
+        category.innerHTML = ele.category;
+
+        let btn1 = document.createElement('button');
+        btn1.innerHTML = 'Delete';
+        btn1.addEventListener('click', () => delet(data));
+
+        let btn2 = document.createElement('button');
+        btn2.innerHTML = 'Buy Now';
+
+        let div = document.createElement('div');
+        div.append(img, title, price, category, btn1, btn2);
+
+        document.getElementById("output").append(div);
+        output.append(div);
+    });
+}
+
+uimaker(products);

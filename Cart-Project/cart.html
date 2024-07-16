@@ -1,76 +1,107 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Products Page-2</title>
 </head>
 
 <body>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f2f2f2;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+      background-color: #f8f9fa;
       margin: 0;
+ 
     }
 
-    .login-container {
-      background: #fff;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* #center {
       text-align: center;
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-    }
-
-    input {
-      margin: 10px 0;
-      padding: 10px;
-      font-size: 16px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-
-    button {
-      margin-top: 20px;
-      padding: 10px;
-      font-size: 16px;
-      background: #007BFF;
+      margin: 20px;
+    } */
+    h1{
+      padding-top: 30px;
+      text-align: center;
+      background-color: #007bff;
+      height: 70px;
+      justify-content: center;
       color: #fff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background 0.3s ease;
     }
+    body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+        }
 
-    button:hover {
-      background: #0056b3;
-    }
+        #output {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        #output div {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.2s ease;
+            width: 200px;
+            text-align: center;
+            padding: 15px;
+        }
+
+        #output div:hover {
+            transform: translateY(-5px);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        h3 {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+
+        p {
+            color: #555;
+        }
+
+        span {
+            display: block;
+            margin-bottom: 10px;
+            color: #777;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        button:focus {
+            outline: none;
+        }  
   </style>
-  <div class="container-fluid">
-    <div id="navbar">
-      <!-- append from js -->
-    </div>
-    <div class="login-container">
-      <form action="#" id="loginForm">
-        <h1>Login</h1>
-        <input type="email" placeholder="Email" required />
-        <input type="password" placeholder="Password" required />
-        <button type="submit">Login</button>
-      </form>
-    </div>
-  </div>
-  <script src="login.js" type="module"></script>
+  <duv id="center">
+    <h1>Your Added Products</h1>
+  </duv>
+
+  <div id="output"></div>
+  <script src="./output.js"></script>
 </body>
 
 </html>
