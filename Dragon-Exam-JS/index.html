@@ -93,6 +93,33 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
     <script src="./index.js"></script>
+    <script>
+        
+            function startReverseTimer(duration, display) {
+                let timer = duration, minutes, seconds;
+            const interval = setInterval(() => {
+                minutes = Math.floor(timer / 60);
+            seconds = timer % 60;
+
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+            display.textContent = minutes + ":" + seconds;
+
+            if (--timer < 0) {
+                clearInterval(interval);
+            display.textContent = "Time's up!";
+                }
+            }, 1000);
+        }
+
+            window.onload = function () {
+            const fiveMinutes = 60 * 5,
+            display = document.getElementById('clock');
+            startReverseTimer(fiveMinutes, display);
+        };
+    
+    </script>
 </body>
 
 </html>
