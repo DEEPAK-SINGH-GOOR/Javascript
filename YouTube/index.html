@@ -14,28 +14,13 @@
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
 
-    /*! tailwindcss v2.2.7 | MIT License | https://tailwindcss.com */
-
-    /*! modern-normalize v1.1.0 | MIT License | https://github.com/sindresorhus/modern-normalize */
-
-    /*
-Document
-========
-*/
-
-    /**
-Use a better box model (opinionated).
-*/
-
+   
     *,
     ::before,
     ::after {
         box-sizing: border-box;
     }
 
-    /**
-Use a more readable tab size (opinionated).
-*/
 
     html {
         -moz-tab-size: 4;
@@ -43,10 +28,7 @@ Use a more readable tab size (opinionated).
         tab-size: 4;
     }
 
-    /**
-1. Correct the line height in all browsers.
-2. Prevent adjustments of font size after orientation changes in iOS.
-*/
+
 
     html {
         line-height: 1.15;
@@ -55,22 +37,13 @@ Use a more readable tab size (opinionated).
         /* 2 */
     }
 
-    /*
-Sections
-========
-*/
 
-    /**
-Remove the margin in all browsers.
-*/
+
 
     body {
         margin: 0;
     }
 
-    /**
-Improve consistency of default fonts in all browsers. (https://github.com/sindresorhus/modern-normalize/issues/3)
-*/
 
     body {
         font-family:
@@ -86,15 +59,7 @@ Improve consistency of default fonts in all browsers. (https://github.com/sindre
             'Segoe UI Emoji';
     }
 
-    /*
-Grouping content
-================
-*/
 
-    /**
-1. Add the correct height in Firefox.
-2. Correct the inheritance of border color in Firefox. (https://bugzilla.mozilla.org/show_bug.cgi?id=190655)
-*/
 
     hr {
         height: 0;
@@ -103,33 +68,19 @@ Grouping content
         /* 2 */
     }
 
-    /*
-Text-level semantics
-====================
-*/
 
-    /**
-Add the correct text decoration in Chrome, Edge, and Safari.
-*/
 
     abbr[title] {
         -webkit-text-decoration: underline dotted;
         text-decoration: underline dotted;
     }
 
-    /**
-Add the correct font weight in Edge and Safari.
-*/
 
     b,
     strong {
         font-weight: bolder;
     }
 
-    /**
-1. Improve consistency of default fonts in all browsers. (https://github.com/sindresorhus/modern-normalize/issues/3)
-2. Correct the odd 'em' font sizing in all browsers.
-*/
 
     code,
     kbd,
@@ -147,17 +98,11 @@ Add the correct font weight in Edge and Safari.
         /* 2 */
     }
 
-    /**
-Add the correct font size in all browsers.
-*/
-
+ 
     small {
         font-size: 80%;
     }
 
-    /**
-Prevent 'sub' and 'sup' elements from affecting the line height in all browsers.
-*/
 
     sub,
     sup {
@@ -175,15 +120,7 @@ Prevent 'sub' and 'sup' elements from affecting the line height in all browsers.
         top: -0.5em;
     }
 
-    /*
-Tabular data
-============
-*/
 
-    /**
-1. Remove text indentation from table contents in Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=999088, https://bugs.webkit.org/show_bug.cgi?id=201297)
-2. Correct table border color inheritance in all Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=935729, https://bugs.webkit.org/show_bug.cgi?id=195016)
-*/
 
     table {
         text-indent: 0;
@@ -192,15 +129,7 @@ Tabular data
         /* 2 */
     }
 
-    /*
-Forms
-=====
-*/
 
-    /**
-1. Change the font styles in all browsers.
-2. Remove the margin in Firefox and Safari.
-*/
 
     button,
     input,
@@ -217,10 +146,6 @@ Forms
         /* 2 */
     }
 
-    /**
-Remove the inheritance of text transform in Edge and Firefox.
-1. Remove the inheritance of text transform in Firefox.
-*/
 
     button,
     select {
@@ -228,31 +153,13 @@ Remove the inheritance of text transform in Edge and Firefox.
         text-transform: none;
     }
 
-    /**
-Correct the inability to style clickable types in iOS and Safari.
-*/
 
     button,
     [type='button'] {
         -webkit-appearance: button;
     }
 
-    /**
-Remove the inner border and padding in Firefox.
-*/
-
-    /**
-Restore the focus styles unset by the previous rule.
-*/
-
-    /**
-Remove the additional ':invalid' styles in Firefox.
-See: https://github.com/mozilla/gecko-dev/blob/2f9eacd9d3d995c937b4251a5557d95d494c9be1/layout/style/res/forms.css#L728-L737
-*/
-
-    /**
-Remove the padding so developers are not caught out when they zero out 'fieldset' elements in all browsers.
-*/
+ 
 
     legend {
         padding: 0;
@@ -266,14 +173,7 @@ Add the correct vertical alignment in Chrome and Firefox.
         vertical-align: baseline;
     }
 
-    /**
-Correct the cursor style of increment and decrement buttons in Safari.
-*/
 
-    /**
-1. Correct the odd appearance in Chrome and Safari.
-2. Correct the outline style in Safari.
-*/
 
     [type='search'] {
         -webkit-appearance: textfield;
@@ -282,37 +182,10 @@ Correct the cursor style of increment and decrement buttons in Safari.
         /* 2 */
     }
 
-    /**
-Remove the inner padding in Chrome and Safari on macOS.
-*/
-
-    /**
-1. Correct the inability to style clickable types in iOS and Safari.
-2. Change font properties to 'inherit' in Safari.
-*/
-
-    /*
-Interactive
-===========
-*/
-
-    /*
-Add the correct display in Chrome and Safari.
-*/
 
     summary {
         display: list-item;
     }
-
-    /**
- * Manually forked from SUIT CSS Base: https://github.com/suitcss/base
- * A thin layer on top of normalize.css that provides a starting point more
- * suitable for web applications.
- */
-
-    /**
- * Removes the default spacing and border for appropriate elements.
- */
 
     blockquote,
     dl,
@@ -347,16 +220,6 @@ Add the correct display in Chrome and Safari.
         padding: 0;
     }
 
-    /**
- * Tailwind custom reset styles
- */
-
-    /**
- * 1. Use the user's configured `sans` font-family (with Tailwind's default
- *    sans-serif font stack as a fallback) as a sane default.
- * 2. Use Tailwind's default "normal" line-height so the user isn't forced
- *    to override it to ensure consistency even when using the default theme.
- */
 
     html {
         font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -365,41 +228,13 @@ Add the correct display in Chrome and Safari.
         /* 2 */
     }
 
-    /**
- * Inherit font-family and line-height from `html` so users can set them as
- * a class directly on the `html` element.
- */
-
+ 
     body {
         font-family: inherit;
         line-height: inherit;
     }
 
-    /**
- * 1. Prevent padding and border from affecting element width.
- *
- *    We used to set this in the html element and inherit from
- *    the parent element for everything else. This caused issues
- *    in shadow-dom-enhanced elements like <details> where the content
- *    is wrapped by a div with box-sizing set to `content-box`.
- *
- *    https://github.com/mozdevs/cssremedy/issues/4
- *
- *
- * 2. Allow adding a border to an element by just adding a border-width.
- *
- *    By default, the way the browser specifies that an element should have no
- *    border is by setting it's border-style to `none` in the user-agent
- *    stylesheet.
- *
- *    In order to easily add borders to elements by just setting the `border-width`
- *    property, we change the default border-style for all elements to `solid`, and
- *    use border-width to hide them instead. This way our `border` utilities only
- *    need to set the `border-width` property instead of the entire `border`
- *    shorthand, making our border utilities much more straightforward to compose.
- *
- *    https://github.com/tailwindcss/tailwindcss/pull/116
- */
+
 
     *,
     ::before,
@@ -422,15 +257,6 @@ Add the correct display in Chrome and Safari.
         border-top-width: 1px;
     }
 
-    /**
- * Undo the `border-style: none` reset that Normalize applies to images so that
- * our `border-{width}` utilities have the expected effect.
- *
- * The Normalize reset is unnecessary for us since we default the border-width
- * to 0 on all elements.
- *
- * https://github.com/tailwindcss/tailwindcss/issues/362
- */
 
     img {
         border-style: solid;
@@ -476,23 +302,13 @@ Add the correct display in Chrome and Safari.
         font-weight: inherit;
     }
 
-    /**
- * Reset links to optimize for opt-in styling instead of
- * opt-out.
- */
+
 
     a {
         color: inherit;
         text-decoration: inherit;
     }
 
-    /**
- * Reset form element properties that are easy to forget to
- * style explicitly so you don't inadvertently introduce
- * styles that deviate from your design system. These styles
- * supplement a partial reset that is already applied by
- * normalize.css.
- */
 
     button,
     input,
@@ -504,12 +320,6 @@ Add the correct display in Chrome and Safari.
         color: inherit;
     }
 
-    /**
- * Use the configured 'mono' font family for elements that
- * are expected to be rendered with a monospace font, falling
- * back to the system monospace stack if there is no configured
- * 'mono' font family.
- */
 
     pre,
     code,
@@ -518,22 +328,7 @@ Add the correct display in Chrome and Safari.
         font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     }
 
-    /**
- * 1. Make replaced elements `display: block` by default as that's
- *    the behavior you want almost all of the time. Inspired by
- *    CSS Remedy, with `svg` added as well.
- *
- *    https://github.com/mozdevs/cssremedy/issues/14
- * 
- * 2. Add `vertical-align: middle` to align replaced elements more
- *    sensibly by default when overriding `display` by adding a
- *    utility like `inline`.
- *
- *    This can trigger a poorly considered linting error in some
- *    tools but is included by design.
- * 
- *    https://github.com/jensimmons/cssremedy/issues/14#issuecomment-634934210
- */
+
 
     img,
     svg,
@@ -549,12 +344,7 @@ Add the correct display in Chrome and Safari.
         /* 2 */
     }
 
-    /**
- * Constrain images and videos to the parent width and preserve
- * their intrinsic aspect ratio.
- *
- * https://github.com/mozdevs/cssremedy/issues/14
- */
+
 
     img,
     video {
@@ -562,9 +352,7 @@ Add the correct display in Chrome and Safari.
         height: auto;
     }
 
-    /**
- * Ensure the default browser behavior of the `hidden` attribute.
- */
+  
 
     [hidden] {
         display: none;
@@ -1514,10 +1302,10 @@ Add the correct display in Chrome and Safari.
                 <div class="flex items-center flex-auto justify-between rounded border border-sideBarHoverBg">
                     <input
                         class="bg-searchBarBg w-full rounded-l outline-none border-none p-0.5 pl-3 text-white placeholder-gray-500"
-                        type="text" placeholder="Search">
+                        type="text" id="searchInput" placeholder="Search">
 
                     <i
-                        class="material-icons md-21 text-center rounded-r text-gray-300 hover:text-white p-1 w-20 bg-searchIconBg cursor-pointer">search</i>
+                        class="material-icons md-21 text-center rounded-r text-gray-300 hover:text-white p-1 w-20 bg-searchIconBg cursor-pointer"  id="searchButton">search</i>
                 </div>
                 <div class="flex items-center justify-center w-9 h-9 rounded-full bg-mainBg cursor-pointer">
                     <i class="material-icons text-white">mic</i>
@@ -1542,7 +1330,7 @@ Add the correct display in Chrome and Safari.
     <div class="flex flex-row">
         <!-- left sidebar fixed -->
         <div class="sidebar" id="sideBar">
-            <!-- main home explore btns -->
+         
             <div class="flex flex-col w-full mb-2">
                 <div class="flex items-center space-x-5 bg-sideBarHoverBg px-7 py-2.5 cursor-pointer">
                     <i class="material-icons text-white md-21">home</i>
@@ -1563,7 +1351,7 @@ Add the correct display in Chrome and Safari.
 
             <div class="border border-searchIconBg"></div>
 
-            <!-- library history btns -->
+        
             <div class="flex flex-col w-full mb-2 mt-3">
 
                 <div class="flex items-center space-x-5 hover:bg-sideBarHoverBg px-7 py-2.5 cursor-pointer">
@@ -1595,7 +1383,7 @@ Add the correct display in Chrome and Safari.
 
             <div class="border border-searchIconBg"></div>
 
-            <!-- library history btns -->
+          
             <div class="flex flex-col w-full mb-2 mt-3">
                 <h2 class="uppercase text-sm px-7 py-1.5 text-gray-400">more from youtube</h2>
 
@@ -1638,7 +1426,7 @@ Add the correct display in Chrome and Safari.
 
             <div class="border border-searchIconBg"></div>
 
-            <!-- settings support btns -->
+         
             <div class="flex flex-col w-full mb-2 mt-3">
 
                 <div class="flex items-center space-x-5 hover:bg-sideBarHoverBg px-7 py-2.5 cursor-pointer">
@@ -1664,7 +1452,7 @@ Add the correct display in Chrome and Safari.
 
             <div class="border border-searchIconBg"></div>
 
-            <!-- about press -->
+          
             <div class="flex flex-col px-6 py-2">
                 <div class="flex flex-wrap space-x-2">
                     <a class="text-xs text-gray-400" href="">About</a>
@@ -1679,7 +1467,7 @@ Add the correct display in Chrome and Safari.
                 <a class="text-xs text-gray-400" href="">Developers</a>
             </div>
 
-            <!-- terms privacy -->
+          
             <div class="flex flex-col px-6 py-2">
                 <div class="flex flex-wrap space-x-2">
                     <a class="text-xs text-gray-400" href="">Terms</a>
@@ -1690,7 +1478,7 @@ Add the correct display in Chrome and Safari.
                 <a class="text-xs text-gray-400" href="">Test new features</a>
             </div>
 
-            <!-- copyright -->
+            
             <span class="text-gray-500 text-xs px-6 py-2">&copy; 2021 Google LLC</span>
 
         </div>
@@ -1742,45 +1530,11 @@ Add the correct display in Chrome and Safari.
                     class="text-sm bg-pillsBg hover:bg-gray-700 py-1.5 px-3 rounded-full text-white border border-gray-700 transition duration-150">Java</a>
             </div>
 
-            <!-- videos container grid layout -->
-            <!-- <div class="videos-container" id="videos-container"> -->
+          
                 <div class="videos-container" id="videos-container"></div>
                 <!-- one video card -->
                 <div class="flex flex-col space-y-3 cursor-pointer">
-                    <!-- thumbnail -->
-                    <!-- <a href="#">
-                        <div class="relative h-52 sm:h-36 w-full">
-                            <img class="relative h-full w-full object-cover" src="../public/assests/images/ganesh.jpg"
-                                alt="">
-                            <span
-                                class="absolute right-1 bottom-1 p-0.5 px-1 rounded-sm bg-black text-white text-xs bg-opacity-70">38:38</span>
-                        </div>
-                    </a> -->
-                    <!-- video details -->
-       
-       
-                    <!-- <div class="flex flex-col flex-auto space-y-1.5 mb-3">
-
-                        <div class="flex items-center space-x-3">
-
-                            <img class="w-12 h-12 rounded-full object-cover cursor-pointer"
-                                src="./assets/images/hero.png" alt="">
-                            <div class="flex items-start">
-                                <a href="#" class="text-sm text-bold text-white pr-1">Lorem ipsum dolor sit amet
-                                    consectetur adipisicing.</a>
-                                <i class="material-icons text-white md-21">more_vert</i>
                             </div>
-                        </div>
-
-                        <div class="flex flex-col pl-1 sm:pl-0 ml-14">
-                            <a href="" class="text-gray-400 text-sm hover:text-white">Jhon Doe</a>
-                            <div class="flex space-x-1">
-                                <span class="text-sm text-gray-400">74K views</span>
-                                <span class="text-sm text-gray-400">• 1 month ago</span>
-                            </div>
-                        </div>
-                    </div> -->
-                </div>
             </div>
 
         </div>
@@ -1788,301 +1542,67 @@ Add the correct display in Chrome and Safari.
 
     <script>
        
-    // Data from the YouTube API response with video IDs
-    var videoData = {
-      "kind": "youtube#searchListResponse",
-      "etag": "QdGYZYmMNnb6UdJqKYi9nOklbjo",
-      "nextPageToken": "CCgQAA",
-      "regionCode": "IN",
-      "pageInfo": {
-        "totalResults": 743767,
-        "resultsPerPage": 40
-      },
+    
+  document.querySelector('.fa-solid.fa-circle-user').onclick = function () {
+    window.location.href = 'sign.html';
+  };
 
-      "items": [
-        {
-          "kind": "youtube#searchResult",
-          "etag": "aHjQmzL8N-wAurGjC_Rfff0PsEA",
-          "id": {
-            "kind": "youtube#video",
-            "videoId": "E2oTVgVZIlE"
-          }
-        },
-        {
-          "kind": "youtube#searchResult",
-          "etag": "bcrB3Rm7NtkVWFmU0lIgf78IvGM",
-          "id": {
-            "kind": "youtube#video",
-            "videoId": "w-ffHX0ffqY"
-          }
-        },
-        {
-          "kind": "youtube#searchResult",
-          "etag": "UEl2RoHqOpf7WveKnHuf7kuV-lQ",
-          "id": {
-            "kind": "youtube#playlist",
-            "playlistId": "PLDviSxN-S7XJxu9gd6evigdoHgGfCBGoQ"
-          }
-        },
-        {
-          "kind": "youtube#searchResult",
-          "etag": "mchzqqLtYafstea5_pfxfnm0-iQ",
-          "id": {
-            "kind": "youtube#video",
-            "videoId": "vjT3UbYDD_A"
-          }
-        },
-        {
-          "kind": "youtube#searchResult",
-          "etag": "-qfshc4FKWkzkKJIVMCMgFarTEE",
-          "id": {
-            "kind": "youtube#video",
-            "videoId": "9g0PQlWJ-0Y"
-          }
-        },
-        {
-          "kind": "youtube#searchResult",
-          "etag": "d1jS00GkoD0pDg7nGv27Wjsn08g",
-          "id": {
-            "kind": "youtube#video",
-            "videoId": "tdsKsfHEaTc"
-          }
-        },
-        {
-          "kind": "youtube#searchResult",
-          "etag": "pLRLzHs5rvLWjIFIeDWi--JfxQ0",
-          "id": {
-            "kind": "youtube#playlist",
-            "playlistId": "PL64OquyxwZ4dJ0MFnSjDZLTCW0S2C5bV6"
-          }
-        },
-        {
-          "kind": "youtube#searchResult",
-          "etag": "rYp2lnUk6zZudqdOz9mBgJ3Nn2o",
-          "id": {
-            "kind": "youtube#video",
-            "videoId": "G2AxwfRZ_Gc"
-          }
-        },
-        {
-          "kind": "youtube#searchResult",
-          "etag": "hivBhQAcmtsAuSDFvPT2_Gyho0Y",
-          "id": {
-            "kind": "youtube#video",
-            "videoId": "TGuf92Xh9RM"
-          }
-        },
-        {
-          "kind": "youtube#searchResult",
-          "etag": "ZX6MGJbdKDhaxlhfNpY-WmYkGA4",
-          "id": {
-            "kind": "youtube#video",
-            "videoId": "ICStIZtsC2A"
-          }
-        },
-        {
-          "kind": "youtube#searchResult",
-          "etag": "8cwpj_TFjmtBFoVHsyDDA_5M7Pw",
-          "id": {
-            "kind": "youtube#video",
-            "videoId": "sZeoSB-FkLo"
-          }
-        },
-        {
-          "kind": "youtube#searchResult",
-          "etag": "7sfYxXME3Ym5btVOg1vrzXfsvoE",
-          "id": {
-            "kind": "youtube#video",
-            "videoId": "5n-7U4oU9Ok"
-          }
-        },
-        {
-          "kind": "youtube#searchResult",
-          "etag": "lsKmD8YyIMr3cZmNTSerRbfk7bk",
-          "id": {
-            "kind": "youtube#video",
-            "videoId": "knS13uUMPJI"
-          }
-        },
-        {
-          "kind": "youtube#searchResult",
-          "etag": "neI-Uo1cTyCdWTkKwpAPangPta4",
-          "id": {
-            "kind": "youtube#playlist",
-            "playlistId": "PLMZc2fKxKpv_YJY7E8j2JMzFKwajmJOsC"
-          }
-        },
-        {
-          "kind": "youtube#searchResult",
-          "etag": "NIp1C2nMcvz7ZwmFyADTKavJgBs",
-          "id": {
-            "kind": "youtube#video",
-            "videoId": "DARqIfKJzQ0"
-          }
-        },
-        {
-          "kind": "youtube#searchResult",
-          "etag": "P_Vu90bPX-e3eMOo_3aCc_dorK4",
-          "id": {
-            "kind": "youtube#video",
-            "videoId": "F-ZWSTBt-yE"
-          }
-        },
-        {
-          "kind": "youtube#searchResult",
-          "etag": "BYoWQqssnRF2XgmDhcPJe_UWX9Q",
-          "id": {
-            "kind": "youtube#video",
-            "videoId": "80ctf3VZC1Q"
-          }
-        },
-        {
-          "kind": "youtube#searchResult",
-          "etag": "Sm6EES82y1fvwFwnhGJlKGHdK44",
-          "id": {
-            "kind": "youtube#video",
-            "videoId": "BmiLYB8-X2g"
-          }
-        },
-        {
-          "kind": "youtube#searchResult",
-          "etag": "ko8ayCc6HTEJ3X1VHGfYFgPpP10",
-          "id": {
-            "kind": "youtube#playlist",
-            "playlistId": "PL4llTvj1XmskkSoXe4QiToqyp-vhLgGam"
-          }
-        },
-        {
-          "kind": "youtube#searchResult",
-          "etag": "XrzECmypBwOLUaUwZNchqeQxRQY",
-          "id": {
-            "kind": "youtube#video",
-            "videoId": "0CxSPOFAaMU"
-          }
-        },
-        {
-          "kind": "youtube#searchResult",
-          "etag": "ZNIL22iZ7u4rZlcILDGhQenyWMI",
-          "id": {
-            "kind": "youtube#video",
-            "videoId": "D9jCKxPIUPU"
-          }
-        },
-        {
-          "kind": "youtube#searchResult",
-          "etag": "ulS6LeEXtEIwerPIY7T4-wyYP2k",
-          "id": {
-            "kind": "youtube#video",
-            "videoId": "VNY805OIc24"
-          }
-        },
-        {
-          "kind": "youtube#searchResult",
-          "etag": "bq-pSM9ZQpH2hRT8mx6Ovl6EXDU",
-          "id": {
-            "kind": "youtube#video",
-            "videoId": "vGUz2c528Mc"
-          }
-        },
-        {
-          "kind": "youtube#searchResult",
-          "etag": "gGfTgC1SthHF_cUcCtUMjOKAb6o",
-          "id": {
-            "kind": "youtube#video",
-            "videoId": "YlGElXeic7M"
-          }
-        },
-        {
-          "kind": "youtube#searchResult",
-          "etag": "n8fDrybP5Ut1GWoLzFHKmWfqAcM",
-          "id": {
-            "kind": "youtube#video",
-            "videoId": "zq6tEFXl1xI"
-          }
-        },
-        {
-          "kind": "youtube#searchResult",
-          "etag": "49VT9IBxOOlUzFuxzOe-L4SNtFY",
-          "id": {
-            "kind": "youtube#video",
-            "videoId": "1Qs8jmUQex8"
-          }
-        },
-        {
-          "kind": "youtube#searchResult",
-          "etag": "X0BCOToqb4Y6gxfRRb9EVsWz4RI",
-          "id": {
-            "kind": "youtube#video",
-            "videoId": "FyBMHl3XAgc"
-          }
-        },
-        {
-          "kind": "youtube#searchResult",
-          "etag": "8zoQHguIa7zfXb9_g-RkzazmGZI",
-          "id": {
-            "kind": "youtube#video",
-            "videoId": "jt2FFoJg31Q"
-          }
-        },
-        {
-          "kind": "youtube#searchResult",
-          "etag": "gKfDaVFCA5Dz_yV-kScERm-HORA",
-          "id": {
-            "kind": "youtube#video",
-            "videoId": "ZtHHDQbfbzw"
-          }
-        },
-        {
-          "kind": "youtube#searchResult",
-          "etag": "d_ywyOBdQURP9xHf8YQMzL7MtaY",
-          "id": {
-            "kind": "youtube#video",
-            "videoId": "mkkE1c39QQ4"
-          }
-        },
-        {
-          "kind": "youtube#searchResult",
-          "etag": "zVXWrDFlDsIXu3I0l9f3t3tnPQE",
-          "id": {
-            "kind": "youtube#video",
-            "videoId": "M88VUeoHq3M"
-          }
-        },
-        {
-          "kind": "youtube#searchResult",
-          "etag": "HWvQXYgmV63gOZBQaBRcDNGC0pI",
-          "id": {
-            "kind": "youtube#video",
-            "videoId": "DARqIfKJzQ0"
-          }
-        },
+  document.getElementById('sign').onclick = function () {
+    window.location.href = 'index.html';
+  };
 
-      ]
-    };
+  document.querySelector('.btn.btn-danger').onclick = function () {
+    window.location.href = 'product.html';
+  };
 
-    // Function to create and append a video iframe for each video ID
-    function createVideoPlayer(videoId) {
-      var videoContainer = document.createElement('div');
-      videoContainer.className = 'video-container';
+  // YouTube API Fetch
+  const apiKey = 'YOUR_API_KEY';
+  const keyword = 'YOUR_KEYWORD';
+  const apiUrl = `https://www.googleapis.com/youtube/v3/search?maxResults=40&q=${keyword}&type=music&key=${apiKey}`;
 
-      var iframe = document.createElement('iframe');
-      iframe.width = '320';
-      iframe.height = '180';
-      iframe.src = 'https://www.youtube.com/embed/' + videoId;
-      iframe.frameborder = '0';
-      iframe.allowFullscreen = true;
+  fetch(apiUrl)
+    .then(response => response.json())
+    .then(data => {
+      const videoData = data;
+      console.log(videoData); // You can see the fetched data in the console
+      displayVideos(videoData.items);
+    })
+    .catch(error => console.error('Error fetching YouTube API data:', error));
 
-      videoContainer.appendChild(iframe);
-      document.getElementById('videos-container').appendChild(videoContainer);
-    }
-
-    // Load each video
-    videoData.items.forEach(function (item) {
+  // Display videos
+  function displayVideos(items) {
+    const videoContainer = document.getElementById('video-container');
+    items.map(item => {
+      const videoElement = document.createElement('div');
+      videoElement.className = 'video';
       if (item.id.kind === 'youtube#video') {
-        createVideoPlayer(item.id.videoId);
+        videoElement.innerHTML = `<iframe width="320" height="240" src="https://www.youtube.com/embed/${item.id.videoId}" frameborder="0" allowfullscreen></iframe>`;
+      } else if (item.id.kind === 'youtube#playlist') {
+        videoElement.innerHTML = `<p>Playlist: <a href="https://www.youtube.com/playlist?list=${item.id.playlistId}" target="_blank">Watch Playlist</a></p>`;
       }
+      videoContainer.appendChild(videoElement);
     });
-  
+  }
+
+
+  // Search Function
+  document.getElementById('searchButton').addEventListener('click', function() {
+            const query = document.getElementById('searchInput').value;
+            if (query) {
+                alert('Search for: ' + query);
+                // Example: window.location.href = 'search_results.html?q=' + encodeURIComponent(query);
+            }
+        });
+        
+        document.getElementById('searchInput').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                const query = document.getElementById('searchInput').value;
+                if (query) {
+                    alert('Search for: ' + query);
+                    // Example: window.location.href = 'search_results.html?q=' + encodeURIComponent(query);
+                }
+            }
+        });
     </script>
 </body>
 
