@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5 Input Form</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .form-container {
+            margin-top: 300px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #28a745;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input,
+        textarea,
+        button {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        #sub {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        #sub:hover {
+            background-color: #218838;
+        }
+    </style>
+    <div class="form-container">
+        <h1>Form To Excel</h1>
+        <form id="myForm" method="post" name="google-sheet">
+            <label for="name">Name:</label>
+            <input type="text" id="Name" name="Name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="Email" name="Email" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="Password" name="Password" required>
+
+            <label for="age">Age:</label>
+            <input type="number" id="Age" name="Age" required>
+
+            <label for="bio">Bio:</label>
+            <textarea id="Bio" name="Bio" required></textarea>
+
+            <label for="phone">Phone:</label>
+            <input type="tel" id="Phone" name="Phone" required>
+
+            <label for="address">Address:</label>
+            <input type="text" id="Address" name="Address" required>
+
+            <label for="city">City:</label>
+            <input type="text" id="City" name="City" required>
+
+            <label for="state">State:</label>
+            <input type="text" id="State" name="State" required>
+
+            <label for="country">Country:</label>
+            <input type="text" id="Country" name="Country" required>
+
+            <input id="sub" type="submit" value="Submit" name="submit">
+        </form>
+    </div>
+
+
+   <script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbw337r75pZZ4gMXAm8hgrsx514txf2dj3wjPZBNYg8bT0nKUEdO9DsRElsjF2bHoEpy/exec';
+
+    const form = document.forms['google-sheet'];
+
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+        fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+            .then(response => {
+                alert("Thanks for contacting us! We will contact you soon.");
+                // Redirect to another page after form submission
+               
+            })
+            .catch(error => console.error('Error!', error.message));
+            window.location.href = 'https://docs.google.com/spreadsheets/d/1FldHIBZDU-qMcZsWJ2nnD7pFwIm5SftEdgiz0noycnY/edit?gid=0#gid=0';
+    });
+</script>
+
+</body>
+
+</html>
