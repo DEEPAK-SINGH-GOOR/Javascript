@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube API Integration</title>
+    <style>
+        .video {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>YouTube Video Search Results</h1>
+    <div id="video-container"></div>
+
+    <script>
+        const apiKey = 'YOUR_API_KEY_HERE'; // Replace with a valid API key
+        const keyword = 'music'; // Common keyword for testing
+
+        const apiUrl = `https://www.googleapis.com/youtube/v3/search?maxResults=40&q=${keyword}&type=video&key=${apiKey}`;
+
+        fetch(apiUrl)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                return response.json();
+            })
+            .then(data => {
+                const videoData = data;
+                console.log(videoData); // You can see the fetched data in the console
+                displayVideos(videoData.items);
+            })
+            .catch(error => console.error('Error fetching YouTube API data:', error));
+
+        // Display videos
+        function displayVideos(items) {
+            const videoContainer = document.getElementById('video-container');
+            videoContainer.innerHTML = ''; // Clear previous results if any
+            items.forEach(item => {
+                const videoElement = document.createElement('div');
+                videoElement.className = 'video';
+                if (item.id.kind === 'youtube#video') {
+                    videoElement.innerHTML = `<iframe width="320" height="240" src="https://www.youtube.com/embed/${item.id.videoId}" frameborder="0" allowfullscreen></iframe>`;
+                } else if (item.id.kind === 'youtube#playlist') {
+                    videoElement.innerHTML = `<p>Playlist: <a href="https://www.youtube.com/playlist?list=${item.id.playlistId}" target="_blank">Watch Playlist</a></p>`;
+                }
+                videoContainer.appendChild(videoElement);
+            });
+        }
+    </script>
+</body>
+</html>

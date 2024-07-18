@@ -1,0 +1,69 @@
+{
+    "posts": [
+      {
+        "img": "'https://in.jbl.com/dw/image/v2/BFND_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dwfea2c1ef/1.JBL_Tune_770NC_Product%20Image_Hero_Black.png?sw=320&sh=320'",
+        "cardTitle": "\"JBL Tune 770NC\"",
+        "cardText": "\"Adaptive Noise Cancellation wireless\"",
+        "textPrimary": "\"Wireless\"",
+        "price": "\"$649\"",
+        "orderLink": "\"#\""
+      },
+      {
+        "img": "'https://in.jbl.com/dw/image/v2/BFND_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dwadfd9daa/1_JBL_FLIP6_HERO_BLUE_29399_x1.png?sw=320&sh=320'",
+        "cardTitle": "\"JBL Flip 6\"",
+        "cardText": "\"Adaptive Noise Cancellation wireless\"",
+        "textPrimary": "\"Wireless\"",
+        "price": "\"$150\"",
+        "orderLink": "\"#\""
+      },
+      {
+        "img": "'https://in.jbl.com/dw/image/v2/BFND_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dw1b7739f6/01.JBL_Tune%20Beam_Product%20Image_Hero_Black.png?sw=320&sh=320'",
+        "cardTitle": "\"JBL Tune Beam\"",
+        "cardText": "\"Adaptive Noise Cancellation wireless\"",
+        "textPrimary": "\"Wireless\"",
+        "price": "\"$200\"",
+        "orderLink": "\"#\""
+      },
+      {
+        "img": "'https://in.jbl.com/dw/image/v2/BFND_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dwb44a1b56/1.JBL_Live%20Pro%202_Product%20image_Hero_Blue.png?sw=320&sh=320'",
+        "cardTitle": "\"JBL Live Pro Product\"",
+        "cardText": "\"True wireless product with voice cancellation\"",
+        "textPrimary": "\"Wireless\"",
+        "price": "\"$25.44\"",
+        "orderLink": "\"#\""
+      },
+      {
+        "img": "'https://in.jbl.com/dw/image/v2/BFND_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dw0c49e244/JBL_GO_4_HERO_RED_48157_x4%20(1).png?sw=320&sh=320'",
+        "cardTitle": "\"JBL Go 4\"",
+        "cardText": "\"True wireless product with voice cancellation\"",
+        "textPrimary": "\"Wireless\"",
+        "price": "\"$30.45\"",
+        "orderLink": "\"#\""
+      },
+      {
+        "img": "'https://in.jbl.com/dw/image/v2/BFND_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dwe8214719/JBL_Tune_310C_ProductImage_Hero_Blue.png?sw=320&sh=320'",
+        "cardTitle": "\"JBL Tune 305 USB\"",
+        "cardText": "\"True wireless product with voice cancellation\"",
+        "textPrimary": "\"Wireless\"",
+        "price": "\"$35.78\"",
+        "orderLink": "\"#\""
+      },
+      {
+        "img": "'https://in.jbl.com/dw/image/v2/BFND_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dw1fc9b516/JBL_AUTHENTICS_500_HERO_42813_x3.png?sw=320&sh=320'",
+        "cardTitle": "\"JBL Authenics 500\"",
+        "cardText": "\"True wireless product with voice cancellation\"",
+        "textPrimary": "\"Wireless\"",
+        "price": "\"$30.45\"",
+        "orderLink": "\"#\""
+      },
+      {
+        "img": "'https://in.jbl.com/dw/image/v2/BFND_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dw1896cd87/JBL_Tune_305C_USBC_Product%20Image_Hero_Black.png?sw=320&sh=320'",
+        "cardTitle": "\"JBL Tune 310 USB\"",
+        "cardText": "\"True wireless product with voice cancellation\"",
+        "textPrimary": "\"Wireless\"",
+        "price": "\"$35.78\"",
+        "orderLink": "\"#\""
+      }
+    ]
+  }
+  
