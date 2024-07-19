@@ -12,7 +12,11 @@
     <style>
         * {
             user-select: none !important;
-            ;
+            text-align: center;
+        }
+
+        #reslut {
+            background-color: #00ea04bd;
         }
 
         h1 {
@@ -52,7 +56,21 @@
             border: none;
             font-size: 20px;
             font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-            
+
+        }
+
+        .sub2 {
+            height: 50px;
+            border-radius: 5px;
+            box-shadow: rgba(63, 63, 63, 0.2) 0px 7px 29px 0px;
+            margin-left: 55px;
+            background-color: rgb(41, 108, 255);
+            cursor: pointer;
+            color: #fff;
+            border: none;
+            font-size: 15px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            margin-right: 300px;
         }
 
         #sub:hover {
@@ -135,7 +153,8 @@
     </div>
     <div id="product"></div>
     <video id="video"></video>
-  
+    <button id="submit" class="sub2">Click To Show Marks</button>
+    <h2 id="result"></h2>
 </body>
 <script src="./script.js"></script>
 
@@ -165,56 +184,75 @@
         }
     });
 
-        // Tab visibility and timer
-        let startTime, timerInterval, countdownInterval;
-        let timerElement = document.getElementById('timer');
-        const countdownDuration = 1 * 60 * 1000; // 30 minutes in milliseconds
-        let remainingTime = countdownDuration;
+    // Tab visibility and timer
+    let start, time, count;
+    let timerElement = document.getElementById('timer');
+    const countdownDuration = 1 * 60 * 1000;
+    let remainingTime = countdownDuration;
 
-        document.addEventListener('visibilitychange', function () {
-            if (document.hidden) {
-                clearInterval(timerInterval);
-                clearInterval(countdownInterval);
-                document.getElementById('alert').style.display = 'block';
-                document.body.style.backgroundColor = 'red';
-            } else {
-                document.getElementById('alert').style.display = 'none';
-                document.body.style.backgroundColor = '';
-                if (!startTime) {
-                    startTime = Date.now();
-                }
-                startTimer();
-                startCountdown();
+    document.addEventListener('visibilitychange', function () {
+        if (document.hidden) {
+            clearInterval(time);
+            clearInterval(count);
+            document.getElementById('alert').style.display = 'block';
+            document.body.style.backgroundColor = 'red';
+        } else {
+            document.getElementById('alert').style.display = 'none';
+            document.body.style.backgroundColor = '';
+            if (!start) {
+                start = Date.now();
             }
-        });
-
-        function startTimer() {
-            timerInterval = setInterval(() => {
-                let elapsed = Math.floor((Date.now() - startTime) / 1000);
-                timerElement.textContent = `Time elapsed: ${elapsed}s`;
-            }, 1000);
-        }
-
-        function startCountdown() {
-            countdownInterval = setInterval(() => {
-                remainingTime -= 1000;
-                let minutes = Math.floor(remainingTime / 60000);
-                let seconds = Math.floor((remainingTime % 60000) / 1000);
-                timerElement.textContent = `Time left: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-                if (remainingTime <= 0) {
-                    clearInterval(countdownInterval);
-                    alert('Time is up! The tab will now close.');
-                    window.close();
-                }
-            }, 1000);
-        }
-
-        // Start the timer and countdown when the page loads
-        window.onload = () => {
-            startTime = Date.now();
-            startTimer();
+            startr();
             startCountdown();
         }
+    });
+
+    function startr() {
+        time = setInterval(() => {
+            let elapsed = Math.floor((Date.now() - start) / 1000);
+            timerElement.textContent = `Time elapsed: ${elapsed}s`;
+        }, 1000);
+    }
+
+    function startCountdown() {
+        count = setInterval(() => {
+            remainingTime -= 1000;
+            let minutes = Math.floor(remainingTime / 60000);
+            let seconds = Math.floor((remainingTime % 60000) / 1000);
+            timerElement.textContent = `Time left: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+            if (remainingTime <= 0) {
+                clearInterval(count);
+                alert('Time is up! The tab will now close.');
+                window.close();
+            }
+        }, 1000);
+    }
+
+
+    window.onload = () => {
+        start = Date.now();
+        startr();
+        startCountdown();
+    }
+
+
+    // 
+    document.getElementById("submit").addEventListener("click", () => {
+        let marks = 0;
+        let ques = document.querySelectorAll("#product > div");
+        ques.forEach((div, index) => {
+            let options = div.querySelectorAll("button");
+            options.forEach(option => {
+                if (option.style.backgroundColor === "green") {
+                    marks++;
+                }
+            });
+        });
+        document.getElementById("result").innerText = `Total Marks: ${marks}/${questions.length}`;
+    });
+
+
+
 </script>
 </video>
 
