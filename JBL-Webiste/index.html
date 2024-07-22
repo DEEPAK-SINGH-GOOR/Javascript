@@ -19,7 +19,7 @@
 <body>
 
   <!-- SECTION-----1 -->
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <!-- <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid" id="navv">
       <a class="navbar-brand" href="#"><img
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/JBL_logo.svg/2500px-JBL_logo.svg.png" alt=""
@@ -55,17 +55,17 @@
             <a class="nav-link" href="#" id="word">Refurbished Product</a>
           </li>
         </ul>
-        <!-- Inside your existing navbar -->
+        
         <div class="search-form d-flex" role="search">
           <div class="row">
-            <div class="col-4"><i class="fa-solid fa-cart-shopping text-dark"></i></div>
+            <div class="col-4"><i class="fa-solid fa-cart-shopping text-dark" id="cartpage"></i></div>
             <div class="col-4"><i class="fa-solid fa-magnifying-glass text-dark"></i></div>
             <div class="col-4"><i class="fa-solid fa-circle-user text-dark"></i></i></div>
           </div>
         </div>
       </div>
     </div>
-  </nav>
+  </nav> -->
 
   <!-- SECTION-----2 -->
   <div class="swiper mySwiper" id="swip">
@@ -211,7 +211,7 @@
           <img
             src="https://in.jbl.com/dw/image/v2/BFND_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dw5ada4699/JBL_BAR_9-1_GROUP_HERO_004_X4.png?sw=300&sh=300"
             class="card-img-top" alt="...">
-          <div class="card-body">
+          <!-- <div class="card-body">
             <h5 class="card-title" id="word">JBL BAR 9.1 True wireless</h5>
             <p class="card-text">9.1 Channel soundbar Systen with
             <h6 class="text-primary">Speacker and Dolby Atmos</h6>
@@ -219,7 +219,7 @@
             <a href="#" class="btn btn-danger">Order Now</a>
             <a href="#" class="btn btn-danger" id="orderPro">Add To Cart <i
                 class="fa-solid fa-cart-shopping text-dark"></i></a>
-          </div>
+          </div> -->
         </div>
       </div>
 
@@ -228,7 +228,7 @@
           <img
             src="https://in.jbl.com/dw/image/v2/BFND_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dw9fb58ef0/1_JBL_FLIP6_HERO_BLACK_29391_x2.png?sw=300&sh=300"
             class="card-img-top" alt="...">
-          <div class="card-body">
+          <!-- <div class="card-body">
             <h5 class="card-title" id="word">JBL BAR 9.1 True wireless</h5>
             <p class="card-text">9.1 Channel soundbar Systen with
             <h6 class="text-primary">Speacker and Dolby Atmos</h6>
@@ -236,7 +236,7 @@
             <a href="#" class="btn btn-danger">Order Now</a>
             <a href="#" class="btn btn-danger" id="orderPro">Add To Cart <i
                 class="fa-solid fa-cart-shopping text-dark"></i></a>
-          </div>
+          </div> -->
         </div>
 
       </div>
@@ -245,7 +245,7 @@
           <img
             src="https://in.jbl.com/dw/image/v2/BFND_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dwfcb23ab5/1.JBL_Tune_770NC_Product%20Image_Hero_Black.png?sw=300&sh=300"
             class="card-img-top" alt="...">
-          <div class="card-body">
+          <!-- <div class="card-body">
             <h5 class="card-title" id="word">JBL BAR 9.1 True wireless</h5>
             <p class="card-text">9.1 Channel soundbar Systen with
             <h6 class="text-primary">Speacker and Dolby Atmos</h6>
@@ -253,7 +253,7 @@
             <a href="#" class="btn btn-danger">Order Now</a>
             <a href="#" class="btn btn-danger" id="orderPro">Add To Cart <i
                 class="fa-solid fa-cart-shopping text-dark"></i></a>
-          </div>
+          </div> -->
         </div>
 
       </div>
@@ -262,7 +262,7 @@
           <img
             src="https://in.jbl.com/dw/image/v2/BFND_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dwa43c2101/JBL_PARTYBOX_ENCORE_ESSENTIAL_HERO_1605x1605px.png?sw=300&sh=300"
             class="card-img-top" alt="...">
-          <div class="card-body">
+          <!-- <div class="card-body">
             <h5 class="card-title" id="word">JBL BAR 9.1 True wireless</h5>
             <p class="card-text">9.1 Channel soundbar Systen with
             <h6 class="text-primary">Speacker and Dolby Atmos</h6>
@@ -270,7 +270,7 @@
             <a href="#" class="btn btn-danger">Order Now</a>
             <a href="#" class="btn btn-danger" id="orderPro">Add To Cart <i
                 class="fa-solid fa-cart-shopping text-dark"></i></a>
-          </div>
+          </div> -->
         </div>
 
       </div>
@@ -356,18 +356,23 @@
     </div>
   </div>
 </body>
-<script>
+<script type="module">
+  import { insertNavbar } from './navbar.js';
+
+  insertNavbar();
+  // Navigation functionality
   document.querySelector('.fa-solid.fa-circle-user').onclick = function () {
     window.location.href = 'sign.html';
   };
 
-  document.getElementById('sign').onclick = function () {
-    window.location.href = 'index.html';
-  };
+  // document.getElementById('sign').onclick = function () {
+  //   window.location.href = 'index.html';
+  // };
 
-  document.querySelector('.btn.btn-danger').onclick = function () {
-    window.location.href = 'product.html';
-  };
+  // document.querySelector('.btn.btn-danger').onclick = function () {
+  //   window.location.href = 'product.html';
+  // };
+
   // Product data
   const products = [
     {
@@ -438,10 +443,32 @@
 
   const productContainer = document.getElementById('product-row');
 
+  function addToMyProducts(product) {
+    let myProducts = JSON.parse(localStorage.getItem('myProducts')) || [];
+    myProducts.push(product);
+    localStorage.setItem('myProducts', JSON.stringify(myProducts));
+    alert(`${product.cardTitle} has been added to your products.`);
+  }
+
+  function addToCart(product) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const existingProduct = cart.find(item => item.cardTitle === product.cardTitle);
+    if (existingProduct) {
+
+      existingProduct.quantity += 1;
+    } else {
+      product.quantity = 1;
+      cart.push(product);
+    }
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }
+
   function createProductCard(product) {
     const productCard = document.createElement('div');
-    productCard.className = 'card';
+    productCard.className = 'card col-md-3';
     productCard.style.width = '18rem';
+    productCard.style.margin = '10px';
 
     const img = document.createElement('img');
     img.src = product.img;
@@ -468,51 +495,48 @@
     price.textContent = product.price;
 
     const orderLink = document.createElement('a');
-    orderLink.href = product.orderLink;
+    orderLink.href = '#';
     orderLink.className = 'btn btn-danger';
     orderLink.textContent = 'Order Now';
+    orderLink.onclick = (event) => {
+      event.preventDefault();
+      addToMyProducts(product);
+    };
+
+    const addToCartButton = document.createElement('a');
+    addToCartButton.href = '#';
+    addToCartButton.className = 'btn btn-dark';
+    addToCartButton.textContent = 'Add to Cart';
+    addToCartButton.onclick = (event) => {
+      event.preventDefault(); // Prevent the default link behavior
+      addToCart(product);
+      alert(`${product.cardTitle} has been added to the cart.`);
+
+    };
 
     cardBody.appendChild(cardTitle);
     cardBody.appendChild(cardText);
     cardBody.appendChild(textPrimary);
     cardBody.appendChild(price);
     cardBody.appendChild(orderLink);
+    cardBody.appendChild(addToCartButton);
 
     productCard.appendChild(img);
     productCard.appendChild(cardBody);
 
     return productCard;
-    document.getElementById('product-row').append(cardBody)
   }
 
   products.forEach(product => {
     const productCard = createProductCard(product);
     productContainer.appendChild(productCard);
-  }); products.forEach(product => {
-    const productCard = createProductCard(product);
-    productContainer.appendChild(productCard);
   });
 
-
-  Fdocument.getElementById("signin-form").addEventListener("submit", (e) => {
-    e.preventDefault();
-
-    const newBook = {
-      productCard: document.getElementById("productCard").value,
-      img: document.getElementById("img").value,
-      cardTitle: document.getElementById("cardTitle").value,
-      cardText: document.getElementById("cardText").value,
-      textPrimary: document.getElementById("textPrimary ").value,
-      price: document.getElementById("price").value,
-      orderLink: document.getElementById("orderLink ").value,
-    };
-
-    let library = JSON.parse(localStorage.getItem('library')) || [];
-    library.push(newBook);
-    localStorage.setItem('library', JSON.stringify(library));
-    alert("Book added successfully!");
-
+  document.getElementById('cartpage').addEventListener('click', () => {
+    window.location.href = 'cart.html';
   });
 </script>
+
+
 
 </html>

@@ -18,6 +18,10 @@ i {
     padding-top: 0px;
 }
 
+#cartpage
+{
+    cursor: pointer;
+}
 /* #word
 {
     font-weight: 600;
@@ -182,3 +186,9 @@ h5:hover {
     margin: 5px;
     color: white;
 }
+.product-btn {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px; /* Adds space between buttons */
+  }

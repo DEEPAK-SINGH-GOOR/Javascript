@@ -1,11 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Product Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        .card {
+            width: 18rem;
+            margin-top: 20px;
+        }
+
+        .container-fluid {
+            padding-top: 20px;
+        }
+    </style>
 </head>
+
 <body>
-    <h1> Product</h1>
+    <div class="container-fluid">
+        <div class="row" id="productRow">
+            <!-- Products will be generated here by JavaScript -->
+        </div>
+    </div>
+
+    <script type="module">
+        import { insertNavbar } from './navbar.js';
+
+        insertNavbar();
+        const products = [
+            {
+                img: 'https://in.jbl.com/dw/image/v2/BFND_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dwfea2c1ef/1.JBL_Tune_770NC_Product%20Image_Hero_Black.png?sw=320&sh=320',
+                cardTitle: 'JBL Tune 770NC',
+                cardText: 'Adaptive Noise Cancellation wireless',
+                textPrimary: 'Wireless',
+                price: '$649',
+                orderLink: '#'
+            },
+            {
+                img: 'https://in.jbl.com/dw/image/v2/BFND_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dwadfd9daa/1_JBL_FLIP6_HERO_BLUE_29399_x1.png?sw=320&sh=320',
+                cardTitle: 'JBL Flip 6',
+                cardText: 'Adaptive Noise Cancellation wireless',
+                textPrimary: 'Wireless',
+                price: '$150',
+                orderLink: '#'
+            },
+            {
+                img: 'https://in.jbl.com/dw/image/v2/BFND_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dw1b7739f6/01.JBL_Tune%20Beam_Product%20Image_Hero_Black.png?sw=320&sh=320',
+                cardTitle: 'JBL Tune Beam',
+                cardText: 'Adaptive Noise Cancellation wireless',
+                textPrimary: 'Wireless',
+                price: '$200',
+                orderLink: '#'
+            },
+            {
+                img: 'https://in.jbl.com/dw/image/v2/BFND_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dwb44a1b56/1.JBL_Live%20Pro%202_Product%20image_Hero_Blue.png?sw=320&sh=320',
+                cardTitle: 'JBL Live Pro Product',
+                cardText: 'True wireless product with voice cancellation',
+                textPrimary: 'Wireless',
+                price: '$25.44',
+                orderLink: '#'
+            },
+            {
+                img: 'https://in.jbl.com/dw/image/v2/BFND_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dw0c49e244/JBL_GO_4_HERO_RED_48157_x4%20(1).png?sw=320&sh=320',
+                cardTitle: 'JBL Go 4',
+                cardText: 'True wireless product with voice cancellation',
+                textPrimary: 'Wireless',
+                price: '$30.45',
+                orderLink: '#'
+            },
+            {
+                img: 'https://in.jbl.com/dw/image/v2/BFND_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dwe8214719/JBL_Tune_310C_ProductImage_Hero_Blue.png?sw=320&sh=320',
+                cardTitle: 'JBL Tune 305 USB',
+                cardText: 'True wireless product with voice cancellation',
+                textPrimary: 'Wireless',
+                price: '$35.78',
+                orderLink: '#'
+            },
+            {
+                img: 'https://in.jbl.com/dw/image/v2/BFND_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dw1fc9b516/JBL_AUTHENTICS_500_HERO_42813_x3.png?sw=320&sh=320',
+                cardTitle: 'JBL Authenics 500',
+                cardText: 'True wireless product with voice cancellation',
+                textPrimary: 'Wireless',
+                price: '$30.45',
+                orderLink: '#'
+            },
+            {
+                img: 'https://in.jbl.com/dw/image/v2/BFND_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dw1896cd87/JBL_Tune_305C_USBC_Product%20Image_Hero_Black.png?sw=320&sh=320',
+                cardTitle: 'JBL Tune 310 USB',
+                cardText: 'True wireless product with voice cancellation',
+                textPrimary: 'Wireless',
+                price: '$35.78',
+                orderLink: '#'
+            }
+        ];
+
+        function renderProducts(products) {
+            const productRow = document.getElementById('productRow');
+            products.forEach((product, index) => {
+                const productHTML = `
+                    <div class="col-12 col-sm-12 col-md-6 col-xl-3 d-flex justify-content-center">
+                        <div class="card">
+                            <img src="${product.img}" class="card-img-top" alt="${product.cardTitle}">
+                            <div class="card-body">
+                                <h5 class="card-title">${product.cardTitle}</h5>
+                                <p class="card-text">${product.cardText}</p>
+                                <h6 class="text-primary">${product.textPrimary}</h6>
+                                <h5 id="price${index}">${product.price}</h5>
+                                <a href="${product.orderLink}" class="btn btn-danger">Order Now</a>
+                                <a href="#" class="btn btn-danger addToCart" data-id="${index}" data-price="${parseFloat(product.price.replace('$', ''))}">Add To Cart <i class="fa-solid fa-cart-shopping text-dark"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                productRow.insertAdjacentHTML('beforeend', productHTML);
+            });
+
+            // Attach event listeners for Add To Cart buttons
+            document.querySelectorAll('.addToCart').forEach(button => {
+                button.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    const productId = parseInt(this.getAttribute('data-id'));
+                    const productPrice = parseFloat(this.getAttribute('data-price'));
+                    addToCart(productId, productPrice);
+                });
+            });
+        }
+
+        // Initialize cart
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        function addToCart(id, price) {
+            const existingProduct = cart.find(item => item.id === id);
+            if (existingProduct) {
+                existingProduct.quantity += 1;
+                existingProduct.totalPrice += price;
+            } else {
+                const product = products[id];
+                cart.push({ id, img: product.img, cardTitle: product.cardTitle, price, quantity: 1, totalPrice: price });
+            }
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert('Product added to cart!');
+            updateCartBadge();
+        }
+
+        // Render products on page load
+        renderProducts(products);
+    </script>
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+     crossorigin="anonymous"></script>
 </body>
+
 </html>
