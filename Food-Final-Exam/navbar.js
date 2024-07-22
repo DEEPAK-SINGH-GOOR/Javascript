@@ -1,5 +1,5 @@
 export function createNavbar() {
-    return `  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    return `<nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="#"><img src="https://png.pngtree.com/png-clipart/20220628/original/pngtree-food-logo-png-image_8239850.png" alt="" height="50px"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -21,10 +21,9 @@ export function createNavbar() {
                     <li class="nav-item">
                         <a class="nav-link" href="./cart.html">Cart</a>
                     </li>
-                 
                 </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <form class="d-flex" role="search" id="search-form">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="search-input">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
             </div>
