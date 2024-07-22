@@ -1,12 +1,15 @@
-
 const api = async () => {
     let response = await fetch('http://localhost:3000/Food_Data');
     let data = await response.json();
     console.log(data);
 
-    data.map(recipe => {
+    const productContainer = document.getElementById('product');
+
+    data.forEach(recipe => {
         const recipeDiv = document.createElement('div');
         recipeDiv.className = 'recipe';
+        recipeDiv.dataset.name = recipe.name;
+        recipeDiv.dataset.date = recipe.date;  // Assuming you have a date field
 
         const img = document.createElement('img');
         img.src = recipe.image;
@@ -27,44 +30,21 @@ const api = async () => {
         city.textContent = `City: ${recipe.city}`;
         detailsDiv.appendChild(city);
 
-        recipeDiv.appendChild(detailsDiv);
+        const addToCartBtn = document.createElement('button');
+        addToCartBtn.textContent = 'Add to Cart';
+        addToCartBtn.className = 'add-to-cart-btn';
+        addToCartBtn.addEventListener('click', () => addToCart(recipe.name));
+        detailsDiv.appendChild(addToCartBtn);
 
-        document.getElementById('product').appendChild(recipeDiv);
+        recipeDiv.appendChild(detailsDiv);
+        productContainer.appendChild(recipeDiv);
     });
 }
 api();
 
-document.addEventListener('DOMContentLoaded', function() {
-    const sortSelect = document.getElementById('sort');
-    const filterInput = document.getElementById('filter');
-    const recipeContainer = document.querySelector('.recipe-container');
-    let recipes = Array.from(document.querySelectorAll('.recipe'));
-
-    sortSelect.addEventListener('change', sortRecipes);
-    filterInput.addEventListener('input', filterRecipes);
-
-    function sortRecipes() {
-        const sortBy = sortSelect.value;
-        recipes.sort((a, b) => {
-            if (sortBy === 'name') {
-                return a.dataset.name.localeCompare(b.dataset.name);
-            } else if (sortBy === 'date') {
-                return new Date(a.dataset.date) - new Date(b.dataset.date);
-            }
-        });
-        recipeContainer.innerHTML = '';
-        recipes.forEach(recipe => recipeContainer.appendChild(recipe));
-    }
-
-    function filterRecipes() {
-        const filterText = filterInput.value.toLowerCase();
-        recipes.forEach(recipe => {
-            const name = recipe.dataset.name.toLowerCase();
-            if (name.includes(filterText)) {
-                recipe.style.display = 'block';
-            } else {
-                recipe.style.display = 'none';
-            }
-        });
-    }
-});
+function addToCart(recipe) {
+    const cartItems = document.getElementById('cart-items');
+    const listItem = document.createElement('li');
+    listItem.textContent = `${recipe.name} (Rating: ${recipe.rating}, City: ${recipe.city})`;
+    cartItems.appendChild(listItem);
+}
