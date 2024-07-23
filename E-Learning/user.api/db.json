@@ -3,7 +3,7 @@
     {
       "id": 1,
       "title": "Web Development Bootcamp",
-      "image": "https://cdn.example.com/course-images/web-development.webp",
+      "image": "https://img-b.udemycdn.com/course/750x422/1565838_e54e_18.jpg",
       "topics": [
         {
           "name": "HTML & CSS",
@@ -23,7 +23,7 @@
     {
       "id": 2,
       "title": "Data Science with Python",
-      "image": "https://cdn.example.com/course-images/data-science.webp",
+      "image": "https://daxg39y63pxwu.cloudfront.net/images/blog/python-for-data-science/Python_for_Data_Science.png",
       "topics": [
         {
           "name": "Python Programming",
@@ -43,7 +43,7 @@
     {
       "id": 3,
       "title": "Machine Learning A-Z",
-      "image": "https://cdn.example.com/course-images/machine-learning.webp",
+      "image": "https://img-c.udemycdn.com/course/750x422/950390_270f_3.jpg",
       "topics": [
         {
           "name": "Supervised Learning",
@@ -63,7 +63,7 @@
     {
       "id": 4,
       "title": "Cybersecurity Fundamentals",
-      "image": "https://cdn.example.com/course-images/cybersecurity.webp",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQG_Yd2SdhhlAtctw9wSfvEaxj6YeJVK5q7og&s",
       "topics": [
         {
           "name": "Network Security",
@@ -83,7 +83,7 @@
     {
       "id": 5,
       "title": "Graphic Design Masterclass",
-      "image": "https://cdn.example.com/course-images/graphic-design.webp",
+      "image": "https://img.freepik.com/free-vector/cartoon-graphic-design-landing-page_52683-70881.jpg",
       "topics": [
         {
           "name": "Adobe Photoshop",
@@ -103,7 +103,7 @@
     {
       "id": 6,
       "title": "Full Stack Development with React and Node.js",
-      "image": "https://cdn.example.com/course-images/full-stack.webp",
+      "image": "https://neetable.com/img/blog/blog-inner/react-node-js-for-full-stack-web-development/why-combine-react-and-node-js-for-full-stack-web-development.jpg",
       "topics": [
         {
           "name": "Frontend Development",
@@ -123,7 +123,7 @@
     {
       "id": 7,
       "title": "Mobile App Development with Flutter",
-      "image": "https://cdn.example.com/course-images/flutter.webp",
+      "image": "https://cdn.prod.website-files.com/5f841209f4e71b2d70034471/6078b650748b8558d46ffb7f_Flutter%20app%20development.png",
       "topics": [
         {
           "name": "Dart Programming",
@@ -143,7 +143,7 @@
     {
       "id": 8,
       "title": "Artificial Intelligence for Beginners",
-      "image": "https://cdn.example.com/course-images/ai.webp",
+      "image": "https://www.mygreatlearning.com/blog/wp-content/uploads/2020/09/iStock-1207062970.jpg",
       "topics": [
         {
           "name": "AI Basics",
@@ -163,7 +163,7 @@
     {
       "id": 9,
       "title": "Blockchain Development and Applications",
-      "image": "https://cdn.example.com/course-images/blockchain.webp",
+      "image": "https://www.cyberbahnit.com/wp-content/uploads/2017/11/blockchain.jpg",
       "topics": [
         {
           "name": "Blockchain Basics",
@@ -183,7 +183,7 @@
     {
       "id": 10,
       "title": "Digital Marketing Strategy",
-      "image": "https://cdn.example.com/course-images/digital-marketing.webp",
+      "image": "https://kurieta.com/wp-content/uploads/2024/02/images-67.jpeg",
       "topics": [
         {
           "name": "SEO & SEM",
@@ -203,7 +203,7 @@
     {
       "id": 11,
       "title": "Photography Basics and Beyond",
-      "image": "https://cdn.example.com/course-images/photography.webp",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDeVbqappUdTC429swt8p-9ros7TmjIKtH-A&s",
       "topics": [
         {
           "name": "Camera Settings",
@@ -223,7 +223,7 @@
     {
       "id": 12,
       "title": "Game Development with Unity",
-      "image": "https://cdn.example.com/course-images/unity.webp",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSti6GgMY3IHx3fw-TwNU8O-AUBgWv3WHW8gg&s",
       "topics": [
         {
           "name": "Unity Basics",
