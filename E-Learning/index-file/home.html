@@ -1,20 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Course List</title>
+  
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+
+<body>
     <style>
-        *{
+        * {
             font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         }
-        #product {
-            display: flex;
-            flex-wrap: wrap;
+        #courses-container {
+            margin: 20px;
+        }
+        #courses-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 20px;
             justify-content: center;
-            padding-top: 10vh;
+            padding-left: 278px;
         }
+        .course {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            background-color: #fff;
+            width: 300px;
+        }
+        .course img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .course h2 {
+            color: #28a745;
+            font-size: 20px;
+            margin: 10px 0;
+        }
+        .course p {
+            margin: 5px 0;
+        }
+        .course p strong {
+            display: block;
+            font-weight: bold;
+        }
+        .add-to-cart-btn {
+            background-color: rgb(0, 72, 255);
+            color: #fff;
+            padding: 15px;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .add-to-cart-btn[disabled] {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        .sidebar {
+            margin-top: 77px;
+            width: 250px;
+            background-color: #f8f9fa;
+            padding: 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar button {
+            background-color: #28a745;
+            margin: 10px 0;
+            height: 50px;
+            width: 100%;
+            color: #fff;
+            border-radius: 10px;
+            border: none;
+        }
+
+        .content {
+            margin-left: 270px;
+            padding: 20px;
+            padding-top: 100px;
+        }
+
+        #product {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            justify-content: center;
+            padding-left: 300px;
+            padding-top: 100px;
+        }
+
         .subcourse {
             border: 1px solid #ccc;
             border-radius: 8px;
@@ -23,19 +109,28 @@
             box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
         }
+
         .subcourse img {
             width: 100%;
             height: auto;
             border-radius: 8px;
         }
-        .subcourse h2{
+
+        .subcourse h2 {
             color: #28a745;
             font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
             font-size: 20px;
         }
+
+        #searchInput {
+            height: 50px;
+            margin-top: 10px;
+        }
+
         .subcourse-details {
             margin-top: 5px;
         }
+
         .add-to-cart-btn {
             background-color: #28a745;
             color: white;
@@ -44,26 +139,32 @@
             cursor: pointer;
             border-radius: 5px;
         }
+
         .add-to-cart-btn:hover {
             background-color: #218838;
         }
     </style>
-     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-</head>
-<body>
-    <h1>Available Courses</h1>
+    <div class="sidebar">
+        <form class="d-flex" role="search" id="search-form">
+            <input class="form-control me-2" id="searchInput" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+        <button id="price">Sort by Price</button>
+        <button id="rating">Sort by Rating</button>
+        <button id="addcourse">Add-Course</button>
+    </div>
     <div id="product"></div>
+    <div id="courses-container"></div>
     <script src="../js-file/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-    crossorigin="anonymous"></script>
-<script type="module">
-    import { insertNavbar } from '../componants/navbar.js';
-    insertNavbar();
-</script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-crossorigin="anonymous"></script>
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script type="module">
+        import { insertNavbar } from '../componants/navbar.js';
+        insertNavbar();
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
 </body>
 </html>

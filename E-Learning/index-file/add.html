@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Course</title>
+</head>
+
+<body>
+    <style>
+        * {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        #add-course-form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input {
+            width: 250px;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 95px;
+            background-color: #1dac00;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+        h1 {
+            color: #1dac00;
+        }
+    </style>
+    
+    <form id="addcourses">
+        <h1>Add New Course</h1>
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" required>
+        <br>
+        <label for="image">Image URL:</label>
+        <input type="url" id="image" name="image" required>
+        <br>
+        <label for="topics">Price</label>
+        <input type="text" id="topics" name="topics" required>
+        <br>
+        <label for="subtopics">Rating</label>
+        <input type="text" id="subtopics" name="subtopics">
+        <br>
+        <label for="description">Description:</label>
+        <input type="text" id="description" name="description">
+        <br><br>
+        <button type="submit" id="addcourse">Add Course</button>
+    </form>
+
+    <script src="../js-file/add.js"></script> 
+</body>
+
+</html>

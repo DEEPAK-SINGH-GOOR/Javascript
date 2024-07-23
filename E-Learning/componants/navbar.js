@@ -21,19 +21,15 @@ export function createNavbar() {
                     <li class="nav-item">
                         <a class="nav-link" href="./dashboard.html">Dashboard</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./add.html">Add-Course</a>
-                    </li>
                 </ul>
-                <form class="d-flex" role="search" id="search-form">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="search-input">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
             </div>
         </div>
-    </nav>`;
+    </nav> `;
+
 }
 
 export function insertNavbar() {
     document.body.insertAdjacentHTML('afterbegin', createNavbar());
+    
 }
+
