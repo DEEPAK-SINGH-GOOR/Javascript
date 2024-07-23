@@ -1,6 +1,6 @@
 
 const rnw = async () => {
-    const res = await fetch('http://localhost:3000/Courses');
+    const res = await fetch('https://e-learing.onrender.com/Courses');
     const data = await res.json();
     course(data);
 };
@@ -51,7 +51,7 @@ const course = (courses) => {
 };
 const addcart = (courseTitle) => {
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    fetch('http://localhost:3000/Courses')
+    fetch('https://e-learing.onrender.com/Courses')
         .then(response => response.json())
         .then(data => {
             const course = data.find(item => item.title === courseTitle);
