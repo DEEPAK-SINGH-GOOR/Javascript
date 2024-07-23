@@ -1,6 +1,6 @@
 const addcart = (recipename) => {
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    fetch('http://localhost:3000/Food_Data')
+    fetch('https://json-server-ar4y.onrender.com/Food_Data')
         .then(response => response.json())
         .then(data => {
             const recipe = data.find(item => item.name === recipename);
@@ -16,7 +16,7 @@ const addcart = (recipename) => {
 };
 
 const recip = async (usercity = '') => {
-    let res = await fetch('http://localhost:3000/Food_Data');
+    let res = await fetch('https://json-server-ar4y.onrender.com/Food_Data');
     let data = await res.json();
     show_recipes(data, usercity);
 };
@@ -70,7 +70,7 @@ const show_recipes = (recipes, usercity) => {
 };
 
 const sortrecpi = (criteria) => {
-    fetch('http://localhost:3000/Food_Data')
+    fetch('https://json-server-ar4y.onrender.com/Food_Data')
         .then(response => response.json())
         .then(data => {
             if (criteria === 'city') {
