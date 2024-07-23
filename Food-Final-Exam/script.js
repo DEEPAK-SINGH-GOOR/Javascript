@@ -1,84 +1,75 @@
-// Function to add a recipe to the cart
-const addToCart = (recipeName) => {
+const addcart = (recipename) => {
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     fetch('http://localhost:3000/Food_Data')
         .then(response => response.json())
         .then(data => {
-            const recipe = data.find(item => item.name === recipeName);
+            const recipe = data.find(item => item.name === recipename);
             if (recipe) {
-                if (!cart.some(item => item.name === recipeName)) {
+                if (!cart.some(item => item.name === recipename)) {
                     cart.push(recipe);
                     localStorage.setItem('cart', JSON.stringify(cart));
                 }
             }
         });
-    alert('Added to cart successfully');
+    alert('added to cart successfully');
     window.location.href = 'cart.html';
 };
 
-// Function to fetch and display recipes
-const api = async (city = '') => {
-    let response = await fetch('http://localhost:3000/Food_Data');
-    let data = await response.json();
-    displayRecipes(data, city);
+const recip = async (usercity = '') => {
+    let res = await fetch('http://localhost:3000/Food_Data');
+    let data = await res.json();
+    show_recipes(data, usercity);
 };
 
-// Function to display recipes
-const displayRecipes = (recipes, city) => {
-    const productContainer = document.getElementById('product');
-    productContainer.innerHTML = ''; // Clear previous recipes
+const show_recipes = (recipes, usercity) => {
+    const product_container = document.getElementById('product');
+    product_container.innerHTML = '';
 
-    // Filter recipes by city if provided
-    if (city) {
-        recipes = recipes.filter(recipe => recipe.city.toLowerCase() === city.toLowerCase());
+    if (usercity) {
+        recipes = recipes.filter(recipe => recipe.city.toLowerCase() === usercity.toLowerCase());
     }
 
-    // Display filtered recipes
     recipes.forEach(recipe => {
-        const recipeDiv = document.createElement('div');
-        recipeDiv.className = 'recipe';
-        recipeDiv.dataset.name = recipe.name;
+        const recipe_div = document.createElement('div');
+        recipe_div.className = 'recipe';
+        recipe_div.dataset.name = recipe.name;
 
         const img = document.createElement('img');
         img.src = recipe.image;
-        recipeDiv.appendChild(img);
 
-        const detailsDiv = document.createElement('div');
-        detailsDiv.className = 'recipe-details';
+        const details_div = document.createElement('div');
+        details_div.className = 'recipe-details';
 
-        const name = document.createElement('h2');
-        name.textContent = recipe.name;
-        detailsDiv.appendChild(name);
+        const recipe_name = document.createElement('h2');
+        recipe_name.textContent = recipe.name;
 
-        const rating = document.createElement('p');
-        rating.textContent = `Rating: ${recipe.rating}`;
-        detailsDiv.appendChild(rating);
+        const recipe_rating = document.createElement('p');
+        recipe_rating.textContent = `Rating: ${recipe.rating}`;
 
-        const city = document.createElement('p');
-        city.textContent = `City: ${recipe.city}`;
-        detailsDiv.appendChild(city);
+        const recipe_city = document.createElement('p');
+        recipe_city.textContent = `City: ${recipe.city}`;
 
-        const price = document.createElement('p');
-        price.textContent = `Price: $${recipe.price}`;
-        detailsDiv.appendChild(price);
+        const recipe_price = document.createElement('p');
+        recipe_price.textContent = `Price: $${recipe.price}`;
 
-        const addToCartBtn = document.createElement('button');
-        addToCartBtn.textContent = 'Add to Cart';
-        addToCartBtn.className = 'add-to-cart-btn';
-        addToCartBtn.addEventListener('click', () => addToCart(recipe.name));
-        detailsDiv.appendChild(addToCartBtn);
+        const add_btn = document.createElement('button');
+        add_btn.textContent = 'Add to Cart';
+        add_btn.className = 'add-to-cart-btn';
+        add_btn.addEventListener('click', () => addcart(recipe.name));
 
-        recipeDiv.appendChild(detailsDiv);
-        productContainer.appendChild(recipeDiv);
+        details_div.append(recipe_name, recipe_rating, recipe_city, recipe_price, add_btn);
+     
+        recipe_div.append(img, details_div);
+      
+        product_container.append(recipe_div);
     });
 
     if (recipes.length === 0) {
-        alert('No recipes found for this city.');
+        alert('no recipes found for this city.');
     }
 };
 
-// Function to sort recipes
-const sortRecipes = (criteria) => {
+const sortrecpi = (criteria) => {
     fetch('http://localhost:3000/Food_Data')
         .then(response => response.json())
         .then(data => {
@@ -89,21 +80,18 @@ const sortRecipes = (criteria) => {
             } else if (criteria === 'rating') {
                 data.sort((a, b) => b.rating - a.rating);
             }
-            const userCity = document.getElementById('city-input').value;
-            displayRecipes(data, userCity);
+            const usercity = document.getElementById('city-input').value;
+            show_recipes(data, usercity);
         });
 };
 
-// Event listeners for sorting
-document.getElementById('city').addEventListener('click', () => sortRecipes('city'));
-document.getElementById('price').addEventListener('click', () => sortRecipes('price'));
-document.getElementById('rating').addEventListener('click', () => sortRecipes('rating'));
+document.getElementById('city').addEventListener('click', () => sortrecpi('city'));
+document.getElementById('price').addEventListener('click', () => sortrecpi('price'));
+document.getElementById('rating').addEventListener('click', () => sortrecpi('rating'));
 
-// Event listener for filtering by city
 document.getElementById('filter-city').addEventListener('click', () => {
-    const userCity = document.getElementById('city-input').value;
-    api(userCity);
+    const usercity = document.getElementById('city-input').value;
+    recip(usercity);
 });
 
-// Initialize the display with all recipes
-api();
+recip();

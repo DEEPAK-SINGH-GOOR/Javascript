@@ -86,16 +86,15 @@
 </head>
 
 <body>
-  
-        <div id="cart-container"></div>
-    
+    <div id="cart-container"></div>
+
     <script>
         const displayCart = () => {
             let cart = JSON.parse(localStorage.getItem('cart')) || [];
             const cartContainer = document.getElementById('cart-container');
 
             cart.forEach(recipe => {
-                recipe.quantity = recipe.quantity || 1; // Default quantity to 1 if not set
+                recipe.quantity = recipe.quantity || 1;
 
                 const cartItemDiv = document.createElement('div');
                 cartItemDiv.className = 'cart-item';
@@ -103,27 +102,22 @@
 
                 const img = document.createElement('img');
                 img.src = recipe.image;
-                cartItemDiv.appendChild(img);
 
                 const detailsDiv = document.createElement('div');
                 detailsDiv.className = 'cart-item-details';
 
                 const name = document.createElement('h2');
                 name.textContent = recipe.name;
-                detailsDiv.appendChild(name);
 
                 const rating = document.createElement('p');
                 rating.textContent = `Rating: ${recipe.rating}`;
-                detailsDiv.appendChild(rating);
 
                 const city = document.createElement('p');
                 city.textContent = `City: ${recipe.city}`;
-                detailsDiv.appendChild(city);
 
                 const price = document.createElement('p');
                 price.className = 'price';
                 price.textContent = `Price: $${(recipe.price * recipe.quantity).toFixed(2)}`;
-                detailsDiv.appendChild(price);
 
                 const quantityControls = document.createElement('div');
                 quantityControls.className = 'quantity-controls';
@@ -131,21 +125,20 @@
                 const minusBtn = document.createElement('button');
                 minusBtn.textContent = '-';
                 minusBtn.addEventListener('click', () => updateQuantity(recipe.name, -1));
-                quantityControls.appendChild(minusBtn);
 
                 const quantitySpan = document.createElement('span');
                 quantitySpan.className = 'quantity';
                 quantitySpan.textContent = recipe.quantity;
-                quantityControls.appendChild(quantitySpan);
 
                 const plusBtn = document.createElement('button');
                 plusBtn.textContent = '+';
                 plusBtn.addEventListener('click', () => updateQuantity(recipe.name, 1));
-                quantityControls.appendChild(plusBtn);
 
-                detailsDiv.appendChild(quantityControls);
-                cartItemDiv.appendChild(detailsDiv);
-                cartContainer.appendChild(cartItemDiv);
+              
+                quantityControls.append(minusBtn, quantitySpan, plusBtn);
+                detailsDiv.append(name, rating, city, price, quantityControls);
+                cartItemDiv.append(img, detailsDiv);
+                cartContainer.append(cartItemDiv);
             });
         };
 
@@ -157,7 +150,7 @@
                 recipe.quantity += change;
 
                 if (recipe.quantity < 1) {
-                    recipe.quantity = 1; // Ensure quantity doesn't go below 1
+                    recipe.quantity = 1;
                 }
 
                 localStorage.setItem('cart', JSON.stringify(cart));
