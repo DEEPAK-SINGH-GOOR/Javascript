@@ -167,4 +167,20 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
 </body>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+    const storedRole = localStorage.getItem('userRole');
+    const addCourseButton = document.getElementById('addcourse');
+    if (storedRole === 'Admin') {
+        addCourseButton.disabled = false;
+        addCourseButton.style.backgroundColor = '#28a745'; 
+    } else {
+        // Disable the button for Users
+        addCourseButton.disabled = true;
+        addCourseButton.style.backgroundColor = '#ccc'; 
+        addCourseButton.style.cursor = 'not-allowed'; 
+    }
+});
+
+</script>
 </html>

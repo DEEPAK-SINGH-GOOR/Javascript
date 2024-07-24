@@ -90,12 +90,10 @@ document.getElementById('addcourse').addEventListener('click', function (event) 
  function displayCourses() {
             const coursesContainer = document.getElementById('courses-container');
             let courses = JSON.parse(localStorage.getItem('courses')) || [];
-
-            // Clear the container before displaying
+            
             coursesContainer.innerHTML = '';
 
             courses.forEach(course => {
-                // Create elements
                 const courseElement = document.createElement('div');
                 courseElement.className = 'course';
 
@@ -115,13 +113,8 @@ document.getElementById('addcourse').addEventListener('click', function (event) 
                 const descriptionElement = document.createElement('p');
                 descriptionElement.innerHTML = course.description;
 
-                // Append elements to the course element using append
                 courseElement.append(titleElement, imageElement, topicsElement, subtopicsElement, descriptionElement);
-
-                // Append the course element to the container
-                coursesContainer.append(courseElement);
+               coursesContainer.append(courseElement);
             });
         }
-
-        // Call the function to display courses
         displayCourses();

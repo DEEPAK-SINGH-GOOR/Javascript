@@ -98,7 +98,7 @@
                 <label for="password">Select-Role</label>
             </div>
             <select class="form-group" id="select" required>
-                <option value="Adimin" id="option">Admin</option>
+                <option value="Admin" id="option">Admin</option>
                 <option value="user" id="option">User</option>
             </select>
             <br><br>
@@ -117,5 +117,13 @@
     </script>
     <script src="../js-file/signup.js"></script>
 </body>
+    <script>
+document.getElementById("login-form").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const role = document.getElementById("select").value;
+    localStorage.setItem('userRole', role);
+});
 
+
+    </script>
 </html>
