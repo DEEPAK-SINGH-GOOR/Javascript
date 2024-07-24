@@ -1,18 +1,13 @@
 let coursesData = [];
-
 const rnw = async () => {
-    
         const res = await fetch('https://e-learing.onrender.com/Courses');
         const data = await res.json();
         coursesData = data;
         renderCourses(coursesData);
-  
 };
-
 const renderCourses = (courses) => {
     const div1 = document.getElementById('product');
     div1.innerHTML = '';
-
     courses.forEach(course => {
         const div = document.createElement('div');
         div.className = 'subcourse';
@@ -85,36 +80,35 @@ document.getElementById('addcourse').addEventListener('click', function (event) 
     event.preventDefault();
     window.location.href = '../index-file/add.html'
 });
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
- function displayCourses() {
-            const coursesContainer = document.getElementById('courses-container');
+ function output() {
+            const coursediv = document.getElementById('courses-container');
             let courses = JSON.parse(localStorage.getItem('courses')) || [];
             
-            coursesContainer.innerHTML = '';
+            coursediv.innerHTML = '';
 
-            courses.forEach(course => {
-                const courseElement = document.createElement('div');
-                courseElement.className = 'course';
+            courses.map(course => {
+                const div = document.createElement('div');
+                div.className = 'course';
 
-                const titleElement = document.createElement('h2');
-                titleElement.textContent = course.title;
+                const title = document.createElement('h2');
+                title.textContent = course.title;
 
-                const imageElement = document.createElement('img');
-                imageElement.src = course.image;
-                imageElement.alt = course.title;
+                const img = document.createElement('img');
+                img.src = course.image;
+                img.alt = course.title;
 
-                const topicsElement = document.createElement('p');
-                topicsElement.innerHTML = course.topics;
+                const topic = document.createElement('p');
+                topic.innerHTML = course.topics;
 
-                const subtopicsElement = document.createElement('p');
-                subtopicsElement.innerHTML = course.subtopics;
+                const sub = document.createElement('p');
+                sub.innerHTML = course.subs;
 
-                const descriptionElement = document.createElement('p');
-                descriptionElement.innerHTML = course.description;
+                const des = document.createElement('p');
+                des.innerHTML = course.description;
 
-                courseElement.append(titleElement, imageElement, topicsElement, subtopicsElement, descriptionElement);
-               coursesContainer.append(courseElement);
+                div.append(title, img, topic, sub, des);
+               coursediv.append(div);
             });
         }
-        displayCourses();
+        output();
