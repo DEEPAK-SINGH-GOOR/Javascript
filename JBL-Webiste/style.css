@@ -30,13 +30,13 @@ i {
 } */
 a {
     text-decoration: none;
-    color: black;
+    color: rgb(0, 0, 0);
     font-weight: 800;
 }
 
 #word:hover {
     text-decoration: underline;
-    color: red;
+    color: rgb(0, 0, 0);
 }
 
 #pre {
@@ -192,3 +192,77 @@ h5:hover {
     text-align: center;
     margin-bottom: 10px; /* Adds space between buttons */
   }
+
+
+
+  
+/* Search icnon */
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.navbar {
+    background-color: black;
+}
+
+.nav-link {
+    font-family: 'Open Sans', sans-serif;
+    color: orange;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.nav-link:hover {
+    color: white;
+}
+
+.navbar-brand img {
+    height: 60px;
+}
+
+.navbar-toggler-icon {
+    background-image: none;
+    color: orange;
+}
+
+.navbar-toggler {
+    border-color: orange;
+}
+
+.search-form {
+    position: relative;
+    align-items: center;
+}
+
+.search-input {
+    transition: all 0.3s ease;
+    width: 150px;
+    height: 38px;
+    border: 1px solid orange;
+    border-radius: 5px;
+    margin-right: 10px;
+    padding-left: 10px;
+    background-color: transparent;
+    color: white;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: white;
+    width: 200px; /* Expand input on focus */
+}
+
+.fa-magnifying-glass,
+.fa-circle-user {
+    font-size: 1.2em;
+    color: orange;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.fa-magnifying-glass:hover,
+.fa-circle-user:hover {
+    color: white;
+}

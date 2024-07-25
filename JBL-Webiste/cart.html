@@ -2,184 +2,120 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cart</title>
-  <link rel="stylesheet" href="path/to/bootstrap.css"> <!-- Update with actual path -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  <style>
-    body {
-      background-color: #f8f9fa;
-      color: #343a40;
-      font-family: Arial, sans-serif;
-    }
-
-    .container {
-      margin-top: 40px;
-      background-color: #ffffff;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      padding: 20px;
-    }
-
-    h1 {
-      margin-bottom: 30px;
-      color: #ff0000;
-      text-align: center;
-      font-size: 2.5em;
-    }
-
-    .table {
-      background-color: #fff;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      margin: 0 auto;
-      width: 100%;
-    }
-
-    .table th,
-    .table td {
-      padding: 15px;
-      text-align: center;
-      vertical-align: middle;
-    }
-
-    .table thead {
-      background-color: #ff0000;
-      color: #fff;
-    }
-
-    .table tbody tr:nth-child(even) {
-      background-color: #f2f2f2;
-    }
-
-    .table tbody tr:hover {
-      background-color: #e9ecef;
-    }
-
-    .table td {
-      font-size: 16px;
-    }
-
-    .table th {
-      font-size: 18px;
-      font-weight: bold;
-    }
-
-    .table .total-row {
-      font-weight: bold;
-      background-color: #ff0000;
-      color: #000000;
-    }
-
-    .total-row td {
-      font-size: 18px;
-    }
-
-    .product-img {
-      max-width: 100px;
-      height: auto;
-      display: block;
-      margin: 0 auto;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    .btn {
-      margin: 10px 0;
-    }
-
-    .btn-primary {
-      background-color: #007bff;
-      border: none;
-    }
-
-    .btn-primary:hover {
-      background-color: #0056b3;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .cart-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 1rem;
+        }
+        .cart-item img {
+            width: 100px;
+            height: auto;
+            margin-right: 1rem;
+        }
+        .cart-item .item-details {
+            flex: 1;
+        }
+        .cart-item .item-details h5 {
+            margin: 0;
+        }
+        .cart-item .quantity-controls {
+            display: flex;
+            align-items: center;
+        }
+        .cart-item .quantity-controls button {
+            margin: 0 0.5rem;
+        }
+        .cart-item .item-price {
+            margin-left: 1rem;
+        }
+        .cart-item .remove-item {
+            color: red;
+            cursor: pointer;
+            margin-left: 1rem;
+        }
+        .total-price {
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+    </style>
 </head>
 
 <body>
-  <div class="container">
-    <h1>Your Cart</h1>
-    <table id="cart-table" class="table table-striped">
-      <!-- Cart items will be dynamically inserted here -->
-    </table>
-  </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <!-- Navbar content as before -->
+    </nav>
+    <div class="container-fluid">
+        <h1 class="mt-4">Your Cart</h1>
+        <div id="cartItems"></div>
+        <div class="total-price" id="totalPrice">Total Price: $0.00</div>
+    </div>
 
-  <script type="module">
-    import { insertNavbar } from './navbar.js';
+    <script>
+        function loadCart() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartItemsContainer = document.getElementById('cartItems');
+            cartItemsContainer.innerHTML = '';
+            
+            let totalPrice = 0;
+            cart.forEach((item, index) => {
+                totalPrice += item.totalPrice;
 
-    insertNavbar();
-    function createCartTable() {
-      const cart = JSON.parse(localStorage.getItem('cart')) || [];
-      const table = document.getElementById('cart-table');
+                const cartItemHTML = `
+                    <div class="cart-item">
+                        <img src="${item.img}" alt="${item.cardTitle}">
+                        <div class="item-details">
+                            <h5>${item.cardTitle}</h5>
+                            <p>${item.price}</p>
+                            <div class="quantity-controls">
+                                <button onclick="changeQuantity(${index}, -1)">-</button>
+                                <span id="quantity${index}">${item.quantity}</span>
+                                <button onclick="changeQuantity(${index}, 1)">+</button>
+                                <span class="item-price">$${item.totalPrice}</span>
+                                <span class="remove-item" onclick="removeItem(${index})"><i class="fa-solid fa-trash"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                cartItemsContainer.insertAdjacentHTML('beforeend', cartItemHTML);
+            });
 
-      // Create table headers
-      const thead = table.createTHead();
-      const headerRow = thead.insertRow();
-      const headers = ['Item', 'Name', 'Price', 'Qty', 'Total'];
-      headers.forEach(header => {
-        const th = document.createElement('th');
-        th.textContent = header;
-        headerRow.appendChild(th);
-      });
-
-      // Create table body
-      const tbody = table.createTBody();
-      cart.forEach(item => {
-        const row = tbody.insertRow();
-
-        // Product image
-        const cellImg = row.insertCell();
-        const img = document.createElement('img');
-        img.src = item.img;
-        img.className = 'product-img';
-        cellImg.appendChild(img);
-
-        // Product name
-        const cellName = row.insertCell();
-        cellName.textContent = item.cardTitle;
-
-        // Price
-        const cellPrice = row.insertCell();
-        cellPrice.textContent = item.price;
-
-        // Quantity
-        const cellQty = row.insertCell();
-        cellQty.textContent = item.quantity;
-
-        // Total
-        const cellTotal = row.insertCell();
-        const total = parseFloat(item.price.replace('$', '')) * item.quantity;
-        cellTotal.textContent = `$${total.toFixed(2)}`;
-      });
-
-      // Create total row
-      const totalRow = tbody.insertRow();
-      totalRow.className = 'total-row';
-      const totalCells = ['Total', '', '', '', '']; // Empty cells for other columns
-      totalCells.forEach((text, index) => {
-        const cell = totalRow.insertCell();
-        cell.textContent = text;
-        if (index === totalCells.length - 1) {
-          // Calculate and display the total amount
-          const grandTotal = cart.reduce((sum, item) => sum + (parseFloat(item.price.replace('$', '')) * item.quantity), 0);
-          cell.textContent = `$${grandTotal.toFixed(2)}`;
+            document.getElementById('totalPrice').textContent = `Total Price: $${totalPrice.toFixed(2)}`;
         }
-      });
-    }
 
-    // Call createCartTable to populate the table
-    createCartTable();
-  </script>
+        function changeQuantity(index, change) {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const item = cart[index];
+            if (item) {
+                item.quantity += change;
+                if (item.quantity <= 0) {
+                    removeItem(index);
+                } else {
+                    item.totalPrice = (item.price * item.quantity).toFixed(2);
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    loadCart();
+                }
+            }
+        }
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-    crossorigin="anonymous"></script>
+        function removeItem(index) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            if (index >= 0 && index < cart.length) {
+                cart.splice(index, 1);
+                localStorage.setItem('cart', JSON.stringify(cart));
+                loadCart();
+            }
+        }
+
+        loadCart();
+    </script>
 </body>
 
 </html>

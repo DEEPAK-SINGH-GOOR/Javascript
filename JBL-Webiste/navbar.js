@@ -24,15 +24,7 @@ export function createNavbar() {
           <li class="nav-item">
             <a class="nav-link" href="./sign.html" id="word">Sign Up</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" id="word">Professional</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" id="word">Car Audio</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" id="word">Refurbished Product</a>
-          </li>
+          
         </ul>
         <div class="search-form d-flex" role="search">
           <div class="row">
