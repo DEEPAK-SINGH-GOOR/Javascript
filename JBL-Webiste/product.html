@@ -48,11 +48,54 @@
         .search-results p:hover {
             background-color: #f0f0f0;
         }
+        i{
+            cursor: pointer;
+        }
+        .sidebar {
+            margin-top: 77px;
+            width: 250px;
+            background-color: #f8f9fa;
+            padding: 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);   
+        }
+
+        .sidebar button {
+            background-color: #DC3545;
+            margin: 10px 0;
+            height: 50px;
+            width: 100%;
+            color: #fff;
+            border-radius: 10px;
+            border: none;
+        }
+         #parentnav {
+            z-index: 3;
+            position: fixed;
+            width: 100%;
+        }
+        #productRow
+        {
+            padding-left: 300px;
+            padding-top: 100px;
+        }
+        #price {
+            margin-top: 100px;
+        }
+        .btn-primary:hover
+        {
+            /* background-color: #000; */
+            background-color: #88000e;
+        }
     </style>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" id="parentnav">
         <div class="container-fluid" id="navv">
             <a class="navbar-brand" href="#"><img
                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/JBL_logo.svg/2500px-JBL_logo.svg.png"
@@ -83,9 +126,10 @@
                 </ul>
                 <div class="search-form d-flex" role="search">
                     <div class="row">
-                        <div class="col-4"><i id="shop" class="fa-solid fa-cart-shopping text-dark" id="cartpage"></i></div>
-                        <div class="col-4"><i id="search" class="fa-solid fa-magnifying-glass text-dark"></i></div>
+                        <div class="col-4"><i id="shop" class="fa-solid fa-cart-shopping text-dark" id="cartpage"></i>
+                        </div>
                         <div class="col-4"><i id="sign" class="fa-solid fa-circle-user text-dark"></i></div>
+                        <div class="col-4"><i id="search" class="fa-solid fa-magnifying-glass text-dark"></i></div>
                     </div>
                     <input type="text" class="search-input" id="searchInput" placeholder="Search...">
                     <div id="searchResults" class="search-results"></div>
@@ -93,19 +137,37 @@
             </div>
         </div>
     </nav>
-    <div class="container-fluid">
-        <div class="row" id="productRow">
+    <div class="sidebar">
+        <form class="d-flex" role="search" id="search-form">
+        </form>
+        <div class="container mt-4">
+            <button id="sortPriceLowHigh" class="btn btn-primary">Low to High <i class="fa-solid fa-arrow-trend-up"></i></button>
+            <button id="sortPriceHighLow" class="btn btn-primary">High to Low <i class="fa-solid fa-arrow-trend-down"></i></button>
+            <button id="sortRatingHighLow" class="btn btn-primary">High Rating <i class="fa-solid fa-star"></i></button>
+            <button id="sortRatingLowHigh" class="btn btn-primary">Low Rating <i class="fa-solid fa-star-half"></i></button>
+           
+            <button id="clearSorting" class="btn btn-secondary">View Cart  <i class="fa-solid fa-cart-shopping cart-icon"></i></button>
         </div>
+        
+    </div>
+   
+        <div class="row" id="productRow">
+       
     </div>
 
     <script type="module">
-        const products = [
-        {
+        // Product data with ratings added
+    
+        document.addEventListener('DOMContentLoaded', function () {
+    // Sample products data
+    const products = [
+            {
                 img: 'https://in.jbl.com/dw/image/v2/BFND_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dwfea2c1ef/1.JBL_Tune_770NC_Product%20Image_Hero_Black.png?sw=320&sh=320',
                 cardTitle: 'JBL Tune 770NC',
                 cardText: 'Adaptive Noise Cancellation wireless',
                 textPrimary: 'Wireless',
                 price: '$649',
+                rating: 4.5,
                 orderLink: '#'
             },
             {
@@ -114,6 +176,7 @@
                 cardText: 'Adaptive Noise Cancellation wireless',
                 textPrimary: 'Wireless',
                 price: '$150',
+                rating: 4.0,
                 orderLink: '#'
             },
             {
@@ -122,6 +185,7 @@
                 cardText: 'Adaptive Noise Cancellation wireless',
                 textPrimary: 'Wireless',
                 price: '$200',
+                rating: 4.2,
                 orderLink: '#'
             },
             {
@@ -130,6 +194,7 @@
                 cardText: 'True wireless product with voice cancellation',
                 textPrimary: 'Wireless',
                 price: '$25.44',
+                rating: 3.8,
                 orderLink: '#'
             },
             {
@@ -138,6 +203,7 @@
                 cardText: 'True wireless product with voice cancellation',
                 textPrimary: 'Wireless',
                 price: '$30.45',
+                rating: 3.5,
                 orderLink: '#'
             },
             {
@@ -146,6 +212,7 @@
                 cardText: 'True wireless product with voice cancellation',
                 textPrimary: 'Wireless',
                 price: '$35.78',
+                rating: 4.1,
                 orderLink: '#'
             },
             {
@@ -154,6 +221,7 @@
                 cardText: 'True wireless product with voice cancellation',
                 textPrimary: 'Wireless',
                 price: '$30.45',
+                rating: 4.7,
                 orderLink: '#'
             },
             {
@@ -162,166 +230,170 @@
                 cardText: 'True wireless product with voice cancellation',
                 textPrimary: 'Wireless',
                 price: '$35.78',
+                rating: 4.3,
+                orderLink: '#'
+            },
+            {
+                img: 'https://in.jbl.com/dw/image/v2/BFND_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dwa6df911e/01.JBL_Live%20Beam%203_Product%20Image_Feature%20Screen%2002_Silver.png?sw=320&sh=320',
+                cardTitle: 'JBL Live Bean 3',
+                cardText: 'Display with voice cancellation',
+                textPrimary: 'Wireless',
+                price: '$89.45',
+                rating: 4.6,
+                orderLink: '#'
+            },
+            {
+                img: 'https://in.jbl.com/dw/image/v2/BFND_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dw852cb4c7/JBL_TOUR_One%20M2_Product%20Image_Hero_Champagne.png?sw=320&sh=320',
+                cardTitle: 'JBL HeadPhone USB',
+                cardText: 'True wireless product with voice cancellation',
+                textPrimary: 'Wireless',
+                price: '$25.78',
+                rating: 4.4,
+                orderLink: '#'
+            },
+            {
+                img: 'https://in.jbl.com/dw/image/v2/BFND_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dw8579c812/1.JBL_QUANTUM_910_Wireless_Product%20Image_Hero%20Mic%20Down.png?sw=320&sh=320',
+                cardTitle: 'Gamming HeadPhone',
+                cardText: 'True wireless product High Base Quantity',
+                textPrimary: 'Wireless',
+                price: '$30.45',
+                rating: 4.0,
+                orderLink: '#'
+            },
+            {
+                img: 'https://in.jbl.com/dw/image/v2/BFND_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dw89001d20/1_JBL_PULSE_5_HERO_34364_x2.png?sw=300&sh=300',
+                cardTitle: 'JBL Part Speaker',
+                cardText: 'True wireless product with High Base Quantity',
+                textPrimary: 'Wireless',
+                price: '$32.78',
+                rating: 4.2,
                 orderLink: '#'
             }
         ];
+  
 
-        function renderProducts(products) {
-            const productRow = document.getElementById('productRow');
-            productRow.innerHTML = ''; // Clear previous products
-            products.forEach((product, index) => {
-                const productHTML = `
-                    <div class="col-12 col-sm-12 col-md-6 col-xl-3 d-flex justify-content-center">
-                        <div class="card">
-                            <img src="${product.img}" class="card-img-top" alt="${product.cardTitle}">
-                            <div class="card-body">
-                                <h5 class="card-title">${product.cardTitle}</h5>
-                                <p class="card-text">${product.cardText}</p>
-                                <h6 class="text-primary">${product.textPrimary}</h6>
-                                <h5 id="price${index}">${product.price}</h5>
-                                <a href="${product.orderLink}" class="btn btn-danger">Order Now</a>
-                                <a href="#" class="btn btn-danger addToCart" data-id="${index}" data-price="${parseFloat(product.price.replace('$', ''))}">Add To Cart <i class="fa-solid fa-cart-shopping text-dark"></i></a>
-                            </div>
+    function renderProducts(products) {
+        const productRow = document.getElementById('productRow');
+        productRow.innerHTML = '';
+        products.forEach((product, index) => {
+            const productHTML = `
+                <div class="col-12 col-sm-12 col-md-6 col-xl-3 d-flex justify-content-center">
+                    <div class="card">
+                        <img src="${product.img}" class="card-img-top" alt="${product.cardTitle}">
+                        <div class="card-body">
+                            <h5 class="card-title">${product.cardTitle}</h5>
+                            <p class="card-text">${product.cardText}</p>
+                            <h6 class="text-primary">${product.textPrimary}</h6>
+                            <h5 id="price${index}">${product.price}</h5>
+                            <h6>Rating: ${product.rating} <i class="fas fa-star" style="color:gold;"></i></h6>
+                            <a href="#" class="btn btn-danger viewProduct" data-id="${index}">Order Now</a>
+                            <a href="#" class="btn btn-danger addToCart" data-id="${index}" data-price="${parseFloat(product.price.replace('$', ''))}">Add To Cart <i class="fa-solid fa-cart-shopping text-dark"></i></a>
                         </div>
                     </div>
-                `;
-                productRow.insertAdjacentHTML('beforeend', productHTML);
-            });
+                </div>
+            `;
+            productRow.insertAdjacentHTML('beforeend', productHTML);
+        });
 
-            document.querySelectorAll('.addToCart').forEach(button => {
-                button.addEventListener('click', function (event) {
-                    event.preventDefault();
-                    const productId = parseInt(this.getAttribute('data-id'));
-                    const productPrice = parseFloat(this.getAttribute('data-price'));
-                    addToCart(productId, productPrice);
-                });
-            });
-        }
+        // Event listeners for product actions
+        document.querySelectorAll('.viewProduct').forEach(button => {
+            button.addEventListener('click', function (event) {
+                event.preventDefault();
+                const productId = parseInt(this.getAttribute('data-id'));
 
+                if (isUserSignedUp()) {
+                    const product = products[productId];
+                    addToMyProducts(product);
+                    window.location.href = "product.html";
+                } else {
+                    alert('Please sign up to order products.');
+                    window.location.href = "sign.html";
+                }
+            });
+        });
+
+        document.querySelectorAll('.addToCart').forEach(button => {
+            button.addEventListener('click', function (event) {
+                event.preventDefault();
+                const productId = parseInt(this.getAttribute('data-id'));
+                const productPrice = parseFloat(this.getAttribute('data-price'));
+                addToCart(productId, productPrice);
+            });
+        });
+    }
+
+    // Check if the user is signed up
+    function isUserSignedUp() {
+        return localStorage.getItem('isUserSignedUp') === 'true'; // Match storage type with sign-in script
+    }
+
+    // Add the product to "My Products"
+    function addToMyProducts(product) {
+        let myProducts = JSON.parse(localStorage.getItem('myProducts')) || [];
+        myProducts.push(product);
+        localStorage.setItem('myProducts', JSON.stringify(myProducts));
+    }
+
+    // Add product to cart
+    function addToCart(productId, productPrice) {
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let product = products[productId];
+        product.quantity = 1;
+        product.totalPrice = productPrice;
 
-        function addToCart(id, price) {
-            const existingProduct = cart.find(item => item.id === id);
-            if (existingProduct) {
-                existingProduct.quantity += 1;
-                existingProduct.totalPrice += price;
-            } else {
-                const product = products[id];
-                cart.push({ id, img: product.img, cardTitle: product.cardTitle, price, quantity: 1, totalPrice: price });
-            }
-            localStorage.setItem('cart', JSON.stringify(cart));
-            alert('Product added to cart!');
-            updateCartBadge();
+        let existingProductIndex = cart.findIndex(item => item.cardTitle === product.cardTitle);
+
+        if (existingProductIndex !== -1) {
+            cart[existingProductIndex].quantity += 1;
+            cart[existingProductIndex].totalPrice = (parseFloat(cart[existingProductIndex].price.replace('$', '')) * cart[existingProductIndex].quantity).toFixed(2);
+        } else {
+            cart.push(product);
         }
 
-        function updateCartBadge() {
-            // Implement your cart badge update logic here
-        }
+        localStorage.setItem('cart', JSON.stringify(cart));
+        alert('Product added to cart!');
+    }
 
-        function filterProducts(query) {
-            const filteredProducts = products.filter(product => 
-                product.cardTitle.toLowerCase().includes(query.toLowerCase())
-            );
-            renderProducts(filteredProducts);
-        }
-
-        document.getElementById('search').addEventListener('click', () => {
-            const searchInput = document.getElementById('searchInput');
-            searchInput.style.display = searchInput.style.display === 'none' || searchInput.style.display === '' ? 'inline' : 'none';
-            searchInput.focus(); // Optional: focus on the input box when it appears
+    // Sort products by price
+    function sortByPrice(order) {
+        const sortedProducts = products.slice().sort((a, b) => {
+            const priceA = parseFloat(a.price.replace('$', ''));
+            const priceB = parseFloat(b.price.replace('$', ''));
+            return order === 'asc' ? priceA - priceB : priceB - priceA;
         });
+        renderProducts(sortedProducts);
+    }
 
-        document.getElementById('searchInput').addEventListener('input', (event) => {
-            const query = event.target.value;
-            const searchResults = document.getElementById('searchResults');
-            if (query.length > 0) {
-                const filteredProducts = products.filter(product => 
-                    product.cardTitle.toLowerCase().includes(query.toLowerCase())
-                );
-                searchResults.innerHTML = filteredProducts.map(product => 
-                    `<p data-id="${products.indexOf(product)}">${product.cardTitle}</p>`
-                ).join('');
-                searchResults.style.display = 'block';
-            } else {
-                searchResults.style.display = 'none';
-            }
+    // Sort products by rating
+    function sortByRating(order) {
+        const sortedProducts = products.slice().sort((a, b) => {
+            return order === 'asc' ? a.rating - b.rating : b.rating - a.rating;
         });
+        renderProducts(sortedProducts);
+    }
 
-        document.getElementById('searchResults').addEventListener('click', (event) => {
-            if (event.target.tagName === 'P') {
-                const productId = parseInt(event.target.getAttribute('data-id'));
-                const product = products[productId];
-                window.location.href = `./product.html?productId=${productId}`;
-            }
-        });
+    // Clear sorting (or reset view)
+    function clearSorting() {
+        window.location.href = "cart.html";
+    }
 
-        // Render products on page load
-        renderProducts(products);
+    // Event listeners for sorting and clearing
+    document.getElementById('sortPriceLowHigh').addEventListener('click', () => sortByPrice('asc'));
+    document.getElementById('sortPriceHighLow').addEventListener('click', () => sortByPrice('desc'));
+    document.getElementById('sortRatingLowHigh').addEventListener('click', () => sortByRating('asc'));
+    document.getElementById('sortRatingHighLow').addEventListener('click', () => sortByRating('desc'));
+    document.getElementById('clearSorting').addEventListener('click', clearSorting);
 
-        document.getElementById('shop').addEventListener('click', (e) =>{
-                e.preventDefault();
-                window.location.href = "cart.html";
-        });
+    // Initial render
+    renderProducts(products);
+});
 
-        document.getElementById('sign').addEventListener('click', (e) =>{
-                e.preventDefault();
-                window.location.href = "sign.html";
-        });
     </script>
+    
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
 </body>
 
-</html> 
-
-
-<!--
-        const courses = [
-            {
-                name: "Learn Microsoft Flow",
-                category: "Office Productivity",
-                image: "https://huroorkee.ac.in/blog/wp-content/uploads/2024/04/Courses-After-12th-Arts-750x458.jpg",
-                description: "Linear Algebra refresher for machine learning. Basics + Python implementation – Free Course",
-                sale_price_usd: 100.0,
-                sale_end: "2024-07-24T08:01:51.161000",
-                url: "https://www.udemy.com/course/linear-algebra-basics-for-machine-learning/"
-            },
-        ];
-
-        // Function to create HTML for each course card
-        function createCourseCard(course) {
-            return `
-        <div class="course-card">
-          <img class="course-image" src="${course.image}" alt="${course.name}">
-          <div class="course-name">${course.name}</div>
-          <div class="course-category">${course.category}</div>
-          <div class="course-description">${course.description}</div>
-          <div class="course-price">Sale Price: ${course.sale_price_usd} USD</div>
-          <div>Sale Ends: ${new Date(course.sale_end).toLocaleDateString()}</div>
-          <a class="course-link btn btn-primary mt-3" href="${course.url}" target="_blank">Go to Course</a>
-          <button class="btn btn-primary mt-3" onclick="addToDashboard('${course.name}')">Add to Dashboard</button>
-        </div>
-      `;
-        }
-
-        function populateGrid(courseList = courses) {
-            const gridContainer = document.querySelector('.grid-container');
-            gridContainer.innerHTML = courseList.map(course => createCourseCard(course)).join('');
-        }
-
-        populateGrid();
-
-
-        function filterCourses(searchText) {
-            searchText = searchText.toLowerCase();
-            const filteredCourses = courses.filter(course =>
-                course.name.toLowerCase().includes(searchText) ||
-                course.category.toLowerCase().includes(searchText)
-            );
-            populateGrid(filteredCourses);
-        }
-
-        document.getElementById('searchInput').addEventListener('input', function (event) {
-            filterCourses(event.target.value);
-        }); -->
+</html>

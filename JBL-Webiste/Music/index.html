@@ -1,494 +1,729 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./style.scss">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
+
 <body>
-    <div id="wrapper">
-        <div id="iphone">
-         <div id="camera">
-          <span></span>
-          <span></span>
-         </div>
-         <div id="screen">
-          <div id="content-wrap">
-           <div id="background"></div>
-           <div id="content">
-            <div id="header">
-             <span id="menu-btn"><img src="https://emilcarlsson.se/assets/svg/menu.svg" alt="" class="svg"></span>
-             <span id="options-btn"><img src="https://emilcarlsson.se/assets/svg/more.svg" alt="" class="svg"></span>
+  <style>
+    body {
+      /* background: #e1e7ec; */
+      background: #dfe7ef;
+      font-family: "Bitter", serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    .icon {
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+      stroke-width: 0;
+      stroke: currentColor;
+      fill: currentColor;
+    }
+
+    .wrapper {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      /* background: url(../img/bg.png) no-repeat center; */
+      background-size: cover;
+    }
+
+    @media screen and (max-width: 700px),
+    (max-height: 500px) {
+      .wrapper {
+        flex-wrap: wrap;
+        flex-direction: column;
+      }
+    }
+
+    .player {
+      background: #eef3f7;
+      width: 410px;
+      min-height: 480px;
+      /* box-shadow: 0px 55px 75px -10px rgba(76, 70, 124, 0.5); */
+      /* box-shadow: 0px 55px 105px 10px rgba(76, 70, 124, 0.35); */
+      box-shadow: 0px 15px 35px -5px rgba(50, 88, 130, 0.32);
+      border-radius: 15px;
+      padding: 30px;
+    }
+
+    @media screen and (max-width: 576px),
+    (max-height: 500px) {
+      .player {
+        width: 95%;
+        padding: 20px;
+        margin-top: 75px;
+        min-height: initial;
+        padding-bottom: 30px;
+        max-width: 400px;
+      }
+    }
+
+    .player__top {
+      display: flex;
+      align-items: flex-start;
+      position: relative;
+      z-index: 4;
+    }
+
+    @media screen and (max-width: 576px),
+    (max-height: 500px) {
+      .player__top {
+        flex-wrap: wrap;
+      }
+    }
+
+    .player-cover {
+      width: 300px;
+      height: 300px;
+      margin-left: -70px;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 2;
+      border-radius: 15px;
+      /* transform: perspective(512px) translate3d(0, 0, 0); */
+      /* transition: all .4s cubic-bezier(.125, .625, .125, .875); */
+      z-index: 1;
+    }
+
+    @media screen and (max-width: 576px),
+    (max-height: 500px) {
+      .player-cover {
+        margin-top: -70px;
+        margin-bottom: 25px;
+        width: 290px;
+        height: 230px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+
+    .player-cover__item {
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      width: 100%;
+      height: 100%;
+      border-radius: 15px;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    .player-cover__item:before {
+      content: "";
+      background: inherit;
+      width: 100%;
+      height: 100%;
+      box-shadow: 0px 10px 40px 0px rgba(76, 70, 124, 0.5);
+      display: block;
+      z-index: 1;
+      position: absolute;
+      top: 30px;
+      transform: scale(0.9);
+      filter: blur(10px);
+      opacity: 0.9;
+      border-radius: 15px;
+    }
+
+    .player-cover__item:after {
+      content: "";
+      background: inherit;
+      width: 100%;
+      height: 100%;
+      box-shadow: 0px 10px 40px 0px rgba(76, 70, 124, 0.5);
+      display: block;
+      z-index: 2;
+      position: absolute;
+      border-radius: 15px;
+    }
+
+    .player-cover__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 15px;
+      box-shadow: 0px 10px 40px 0px rgba(76, 70, 124, 0.5);
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .player-controls {
+      flex: 1;
+      padding-left: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    @media screen and (max-width: 576px),
+    (max-height: 500px) {
+      .player-controls {
+        flex-direction: row;
+        padding-left: 0;
+        width: 100%;
+        flex: unset;
+      }
+    }
+
+    .player-controls__item {
+      display: inline-flex;
+      font-size: 30px;
+      padding: 5px;
+      margin-bottom: 10px;
+      color: #acb8cc;
+      cursor: pointer;
+      width: 50px;
+      height: 50px;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      transition: all 0.3s ease-in-out;
+    }
+
+    @media screen and (max-width: 576px),
+    (max-height: 500px) {
+      .player-controls__item {
+        font-size: 26px;
+        padding: 5px;
+        margin-right: 10px;
+        color: #acb8cc;
+        cursor: pointer;
+        width: 40px;
+        height: 40px;
+        margin-bottom: 0;
+      }
+    }
+
+    .player-controls__item::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: #fff;
+      transform: scale(0.5);
+      opacity: 0;
+      box-shadow: 0px 5px 10px 0px rgba(76, 70, 124, 0.2);
+      transition: all 0.3s ease-in-out;
+      transition: all 0.4s cubic-bezier(0.35, 0.57, 0.13, 0.88);
+    }
+
+    @media screen and (min-width: 500px) {
+      .player-controls__item:hover {
+        color: #532ab9;
+      }
+    }
+
+    @media screen and (min-width: 500px) {
+      .player-controls__item:hover::before {
+        opacity: 1;
+        transform: scale(1.3);
+      }
+    }
+
+    @media screen and (max-width: 576px),
+    (max-height: 500px) {
+      .player-controls__item:active {
+        color: #532ab9;
+      }
+    }
+
+    @media screen and (max-width: 576px),
+    (max-height: 500px) {
+      .player-controls__item:active::before {
+        opacity: 1;
+        transform: scale(1.3);
+      }
+    }
+
+    .player-controls__item .icon {
+      position: relative;
+      z-index: 2;
+    }
+
+    .player-controls__item.-xl {
+      margin-bottom: 0;
+      font-size: 95px;
+      /* filter: drop-shadow(0 2px 8px rgba(172, 184, 204, 0.3)); */
+      /* filter: drop-shadow(0 9px 6px rgba(172, 184, 204, 0.35)); */
+      filter: drop-shadow(0 11px 6px rgba(172, 184, 204, 0.45));
+      color: #fff;
+      width: auto;
+      height: auto;
+      display: inline-flex;
+    }
+
+    @media screen and (max-width: 576px),
+    (max-height: 500px) {
+      .player-controls__item.-xl {
+        margin-left: auto;
+        font-size: 75px;
+        margin-right: 0;
+      }
+    }
+
+    .player-controls__item.-xl:before {
+      display: none;
+    }
+
+    .player-controls__item.-favorite.active {
+      color: red;
+    }
+
+    [v-cloak] {
+      display: none;
+    }
+
+    [v-cloak]>* {
+      display: none;
+    }
+
+    .progress {
+      width: 100%;
+      margin-top: -15px;
+      user-select: none;
+    }
+
+    .progress__top {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+    }
+
+    .progress__duration {
+      color: #71829e;
+      font-weight: 700;
+      font-size: 20px;
+      opacity: 0.5;
+    }
+
+    .progress__time {
+      color: #71829e;
+      font-weight: 700;
+      font-size: 25px;
+    }
+
+    .progress__bar {
+      display: inline-block;
+      width: 100%;
+      height: 12px;
+      position: relative;
+      margin-top: 2px;
+      background: #d9e1ed;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .progress__current {
+      display: inline-block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 8px;
+      background: #3d5eff;
+    }
+
+    .progress__nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .progress__repeat {
+      font-size: 20px;
+      color: #71829e;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    @media screen and (max-width: 576px),
+    (max-height: 500px) {
+      .progress__repeat {
+        font-size: 18px;
+      }
+    }
+
+    .progress__repeat:hover {
+      opacity: 0.7;
+    }
+
+    .progress__volume {
+      width: 165px;
+      padding-left: 15px;
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      z-index: 2;
+    }
+
+    @media screen and (max-width: 576px),
+    (max-height: 500px) {
+      .progress__volume {
+        width: 140px;
+        padding-left: 5px;
+      }
+    }
+
+    .progress__volume .icon {
+      color: #71829e;
+      font-size: 25px;
+    }
+
+    .progress__volume .icon:active {
+      opacity: 0.7;
+    }
+
+    .progress__volume .icon.volume-none {
+      color: #d9e1ed;
+    }
+
+    .progress__volume-bar {
+      width: 100%;
+      height: 4px;
+      background: #d9e1ed;
+      border-radius: 2px;
+      position: relative;
+      margin-left: 10px;
+    }
+
+    .progress__volume-bar-item {
+      width: 100%;
+      height: 100%;
+      background: #3d5eff;
+      border-radius: 2px;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  </style>
+  <div class="wrapper" id="app">
+    <div class="player">
+      <div class="player__top">
+        <!-- Cover Image -->
+        <div class="player-cover">
+          <transition-group :name="transitionName">
+            <div class="player-cover__item" v-if="$index === currentTrackIndex"
+              :style="{ backgroundImage: `url(${track.cover})` }" v-for="(track, $index) in tracks" :key="$index">
             </div>
-            <div class="jcarousel">
-             <ul id="songs">
-                 <li class="song" data-audio="https://s3-us-west-2.amazonaws.com/s.cdpn.io/308622/Leo%20-%20Trying.mp3" data-color="#f38578">
-                           <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/308622/trying-album-cover.jpg">
-                           <p class="song-title">Trying</p>
-                           <p class="song-artist">Leo</p>
-                       </li>
-             </ul>
-            </div>
-            <audio crossorigin>
-                       <source src="" type="audio/mpeg">
-                   </audio>
-            <div id="controls">
-             <span id="previous-btn"><i class="fa fa-step-backward fa-fw" aria-hidden="true"></i></span>
-             <span id="play-btn"><i class="fa fa-play fa-fw" aria-hidden="true"></i></span>
-             <span id="next-btn"><i class="fa fa-step-forward fa-fw" aria-hidden="true"></i></span>
-            </div>
-            <div id="timeline">
-             <span id="current-time">--:--</span>
-             <span id="total-time">--:--</span>
-             <div class="slider" data-direction="horizontal">
-                       <div class="progress">
-                           <div class="pin" id="progress-pin" data-method="rewind"></div>
-                       </div>
-                   </div>
-            </div>
-            <div id="sub-controls">
-             <i class="fa fa-random" aria-hidden="true"></i>
-             <i class="fa fa-refresh" aria-hidden="true"></i>
-             <i class="fa fa-bluetooth-b active" id="bluetooth-btn" aria-hidden="true"></i>
-             <i class="fa fa-heart-o" id="heart-icon" aria-hidden="true"></i>
-            </div>
-           </div>
-           <div id="overlay"></div>
-          </div>
-          <div id="sidemenu">
-           <ul>
-            <li>
-             <i class="fa fa-search fa-fw" aria-hidden="true"></i>
-                    Search
-            </li>
-            <li>
-             <img class="svg menu-icons" src="https://emilcarlsson.se/assets/svg/music-player.svg" alt="">
-                    Playlists
-            </li>
-            <li>
-             <img id="album-icon" class="svg menu-icons" src="https://emilcarlsson.se/assets/svg/album-icon.svg" alt="">
-             Albums
-            </li>
-            <li>
-             <i class="fa fa-microphone fa-fw" aria-hidden="true"></i>
-             Artists
-            </li>
-                   <li>
-                       <i class="fa fa-podcast fa-fw" aria-hidden="true"></i>
-                       Podcasts
-                   </li>
-                   <li>
-                       <i class="fa fa-cog fa-fw" aria-hidden="true"></i>
-                       Settings
-                   </li>
-           </ul>
-          </div>
-            <div id="bluetooth-devices" class="menu">
-                   <span class="close-btn"><span>&times;</span> Close</span>
-                   <h3>Devices nearby</h3>
-                   <ul>
-                       <li class="connected">
-                           <img id="headphones-icon" class="svg menu-icons" src="https://emilcarlsson.se/assets/svg/headphone.svg" alt="">
-                           <p>
-                               Major II Bluetooth
-                               <span>Connected</span>
-                           </p>
-                       </li>
-                       <li>
-                           <img id="headphones-icon" class="svg menu-icons" src="https://emilcarlsson.se/assets/svg/loudspeaker.svg" alt="">
-                           <p>
-                               Sonos One
-                               <span>Connected</span>
-                           </p>
-                       </li>
-                       <li>
-                           <img id="headphones-icon" class="svg menu-icons" src="https://emilcarlsson.se/assets/svg/car.svg" alt="">
-                           <p>
-                               Kia Motors
-                               <span>Connected</span>
-                           </p>
-                       </li>
-                   </ul>
-                   <p class="info-text">
-                       Make sure your bluetooth device is turned on and in range.
-                   </p>
-               </div>
-            <div id="song-options" class="menu">
-                <span class="close-btn"><span>&times;</span> Close</span>
-                <div id="song-info">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/308622/rockstar-album-cover.jpg" alt="">
-                    <div class="artist-wrap">
-                        <p>
-                            <span class="title">rockstar</span>
-                           <span class="artist">Post Malone, 21 Savage</span>
-                        </p>
-                    </div>
-                </div>
-                <ul>
-                    <li>
-               <i class="fa fa-music fa-fw add" aria-hidden="true"></i>
-                       Add to playlist
-                   </li>
-                   <li>
-                       <i class="fa fa-microphone fa-fw" aria-hidden="true"></i>
-                       View Artist
-                   </li>
-            <li>
-             <img id="album-icon" class="svg menu-icons" src="https://emilcarlsson.se/assets/svg/compact-disc.svg" alt="">
-             View Album
-            </li>
-                   <li>
-                       <i class="fa fa-share-square-o fa-fw" aria-hidden="true"></i>
-                       Share
-                   </li>
-                </ul>
-            </div>
-            <div id="home-screen">
-               <div class="home-content">
-                   <h2>Music Player App</h2>
-                   <p id="made-by">Made by <a href="https://codepen.io/emilcarlsson">@emilcarlsson</a></p>
-                   <div class="app-icon">
-                       <img class="svg" src="https://emilcarlsson.se/assets/svg/music-note.svg" alt="">
-                   </div>
-                   <p id="icons-by">Icons by <a href="http://fontawesome.io/" title="Font Awesome">Font Awesome</a>, <a href="https://www.flaticon.com/authors/those-icons" title="Those Icons">Those Icons</a>,<br /><a href="https://www.flaticon.com/authors/epiccoders" title="EpicCoders">EpicCoders</a> & <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a></p>
-               </div>
-            </div>
-         </div>
-         <div id="home-btn"></div>
+          </transition-group>
         </div>
-       </div>
+
+        <!-- Player Controls -->
+        <div class="player-controls">
+          <!-- Favorite Button -->
+          <div class="player-controls__item -favorite" :class="{ active : currentTrack.favorited }" @click="favorite">
+            <svg class="icon">
+              <use xlink:href="#icon-heart-o"></use>
+            </svg>
+          </div>
+
+          <!-- External Link -->
+          <a :href="currentTrack.url" target="_blank" class="player-controls__item">
+            <svg class="icon">
+              <use xlink:href="#icon-link"></use>
+            </svg>
+          </a>
+
+          <!-- Previous Track Button -->
+          <div class="player-controls__item" @click="prevTrack">
+            <svg class="icon">
+              <use xlink:href="#icon-prev"></use>
+            </svg>
+          </div>
+
+          <!-- Next Track Button -->
+          <div class="player-controls__item" @click="nextTrack">
+            <svg class="icon">
+              <use xlink:href="#icon-next"></use>
+            </svg>
+          </div>
+
+          <!-- Play/Pause Button -->
+          <div class="player-controls__item -xl js-play" @click="play">
+            <svg class="icon">
+              <use xlink:href="#icon-pause" v-if="isTimerPlaying"></use>
+              <use xlink:href="#icon-play" v-else></use>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Progress Bar -->
+      <div class="progress" ref="progress">
+        <div class="progress__top">
+          <div class="album-info" v-if="currentTrack">
+            <div class="album-info__name">{{ currentTrack.artist }}</div>
+            <div class="album-info__track">{{ currentTrack.name }}</div>
+          </div>
+          <div class="progress__duration">{{ duration }}</div>
+        </div>
+        <div class="progress__bar" @click="clickProgress">
+          <div class="progress__current" :style="{ width : barWidth }"></div>
+        </div>
+        <div class="progress__time">{{ currentTime }}</div>
+      </div>
+    </div>
+
+    <!-- GitHub Link -->
+    <a href="https://github.com/muhammederdem/mini-player" target="_blank" class="github-btn">
+      See on GitHub
+    </a>
+  </div>
+
 </body>
 <script>
-    /*
- * Icons by:
- * Font Awesome – http://fontawesome.io/
- * Those Icons – https://www.flaticon.com/authors/those-icons
- * EpicCoders – https://www.flaticon.com/authors/epiccoders
- * Smashicons – https://www.flaticon.com/authors/smashicons
- */
+  document.addEventListener("DOMContentLoaded", function () {
+  // Music Player Object
+  const musicPlayer = {
+    audio: null,
+    tracks: [
+    {
+        name: "Mekanın Sahibi",
+        artist: "Norm Ender",
+        cover:
+          "https://raw.githubusercontent.com/muhammederdem/mini-player/master/img/1.jpg",
+        source:
+          "https://raw.githubusercontent.com/muhammederdem/mini-player/master/mp3/1.mp3",
+        url: "https://www.youtube.com/watch?v=z3wAjJXbYzA",
+        favorited: false,
+      },
+      {
+        name: "Everybody Knows",
+        artist: "Leonard Cohen",
+        cover:
+          "https://raw.githubusercontent.com/muhammederdem/mini-player/master/img/2.jpg",
+        source:
+          "https://raw.githubusercontent.com/muhammederdem/mini-player/master/mp3/2.mp3",
+        url: "https://www.youtube.com/watch?v=Lin-a2lTelg",
+        favorited: true,
+      },
+      {
+        name: "Extreme Ways",
+        artist: "Moby",
+        cover:
+          "https://raw.githubusercontent.com/muhammederdem/mini-player/master/img/3.jpg",
+        source:
+          "https://raw.githubusercontent.com/muhammederdem/mini-player/master/mp3/3.mp3",
+        url: "https://www.youtube.com/watch?v=ICjyAe9S54c",
+        favorited: false,
+      },
+      {
+        name: "Butterflies",
+        artist: "Sia",
+        cover:
+          "https://raw.githubusercontent.com/muhammederdem/mini-player/master/img/4.jpg",
+        source:
+          "https://raw.githubusercontent.com/muhammederdem/mini-player/master/mp3/4.mp3",
+        url: "https://www.youtube.com/watch?v=kYgGwWYOd9Y",
+        favorited: false,
+      },
+      {
+        name: "The Final Victory",
+        artist: "Haggard",
+        cover:
+          "https://raw.githubusercontent.com/muhammederdem/mini-player/master/img/5.jpg",
+        source:
+          "https://raw.githubusercontent.com/muhammederdem/mini-player/master/mp3/5.mp3",
+        url: "https://www.youtube.com/watch?v=0WlpALnQdN8",
+        favorited: true,
+      },
+      {
+        name: "Genius ft. Sia, Diplo, Labrinth",
+        artist: "LSD",
+        cover:
+          "https://raw.githubusercontent.com/muhammederdem/mini-player/master/img/6.jpg",
+        source:
+          "https://raw.githubusercontent.com/muhammederdem/mini-player/master/mp3/6.mp3",
+        url: "https://www.youtube.com/watch?v=HhoATZ1Imtw",
+        favorited: false,
+      },
+      {
+        name: "The Comeback Kid",
+        artist: "Lindi Ortega",
+        cover:
+          "https://raw.githubusercontent.com/muhammederdem/mini-player/master/img/7.jpg",
+        source:
+          "https://raw.githubusercontent.com/muhammederdem/mini-player/master/mp3/7.mp3",
+        url: "https://www.youtube.com/watch?v=me6aoX0wCV8",
+        favorited: true,
+      },
+      {
+        name: "Overdose",
+        artist: "Grandson",
+        cover:
+          "https://raw.githubusercontent.com/muhammederdem/mini-player/master/img/8.jpg",
+        source:
+          "https://raw.githubusercontent.com/muhammederdem/mini-player/master/mp3/8.mp3",
+        url: "https://www.youtube.com/watch?v=00-Rl3Jlx-o",
+        favorited: false,
+      },
+      {
+        name: "Rag'n'Bone Man",
+        artist: "Human",
+        cover:
+          "https://raw.githubusercontent.com/muhammederdem/mini-player/master/img/9.jpg",
+        source:
+          "https://raw.githubusercontent.com/muhammederdem/mini-player/master/mp3/9.mp3",
+        url: "https://www.youtube.com/watch?v=L3wKzyIN1yk",
+        favorited: false,
+      },
+    ],
+    currentTrackIndex: 0,
+    isTimerPlaying: false,
 
-$(document).ready(function () {
-	var songs = [
-		{
-			title: "rockstar",
-			artist: "Post Malone, 21 Savage",
-			cover: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/308622/rockstar-album-cover.jpg",
-			audioFile: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/308622/Post%20Malone%20-%20rockstar%20ft.%2021%20Savage%20(1).mp3",
-			color: "#c3af50"
-		},
-		{
-			title: "Let You Down",
-			artist: "NF",
-			cover: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/308622/perception-album-cover.png",
-			audioFile: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/308622/NF%20-%20Let%20You%20Down.mp3",
-			color: "#25323b"
-		},
-		{
-			title: "Silence",
-			artist: "Marshmello, Khalid",
-			cover: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/308622/silence-album-cover.jpg",
-			audioFile: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/308622/Marshmello%20-%20Silence%20ft.%20Khalid.mp3",
-			color: "#c1c1c1"
-		},
-		{
-			title: "I Fall Apart",
-			artist: "Post Malone",
-			cover: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/308622/stoney-cover-album.jpg",
-			audioFile: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/308622/Post%20Malone%20-%20I%20Fall%20Apart.mp3",
-			color: "#cd4829"
-		},
-		{
-			title: "Fireproof",
-			artist: "VAX, Teddy Sky",
-			cover: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/308622/fireproof-album-cover.jpeg",
-			audioFile: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/308622/VAX%20-%20Fireproof%20Feat%20Teddy%20Sky.mp3",
-			color: "#5d0126"
-		}
-	];
-	
-	for (let song of songs) {
-		$("#songs").append('<li class="song" data-audio="' + song.audioFile + '" data-color="'+ song.color +'">' + 
-			'<img src="' + song.cover + '">' +
-			'<p class="song-title">' + song.title + '</p>' +
-			'<p class="song-artist">' + song.artist + '</p>' + 
-			'</li>');
-	}
-	
-	$('.jcarousel').jcarousel({
-			wrap: 'circular'
-	});
+    // Method to initialize the player
+    init() {
+      this.audio = new Audio(this.tracks[this.currentTrackIndex].source);
+      this.updateTrackInfo();
+      this.addEventListeners();
+      this.preloadCovers();
+    },
+
+    // Method to update the track info displayed
+    updateTrackInfo() {
+      const track = this.tracks[this.currentTrackIndex];
+      document.getElementById("track-name").textContent = track.name;
+      document.getElementById("track-artist").textContent = track.artist;
+      document.getElementById("track-cover").src = track.cover;
+      document.getElementById("favorite").textContent = track.favorited ? "Unfavorite" : "Favorite";
+    },
+
+    // Method to add event listeners
+    addEventListeners() {
+      const playButton = document.getElementById("play");
+      const prevButton = document.getElementById("prev");
+      const nextButton = document.getElementById("next");
+      const favoriteButton = document.getElementById("favorite");
+      const progressBar = document.getElementById("progress-bar");
+
+      playButton.addEventListener("click", () => this.play());
+      prevButton.addEventListener("click", () => this.prevTrack());
+      nextButton.addEventListener("click", () => this.nextTrack());
+      favoriteButton.addEventListener("click", () => this.favorite());
+      progressBar.addEventListener("click", (e) => this.clickProgress(e));
+
+      this.audio.addEventListener("timeupdate", () => this.generateTime());
+      this.audio.addEventListener("loadedmetadata", () => this.generateTime());
+      this.audio.addEventListener("ended", () => this.nextTrack());
+    },
+
+    // Method to toggle play and pause
+    play() {
+      const playButton = document.getElementById("play");
+      if (this.audio.paused) {
+        this.audio.play();
+        this.isTimerPlaying = true;
+        playButton.textContent = "Pause";
+      } else {
+        this.audio.pause();
+        this.isTimerPlaying = false;
+        playButton.textContent = "Play";
+      }
+    },
+
+    // Method to generate and update time and progress bar
+    generateTime() {
+      const progress = document.getElementById("progress");
+      const currentTimeEl = document.getElementById("current-time");
+      const durationEl = document.getElementById("duration");
+
+      const width = (100 / this.audio.duration) * this.audio.currentTime;
+      progress.style.width = width + "%";
+
+      const curmin = Math.floor(this.audio.currentTime / 60);
+      const cursec = Math.floor(this.audio.currentTime % 60);
+      const durmin = Math.floor(this.audio.duration / 60);
+      const dursec = Math.floor(this.audio.duration % 60);
+
+      const formattedCurrentTime = `${curmin < 10 ? "0" : ""}${curmin}:${
+        cursec < 10 ? "0" : ""
+      }${cursec}`;
+      const formattedDuration = `${durmin < 10 ? "0" : ""}${durmin}:${
+        dursec < 10 ? "0" : ""
+      }${dursec}`;
+
+      currentTimeEl.textContent = formattedCurrentTime;
+      durationEl.textContent = formattedDuration;
+    },
+
+    // Method to handle progress bar click
+    clickProgress(e) {
+      const progressBar = document.getElementById("progress-bar");
+      const maxDuration = this.audio.duration;
+      const position = e.pageX - progressBar.offsetLeft;
+      const percentage = (100 * position) / progressBar.offsetWidth;
+
+      const newTime = (maxDuration * Math.min(Math.max(percentage, 0), 100)) / 100;
+      this.audio.currentTime = newTime;
+      this.audio.play();
+    },
+
+    // Method to skip to previous track
+    prevTrack() {
+      this.currentTrackIndex =
+        (this.currentTrackIndex > 0 ? this.currentTrackIndex - 1 : this.tracks.length - 1);
+      this.resetPlayer();
+    },
+
+    // Method to skip to next track
+    nextTrack() {
+      this.currentTrackIndex =
+        (this.currentTrackIndex < this.tracks.length - 1 ? this.currentTrackIndex + 1 : 0);
+      this.resetPlayer();
+    },
+
+    // Method to reset the player with the new track
+    resetPlayer() {
+      this.audio.src = this.tracks[this.currentTrackIndex].source;
+      this.audio.currentTime = 0;
+      this.updateTrackInfo();
+      setTimeout(() => {
+        if (this.isTimerPlaying) {
+          this.audio.play();
+        }
+      }, 300);
+    },
+
+    // Method to toggle favorite status
+    favorite() {
+      const track = this.tracks[this.currentTrackIndex];
+      track.favorited = !track.favorited;
+      this.updateTrackInfo(); // Update the favorite button text
+      console.log("Favorite status:", track.favorited);
+    },
+
+    // Method to preload track covers
+    preloadCovers() {
+      this.tracks.forEach((track) => {
+        const link = document.createElement("link");
+        link.rel = "prefetch";
+        link.href = track.cover;
+        link.as = "image";
+        document.head.appendChild(link);
+      });
+    },
+  };
+
+  // Initialize the music player
+  musicPlayer.init();
 });
 
-/*
- * Replace all SVG images with inline SVG
- */
-jQuery('img[src$=".svg"]').each(function(){
-	var $img = jQuery(this);
-	var imgID = $img.attr('id');
-	var imgClass = $img.attr('class');
-	var imgURL = $img.attr('src');
-
-	jQuery.get(imgURL, function(data) {
-		// Get the SVG tag, ignore the rest
-		var $svg = jQuery(data).find('svg');
-
-		// Add replaced image's ID to the new SVG
-		if(typeof imgID !== 'undefined') {
-			$svg = $svg.attr('id', imgID);
-		}
-		// Add replaced image's classes to the new SVG
-		if(typeof imgClass !== 'undefined') {
-			$svg = $svg.attr('class', imgClass+' replaced-svg');
-		}
-
-		// Remove any invalid XML tags as per http://validator.w3.org
-		$svg = $svg.removeAttr('xmlns:a');
-
-		// Replace image with new SVG
-		$img.replaceWith($svg);
-
-	}, 'xml');
-
-});
-
-// Current slide
-$('.jcarousel').on('jcarousel:visiblein', 'li', function(event, carousel) {
-	let cover = $(this).find("img").attr("src");
-	let songTitle = $(this).find("p.song-title").html();
-	let songArtist = $(this).find("p.song-artist").html();
-	let audioSrc = $(this).attr("data-audio");
-	let backgroundColor = $(this).attr("data-color");
-	$("body").css('background', backgroundColor)
-	$("#background").css('background-image', 'url('+cover+')');
-	$("audio").find("source").attr("src", ""+audioSrc+"");
-	player.load();
-	player.currentTime = 0;
-	$("#song-info").find("img").attr("src", cover);
-	$("#song-info .artist-wrap p").find("span.title").html(songTitle);
-	$("#song-info .artist-wrap p").find("span.artist").html(songArtist);
-});
-
-// Previous slide
-$('#previous-btn').click(function() {
-	$('.jcarousel').jcarousel('scroll', '-=1');
-	$('#play-btn i').removeClass('fa-pause');
-	player.pause();
-});
-
-// Next slide
-$('#next-btn').click(function() {
-	if ($(".fa-random").hasClass('active')) {
-		let songs = $("#songs li").length - 1;
-		let randomSong = Math.floor(Math.random() * songs) + 1;
-		$('.jcarousel').jcarousel('scroll', '+=' + randomSong);
-	} else {
-		$('.jcarousel').jcarousel('scroll', '+=1');
-	}
-	$('#play-btn i').removeClass('fa-pause');
-	player.pause();
-});
-
-// Play Icon Switcher
-$('#play-btn').click(function() {
-	$(this).find('i').toggleClass('fa-pause');
-});
-
-// Menu
-$("#menu-btn").click(function() {
-	$("#content-wrap").addClass('inactive');
-	$("#sidemenu").addClass('active');
-});
-
-// Home Button
-$("#home-btn").click(function() {
-	$("#home-screen").addClass('active');
-	$(".menu").removeClass('active');
-	$("#content-wrap").addClass('minimized');
-});
-
-// App
-$(".app-icon").click(function() {
-	$("#content-wrap").removeClass('minimized');
-	setTimeout(function(){ $("#home-screen").removeClass('active'); }, 300);
-});
-
-// Overlay
-$("#overlay").click(function () {
-	$("#content-wrap").removeClass('inactive');
-	$("#sidemenu").removeClass('active');
-});
-
-// Options
-$("#options-btn").click(function() {
-	$("#song-options").addClass('active');
-});
-
-// Bluetooth
-$("#bluetooth-btn").click(function() {
-	$("#bluetooth-devices").addClass('active');
-});
-
-// Bluetooth Menu
-$("#bluetooth-devices ul li").click(function() {
-	$(this).toggleClass('connected');
-	$(this).siblings().removeClass('connected');
-	
-	if ($("#bluetooth-devices ul li").hasClass('connected')) {
-		$("#sub-controls i.fa-bluetooth-b").addClass('active');
-	} else {
-		$("#sub-controls i.fa-bluetooth-b").removeClass('active');
-	}
-});
-
-// Close Menu
-$(".close-btn").click(function() {
-	$(".menu").removeClass('active');
-});
-
-$('#sub-controls i').click(function () {
-	if(!$(this).hasClass('fa-bluetooth-b')) {
-		$(this).toggleClass('active');
-	}
-	
-	if ($("#heart-icon").hasClass('active')) {
-		$("#heart-icon").removeClass('fa-heart-o');
-		$("#heart-icon").addClass('fa-heart');
-	} else {
-		$("#heart-icon").removeClass('fa-heart');
-		$("#heart-icon").addClass('fa-heart-o');
-	}
-});
-
-/*
- * Music Player
- * By Greg Hovanesyan
- * https://codepen.io/gregh/pen/NdVvbm
- */
-
-var audioPlayer = document.querySelector('#content');
-var playpauseBtn = audioPlayer.querySelector('#play-btn');
-var progress = audioPlayer.querySelector('.progress');
-var sliders = audioPlayer.querySelectorAll('.slider');
-var player = audioPlayer.querySelector('audio');
-var currentTime = audioPlayer.querySelector('#current-time');
-var totalTime = audioPlayer.querySelector('#total-time');
-
-var draggableClasses = ['pin'];
-var currentlyDragged = null;
-
-window.addEventListener('mousedown', function(event) {
-  
-  if(!isDraggable(event.target)) return false;
-  
-  currentlyDragged = event.target;
-  let handleMethod = currentlyDragged.dataset.method;
-  
-  this.addEventListener('mousemove', window[handleMethod], false);
-
-  window.addEventListener('mouseup', () => {
-    currentlyDragged = false;
-    window.removeEventListener('mousemove', window[handleMethod], false);
-  }, false);  
-});
-
-playpauseBtn.addEventListener('click', togglePlay);
-player.addEventListener('timeupdate', updateProgress);
-player.addEventListener('loadedmetadata', () => {
-  totalTime.textContent = formatTime(player.duration);
-});
-player.addEventListener('ended', function(){
-  player.currentTime = 0;
-	
-	if ($(".fa-refresh").hasClass('active')) {
-		togglePlay();
-	} else {
-		if ($(".fa-random").hasClass('active')) {
-			let songs = $("#songs li").length - 1;
-			let randomSong = Math.floor(Math.random() * songs) + 1;
-			$('.jcarousel').jcarousel('scroll', '+=' + randomSong);
-		} else {
-			$('.jcarousel').jcarousel('scroll', '+=1');
-		}
-		togglePlay();
-	}
-});
-
-sliders.forEach(slider => {
-  let pin = slider.querySelector('.pin');
-  slider.addEventListener('click', window[pin.dataset.method]);
-});
-
-function isDraggable(el) {
-  let canDrag = false;
-  let classes = Array.from(el.classList);
-  draggableClasses.forEach(draggable => {
-    if(classes.indexOf(draggable) !== -1)
-      canDrag = true;
-  })
-  return canDrag;
-}
-
-function inRange(event) {
-  let rangeBox = getRangeBox(event);
-  let direction = rangeBox.dataset.direction;
-	let screenOffset = document.querySelector("#screen").offsetLeft + 26;
-	var min = screenOffset - rangeBox.offsetLeft;
-	var max = min + rangeBox.offsetWidth;   
-	if(event.clientX < min || event.clientX > max) { return false };
-  return true;
-}
-
-function updateProgress() {
-  var current = player.currentTime;
-  var percent = (current / player.duration) * 100;
-  progress.style.width = percent + '%';
-  
-  currentTime.textContent = formatTime(current);
-}
-
-function getRangeBox(event) {
-  let rangeBox = event.target;
-  let el = currentlyDragged;
-  if(event.type == 'click' && isDraggable(event.target)) {
-    rangeBox = event.target.parentElement.parentElement;
-  }
-  if(event.type == 'mousemove') {
-    rangeBox = el.parentElement.parentElement;
-  }
-  return rangeBox;
-}
-
-function getCoefficient(event) {
-  let slider = getRangeBox(event);
-	let screenOffset = document.querySelector("#screen").offsetLeft + 26;
-  let K = 0;
-	let offsetX = event.clientX - screenOffset;
-	let width = slider.clientWidth;
-	K = offsetX / width;
-  return K;
-}
-
-function rewind(event) {
-  if(inRange(event)) {
-    player.currentTime = player.duration * getCoefficient(event);
-  }
-}
-
-function formatTime(time) {
-  var min = Math.floor(time / 60);
-  var sec = Math.floor(time % 60);
-  return min + ':' + ((sec<10) ? ('0' + sec) : sec);
-}
-
-function togglePlay() {
-	player.volume = 0.5;
-	
-  if(player.paused) {
-    player.play();
-  } else {
-    player.pause();
-  }  
-}
 </script>
+
 </html>
