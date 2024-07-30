@@ -1,56 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynamic Quiz</title>
-</head>
-<body>
-    <div id="quizContainer"></div>
-    <button id="submitBtn" onclick="calculateTotal()">Submit</button>
-    <p id="totalMarks"></p>
-
-    <script>
-        // Example questions array
-const questions = [
-    { question: "2 + 2 = ?", answer: 4 },
-    { question: "3 + 3 = ?", answer: 6 },
-    { question: "5 + 5 = ?", answer: 10 }
-];
-
-function generateQuiz() {
-    const quizContainer = document.getElementById('quizContainer');
-    questions.forEach((q, index) => {
-        const questionDiv = document.createElement('div');
-        const label = document.createElement('label');
-        label.setAttribute('for', 'q' + index);
-        label.textContent = `Question ${index + 1}: ${q.question}`;
-        
-        const input = document.createElement('input');
-        input.type = 'number';
-        input.id = 'q' + index;
-        input.name = 'q' + index;
-        
-        questionDiv.appendChild(label);
-        questionDiv.appendChild(input);
-        quizContainer.appendChild(questionDiv);
-    });
-}
-
-function calculateTotal() {
-    let totalMarks = 0;
-    questions.forEach((q, index) => {
-        const userAnswer = document.getElementById('q' + index).value;
-        if (parseInt(userAnswer) === q.answer) {
-            totalMarks += 1;
+    <title>Margin and Padding Example</title>
+    <style>
+        .container {
+            border: 2px solid black;
+            padding: 20px;
+            /* Padding inside the container */
+            margin: 30px;
+            /* Margin outside the container */
         }
-    });
-    document.getElementById('totalMarks').textContent = 'Total Marks: ' + totalMarks;
-}
 
-// Generate quiz on page load
-window.onload = generateQuiz;
 
-    </script>
+        .inner-box {
+            border: 2px solid red;
+            margin: 15px;
+            /* Margin outside the inner-box */
+            padding: 100px;
+            /* Padding inside the inner-box */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        1
+        <div class="inner-box">
+            2
+        </div>
+    </div>
 </body>
+
 </html>
