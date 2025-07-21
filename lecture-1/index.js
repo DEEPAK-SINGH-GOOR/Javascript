@@ -1,27 +1,34 @@
-console.log("deepak hello javascript");
+<button onclick="headClick()">H</button>
+<button onclick="tailClick()">T</button>
 
-let text = "w57 t2v 5v e59";
-let arr = text.split(" ");
-let final = [];
+<div id="flex"></div>
 
-for (let i = 0; i < arr.length; i++) {
-  let str = arr[i];
-  let letter = "";
-  let num = "";
+<script>
+    function headClick() {
+        let row = document.createElement("div");
+        row.style.display = "flex";
 
-  for (let j = 0; j < str.length; j++) {
-    if (isNaN(str[j])) {
-      letter += str[j];
-    } else {
-      num += str[j];
+        let h = document.createElement("p");
+        h.innerText = "H";
+
+        let t = document.createElement("p");
+        t.innerText = "";
+
+        row.append(h, t);
+        document.getElementById("flex").append(row);
     }
-  }
 
-  final.push([letter, Number(num)]);
-}
+    function tailClick() {
+        let row = document.createElement("div");
+        row.style.display = "flex";
 
-final.sort(); // sort by letters
+        let h = document.createElement("p");
+        h.innerText = "";
 
-let onlyNumber = final.map(x => x[1]);
+        let t = document.createElement("p");
+        t.innerText = "T";
 
-console.log("Only Numbers:", onlyNumber); // [59, 5, 2, 57]
+        row.append(h, t);
+        document.getElementById("flex").append(row);
+    }
+</script>
