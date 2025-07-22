@@ -1,36 +1,73 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Head Tail Column Task</title>
+  <title>Simple </title>
 </head>
 <body>
 
-  <button onclick="addValue('H')">H</button>
-  <button onclick="addValue('T')">T</button>
+  <select id="country">
+    <option>Select Country</option>
+  </select>
 
-  <div id="container" style="display: flex;"></div>
+  <select id="state">
+    <option>Select State</option>
+  </select>
+
+  <select id="city">
+    <option>Select City</option>
+  </select>
 
   <script>
-    let last = "";
-    let currentColumn = null;
+    async function setupDropdowns() {
+      let res = await fetch("https://countriesnow.space/api/v0.1/countries/states");
+      let json = await res.json();
+      let data = json.data;
 
-    function addValue(val) {
-      if (val !== last) {
-        // Create new column if value changed
-        currentColumn = document.createElement("div");
-        currentColumn.style.marginRight = "10px";
-        document.getElementById("container").appendChild(currentColumn);
-      }
+      let countrySelect = document.getElementById("country");
+      let stateSelect = document.getElementById("state");
+      let citySelect = document.getElementById("city");
 
-      let box = document.createElement("div");
-      box.innerText = val;
-      box.style.border = "1px solid black";
-      box.style.padding = "10px";
-      box.style.marginBottom = "5px";
-      currentColumn.appendChild(box);
+      data.forEach(country => {
+        let opt = document.createElement("option");
+        opt.textContent = country.name;
+        countrySelect.append(opt);
+      });
 
-      last = val;
+      countrySelect.addEventListener("change", function () {
+        stateSelect.innerHTML = "<option>Select State</option>";
+        citySelect.innerHTML = "<option>Select City</option>";
+        let selected = this.value;
+        let found = data.find(c => c.name === selected);
+        if (found) {
+          found.states.forEach(state => {
+            let opt = document.createElement("option");
+            opt.textContent = state.name;
+            stateSelect.append(opt);
+          });
+        }
+      });
+
+      stateSelect.addEventListener("change", async function () {
+        citySelect.innerHTML = "<option>Select City</option>";
+        let country = countrySelect.value;
+        let state = stateSelect.value;
+
+        let cityRes = await fetch("https://countriesnow.space/api/v0.1/countries/state/cities", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ country, state })
+        });
+
+        let cityJson = await cityRes.json();
+        cityJson.data.forEach(city => {
+          let opt = document.createElement("option");
+          opt.textContent = city;
+          citySelect.append(opt);
+        });
+      });
     }
+
+    setupDropdowns();
   </script>
 
 </body>
