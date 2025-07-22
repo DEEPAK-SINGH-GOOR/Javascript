@@ -1,34 +1,29 @@
-<button onclick="headClick()">H</button>
-<button onclick="tailClick()">T</button>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dropdown Log Example</title>
+</head>
+<body>
 
-<div id="flex"></div>
+  <label for="mySelect">Choose one:</label>
+  <select id="mySelect">
+    <option value="">-- Select Option --</option>
+    <option value="A">A</option>
+    <option value="B">B</option>
+    <option value="C">C</option>
+    <option value="D">D</option>
+  </select>
 
-<script>
-    function headClick() {
-        let row = document.createElement("div");
-        row.style.display = "flex";
+  <script>
+    const dropdown = document.getElementById("mySelect");
 
-        let h = document.createElement("p");
-        h.innerText = "H";
+    dropdown.addEventListener("change", function () {
+      const selectedValue = dropdown.value;
+      if (selectedValue) {
+        console.log("You selected:", selectedValue);
+      }
+    });
+  </script>
 
-        let t = document.createElement("p");
-        t.innerText = "";
-
-        row.append(h, t);
-        document.getElementById("flex").append(row);
-    }
-
-    function tailClick() {
-        let row = document.createElement("div");
-        row.style.display = "flex";
-
-        let h = document.createElement("p");
-        h.innerText = "";
-
-        let t = document.createElement("p");
-        t.innerText = "T";
-
-        row.append(h, t);
-        document.getElementById("flex").append(row);
-    }
-</script>
+</body>
+</html>
