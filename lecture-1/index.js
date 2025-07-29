@@ -1,12 +1,25 @@
 <script>
 let str = "a123 9x b78 7k l56";
-let words = str.split(" ");
-let a = [], b = [];
+let string = str.split(" ");
 
-for (let i = 0; i < words.length; i++) {
-  let w = words[i];
-  if (w[0] > "0") a.push(+w.slice(1));
-  else if (w[w.length - 1] > "0") b.push(+w.slice(0, w.length - 1));
+let a = [];
+let b = [];
+
+for (let i = 0; i < string.length; i++) {
+  let store = string[i];
+  let temp = "";
+
+  for (let j = 0; j < store.length; j++) {
+    if (store[j] >= "0" && store[j] <= "9") {
+      temp += store[j];
+    }
+  }
+
+  if (store[0] >= "A") {
+    a.push(Number(temp));
+  } else {
+    b.push(Number(temp));
+  }
 }
 
 let sumA = a.reduce((x, y) => x + y, 0);
@@ -14,6 +27,10 @@ let sumB = b.reduce((x, y) => x + y, 0);
 let avgA = sumA / a.length;
 let avgB = sumB / b.length;
 
-let result = Math.round((sumA - sumB) + (avgA - avgB));
-console.log(result); // 318
+let diff1 = sumA - sumB;
+let diff2 = avgA - avgB;
+let total = diff1 + diff2;
+
+let final = Math.round(total);
+console.log(final); // 318
 </script>
