@@ -1,24 +1,12 @@
-import React from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import Home from "./Home";
-import Login from "./Login";
-import Dashboard from "./Dashboard";
+const inputHandle = (e) => {
+  const { name, value, type, checked } = e.target;
 
-function App() {
-  const isLoggedIn = false; // change to true to simulate login
-
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route
-          path="/dashboard"
-          element={isLoggedIn ? <Dashboard /> : <Navigate to="/login" />}
-        />
-      </Routes>
-    </BrowserRouter>
-  );
-}
-
-export default App;
+  if (name === "language") {
+    let langs = user.language || [];
+    if (checked) langs.push(value);
+    else langs = langs.filter((l) => l !== value);
+    setUser({ ...user, language: langs });
+  } else {
+    setUser({ ...user, [name]: value });
+  }
+};
