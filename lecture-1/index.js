@@ -123,3 +123,26 @@ export default LanguageForm;
 // };
 
 // export default ImageUploadTable;
+EDIT
+
+// 🟩 State to track which item is being edited
+const [editIndex, setEditIndex] = useState(null);
+
+// 🟩 Edit button function
+function editItem(index) {
+  setUser(list[index]);
+  setEditIndex(index);
+}
+
+// 🟩 Modified submit function (update if editing)
+function submitHandle(e) {
+  e.preventDefault();
+  if (editIndex !== null) {
+    list[editIndex] = user;
+    setList([...list]);
+    setEditIndex(null);
+  } else {
+    setList([...list, user]);
+  }
+  setUser(User);
+}
