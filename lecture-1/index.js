@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import "./Home.css";
+
 const CrudApp = () => {
-  const initialUser = {
+  const User = {
     name: "",
     last: "",
     rollNo: "",
@@ -13,15 +15,12 @@ const CrudApp = () => {
     image: "",
   };
 
-  const [user, setUser] = useState(initialUser);
+  const [user, setUser] = useState(User);
   const [list, setList] = useState([]);
   const [editIndex, setEditIndex] = useState(null);
   const [errors, setErrors] = useState({});
-  const [filters, setFilters] = useState({
-    gender: "",
-    country: "",
-    language: "",
-  });
+  const [filters, setFilters] = useState({});
+  const [searchItem, setSearchItem] = useState("");
 
   const inputHandle = (e) => {
     const { name, value } = e.target;
@@ -32,15 +31,10 @@ const CrudApp = () => {
     const { name, value, checked } = e.target;
     if (name === "language") {
       const current = user.language || [];
-      let updated = [];
-
-      if (checked) {
-        updated = [...current, value];
-      } else {
-        updated = current.filter((lang) => lang !== value);
-      }
-
-      setUser({ ...user, [name]: updated });
+      const updated = checked
+        ? [...current, value]
+        : current.filter((lang) => lang !== value);
+      setUser({ ...user, language: updated });
     }
   };
 
@@ -52,15 +46,22 @@ const CrudApp = () => {
 
   const validateForm = (data) => {
     const errors = {};
-    if (!data.name.trim()) errors.name = "Name is required!";
-    if (!data.last.trim()) errors.last = "Last name is required!";
-    if (!data.rollNo.trim()) errors.rollNo = "Roll No is required!";
-    if (!data.email.trim()) {
+
+    // ✅ FIXED: Name must contain only letters
+    if (!data.name) {
+      errors.name = "First Name is required!";
+    } else if (!/^[A-Za-z]+$/.test(data.name)) {
+      errors.name = "Only letters allowed in First Name!";
+    }
+
+    if (!data.last) errors.last = "Last name is required!";
+    if (!data.rollNo) errors.rollNo = "Roll No is required!";
+    if (!data.email) {
       errors.email = "Email is required!";
     } else if (!/\S+@\S+\.\S+/.test(data.email)) {
       errors.email = "Invalid email!";
     }
-    if (!data.contact.trim()) {
+    if (!data.contact) {
       errors.contact = "Contact is required!";
     } else if (data.contact.length !== 10) {
       errors.contact = "Contact must be 10 digits!";
@@ -71,6 +72,7 @@ const CrudApp = () => {
     if (!data.language || data.language.length === 0) {
       errors.language = "Select at least one language!";
     }
+
     return errors;
   };
 
@@ -89,13 +91,8 @@ const CrudApp = () => {
       setList([...list, user]);
     }
 
-    setUser(initialUser);
+    setUser(User);
     setErrors({});
-  };
-
-  const deleteItem = (index) => {
-    const filtered = list.filter((_, i) => i !== index);
-    setList(filtered);
   };
 
   const editItem = (index) => {
@@ -103,22 +100,27 @@ const CrudApp = () => {
     setEditIndex(index);
   };
 
-  // ✅ Filtered List based on selected filters
-  const filteredList = list.filter((item) => {
-    const genderMatch =
-      !filters.gender || item.gender === filters.gender;
-    const countryMatch =
-      !filters.country || item.country === filters.country;
-    const languageMatch =
-      !filters.language || item.language.includes(filters.language);
+  const deleteItem = (index) => {
+    const updated = [...list];
+    updated.splice(index, 1);
+    setList(updated);
+  };
 
-    return genderMatch && countryMatch && languageMatch;
-  });
+  // ✅ FIXED: Apply search on `list`, not on `user`
+  const filteredList = list
+    .filter((item) => {
+      const Gender = !filters.gender || item.gender === filters.gender;
+      const Country = !filters.country || item.country === filters.country;
+      const Language =
+        !filters.language || item.language.includes(filters.language);
+      return Gender && Country && Language;
+    })
+    .filter((item) =>
+      item.name.toLowerCase().includes(searchItem.toLowerCase())
+    );
 
-  // ✅ UI Render
   return (
     <div>
-      <h2>CRUD App</h2>
       <form onSubmit={submitHandle}>
         <input
           type="text"
@@ -127,7 +129,8 @@ const CrudApp = () => {
           value={user.name}
           onChange={inputHandle}
         />
-        {errors.name && <p>{errors.name}</p>}
+        <span style={{ color: "red" }}>{errors.name}</span>
+        <br />
 
         <input
           type="text"
@@ -136,7 +139,8 @@ const CrudApp = () => {
           value={user.last}
           onChange={inputHandle}
         />
-        {errors.last && <p>{errors.last}</p>}
+        <span style={{ color: "red" }}>{errors.last}</span>
+        <br />
 
         <input
           type="text"
@@ -145,7 +149,8 @@ const CrudApp = () => {
           value={user.rollNo}
           onChange={inputHandle}
         />
-        {errors.rollNo && <p>{errors.rollNo}</p>}
+        <span style={{ color: "red" }}>{errors.rollNo}</span>
+        <br />
 
         <input
           type="email"
@@ -154,7 +159,8 @@ const CrudApp = () => {
           value={user.email}
           onChange={inputHandle}
         />
-        {errors.email && <p>{errors.email}</p>}
+        <span style={{ color: "red" }}>{errors.email}</span>
+        <br />
 
         <input
           type="text"
@@ -163,28 +169,16 @@ const CrudApp = () => {
           value={user.contact}
           onChange={inputHandle}
         />
-        {errors.contact && <p>{errors.contact}</p>}
+        <span style={{ color: "red" }}>{errors.contact}</span>
+        <br />
 
-        <div>
-          <label>Gender:</label>
-          <input
-            type="radio"
-            name="gender"
-            value="male"
-            checked={user.gender === "male"}
-            onChange={inputHandle}
-          />
-          Male
-          <input
-            type="radio"
-            name="gender"
-            value="female"
-            checked={user.gender === "female"}
-            onChange={inputHandle}
-          />
-          Female
-          {errors.gender && <p>{errors.gender}</p>}
-        </div>
+        <select name="gender" value={user.gender} onChange={inputHandle}>
+          <option value="">Select Gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+        <span style={{ color: "red" }}>{errors.gender}</span>
+        <br />
 
         <input
           type="date"
@@ -192,22 +186,20 @@ const CrudApp = () => {
           value={user.date}
           onChange={inputHandle}
         />
-        {errors.date && <p>{errors.date}</p>}
+        <span style={{ color: "red" }}>{errors.date}</span>
+        <br />
 
-        <select
-          name="country"
-          value={user.country}
-          onChange={inputHandle}
-        >
+        <select name="country" value={user.country} onChange={inputHandle}>
           <option value="">Select Country</option>
-          <option value="India">India</option>
-          <option value="USA">USA</option>
-          <option value="Canada">Canada</option>
+          <option value="india">India</option>
+          <option value="usa">USA</option>
+          <option value="china">China</option>
         </select>
-        {errors.country && <p>{errors.country}</p>}
+        <span style={{ color: "red" }}>{errors.country}</span>
+        <br />
 
-        <div>
-          <label>Language:</label>
+        <label>Languages:</label>
+        <label>
           <input
             type="checkbox"
             name="language"
@@ -216,6 +208,8 @@ const CrudApp = () => {
             onChange={inputHandleLanguage}
           />
           English
+        </label>
+        <label>
           <input
             type="checkbox"
             name="language"
@@ -224,88 +218,76 @@ const CrudApp = () => {
             onChange={inputHandleLanguage}
           />
           Hindi
+        </label>
+        <label>
           <input
             type="checkbox"
             name="language"
-            value="spanish"
-            checked={user.language.includes("spanish")}
+            value="gujarati"
+            checked={user.language.includes("gujarati")}
             onChange={inputHandleLanguage}
           />
-          Spanish
-          {errors.language && <p>{errors.language}</p>}
-        </div>
+          Gujarati
+        </label>
+        <span style={{ color: "red" }}>{errors.language}</span>
+        <br />
 
-        <input
-          type="file"
-          accept="image/*"
-          onChange={imageHandler}
-        />
+        <input type="file" onChange={imageHandler} />
+        <br />
 
-        <button type="submit">
-          {editIndex !== null ? "Update" : "Add"}
-        </button>
+        <button type="submit">Submit</button>
       </form>
 
-      {/* ✅ Filter UI */}
-      <h3>Filters</h3>
-      <select
-        name="gender"
-        value={filters.gender}
-        onChange={(e) =>
-          setFilters({ ...filters, gender: e.target.value })
-        }
-      >
-        <option value="">All Genders</option>
-        <option value="male">Male</option>
-        <option value="female">Female</option>
-      </select>
+      <hr />
 
-      <select
-        name="country"
-        value={filters.country}
-        onChange={(e) =>
-          setFilters({ ...filters, country: e.target.value })
-        }
-      >
-        <option value="">All Countries</option>
-        <option value="India">India</option>
-        <option value="USA">USA</option>
-        <option value="Canada">Canada</option>
-      </select>
+      <div>
+        <input
+          type="text"
+          placeholder="Search by name..."
+          value={searchItem}
+          onChange={(e) => setSearchItem(e.target.value)}
+        />
+      </div>
 
-      <select
-        name="language"
-        value={filters.language}
-        onChange={(e) =>
-          setFilters({ ...filters, language: e.target.value })
-        }
-      >
-        <option value="">All Languages</option>
-        <option value="english">English</option>
-        <option value="hindi">Hindi</option>
-        <option value="spanish">Spanish</option>
-      </select>
-
-      {/* ✅ Display Filtered Users */}
-      <h3>Users List</h3>
-      {filteredList.map((item, index) => (
-        <div key={index}>
-          <p>
-            {item.name} {item.last} ({item.gender}) - {item.country}
-          </p>
-          <p>Languages: {item.language.join(", ")}</p>
-          {item.image && (
-            <img
-              src={item.image}
-              alt="User"
-              width="100"
-              height="100"
-            />
-          )}
-          <button onClick={() => editItem(index)}>Edit</button>
-          <button onClick={() => deleteItem(index)}>Delete</button>
-        </div>
-      ))}
+      <table border="1">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Last</th>
+            <th>Roll No</th>
+            <th>Email</th>
+            <th>Contact</th>
+            <th>Gender</th>
+            <th>Date</th>
+            <th>Country</th>
+            <th>Languages</th>
+            <th>Profile</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {filteredList.map((item, index) => (
+            <tr key={index}>
+              <td>{item.name}</td>
+              <td>{item.last}</td>
+              <td>{item.rollNo}</td>
+              <td>{item.email}</td>
+              <td>{item.contact}</td>
+              <td>{item.gender}</td>
+              <td>{item.date}</td>
+              <td>{item.country}</td>
+              <td>{item.language.join(", ")}</td>
+              <td>
+                <img src={item.image} width="50" height="50" alt="profile" />
+              </td>
+              <td>
+                <button onClick={() => editItem(index)}>Edit</button>
+                <button onClick={() => deleteItem(index)}>Delete</button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };
