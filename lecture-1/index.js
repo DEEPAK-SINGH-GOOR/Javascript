@@ -3,50 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Redux Theory Notes</title>
 </head>
 <body>
     <!-- 
-    1) what is redux ?
-    => a container where you can store your whole application data
-    => so we call it to state management 
-    => it not belong to the component state it like a array 
-    => Alternative context Api 
-    => it store whole application data  
+    1) What is Redux?
+    => Redux is a state management library used to store and manage the entire application's data in one place.
+    => It does not belong to any single component's state; it is global.
+    => Alternative to Context API for larger applications.
+    => Stores whole application data and follows unidirectional data flow.
 
-    2) four main Piller ?
-    => action , reducer , store , view
-    => view is react components (btn , image , color , input box , checkbox)
-    => action mean collect data from view & Api 
-    => recive (filter) data from action and send to store
-    => store manage whole data also take data 
-    Note : One application has one Store only
-    => unidirectional data flow == action == reducer == store == view in one flow 
+    2) Four Main Pillars:
+    => Action, Reducer, Store, View
+       - View: React components (buttons, images, inputs, checkboxes, etc.).
+       - Action: Collects data from View & API, then sends to Reducer.
+       - Reducer: Processes action data and returns new state to Store.
+       - Store: Manages the whole application state and provides it to Views.
+    Note: One application has only one Store.
+    Flow: View → Action → Reducer → Store → View
 
-    3) How to install Redux 
-    => npm create vite@letest my-app
+    3) How to Install Redux:
+    => npm create vite@latest my-app
     => npm install @reduxjs/toolkit react-redux
-    => npm run dev 
+    => npm run dev
+
+    4) What is Props?
+    => Props are used to send data from one component to another.
+    => Helps communicate between components.
+    Note: With Redux, components often access data directly from the Store instead of passing via props.
+
+    5) What is Action?
+    => An object that sends data from a React component (View) or API to the Redux Store.
+
+    6) What is Dispatch?
+    => A function in Redux used to send an action to the Store so Reducers can update the state.
+
+    7) What is Reducer?
+    => A pure function that takes the current state and an action, and returns a new state.
     
-    4) What is Props 
-    => to send data to one components to another components it call props to comunicate two components 
-    
-    Note: with using redux we use components with container 
+    8) What is Store?
+    => The centralized container that holds the entire application’s state.
+    => Created using configureStore() in Redux Toolkit.
+    => One store per application.
 
-    5) What is Action 
-    => send data to react components to Redux store  
-
-    6) what is Dispatch 
-    => In Redux, dispatch is a function used to send an action to the store so reducers can update the state.
-
-    7) what is Reducer 
-    => push action data to redux store 
-
-
-
-
-
-
+    9) What is View?
+    => The UI layer (React components) that displays data from the Store and sends actions to Redux.
     -->
 </body>
-</html>`
+</html>
