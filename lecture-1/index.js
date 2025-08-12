@@ -1,25 +1,50 @@
 import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { addTodo, removeTodo } from "./crudAction";
+import { createStore } from "redux";
+import { Provider, useDispatch, useSelector } from "react-redux";
 
-export default function App() {
-  const [todo, setTodo] = useState({ name: "", description: "" });
+// Reducer
+const initialState = {
+  todos: []
+};
 
+function todoReducer(state = initialState, action) {
+  switch (action.type) {
+    case "ADD_TODO":
+      return { ...state, todos: [...state.todos, action.payload] };
+    case "REMOVE_TODO":
+      return {
+        ...state,
+        todos: state.todos.filter((todo) => todo.id !== action.payload)
+      };
+    default:
+      return state;
+  }
+}
+
+// Store
+const store = createStore(todoReducer);
+
+// Actions
+const addTodo = (todo) => ({
+  type: "ADD_TODO",
+  payload: todo
+});
+
+const removeTodo = (id) => ({
+  type: "REMOVE_TODO",
+  payload: id
+});
+
+// Component
+function TodoApp() {
+  const [text, setText] = useState("");
   const dispatch = useDispatch();
   const todos = useSelector((state) => state.todos);
 
   const handleAddTodo = () => {
-    if (!todo.name || !todo.description) return;
-
-    dispatch(
-      addTodo({
-        id: Date.now(),
-        name: todo.name,
-        description: todo.description,
-      })
-    );
-
-    setTodo({ name: "", description: "" });
+    if (!text.trim()) return;
+    dispatch(addTodo({ id: Date.now(), text }));
+    setText("");
   };
 
   const handleRemoveTodo = (id) => {
@@ -27,43 +52,33 @@ export default function App() {
   };
 
   return (
-    <div id="app">
+    <div>
       <h2>Redux CRUD</h2>
-
       <input
         type="text"
-        placeholder="Enter Name"
-        value={todo.name}
-        onChange={(e) => setTodo({ ...todo, name: e.target.value })}
-      />
-      <input
-        type="text"
-        placeholder="Enter Description"
-        value={todo.description}
-        onChange={(e) => setTodo({ ...todo, description: e.target.value })}
+        placeholder="Enter Task"
+        value={text}
+        onChange={(e) => setText(e.target.value)}
       />
       <button onClick={handleAddTodo}>Add</button>
 
       <ul>
-        {todos &&
-          todos.map((t) => (
-            <li key={t.id}>
-              <strong>{t.name}</strong> — {t.description}
-              <button onClick={() => handleRemoveTodo(t.id)}>Remove</button>
-            </li>
-          ))}
+        {todos.map((todo) => (
+          <li key={todo.id}>
+            {todo.text}{" "}
+            <button onClick={() => handleRemoveTodo(todo.id)}>Remove</button>
+          </li>
+        ))}
       </ul>
     </div>
   );
-                    }
+}
 
-
-
-// update
-// reducers.js
-import todoReducer from "./components/Home/crudReducer";
-
-export default todoReducer;
-{
-  todos: [...]
-                    }
+// Main App
+export default function App() {
+  return (
+    <Provider store={store}>
+      <TodoApp />
+    </Provider>
+  );
+}
