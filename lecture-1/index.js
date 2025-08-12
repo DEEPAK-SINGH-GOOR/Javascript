@@ -56,3 +56,14 @@ export default function App() {
     </div>
   );
                     }
+
+
+
+// update
+// reducers.js
+import todoReducer from "./components/Home/crudReducer";
+
+export default todoReducer;
+{
+  todos: [...]
+                    }
