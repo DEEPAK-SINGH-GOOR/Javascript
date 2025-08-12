@@ -49,5 +49,76 @@
     9) What is View?
     => The UI layer (React components) that displays data from the Store and sends actions to Redux.
     -->
+        <script>
+            import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getItems } from "../../action/crudAction";
+import './home.css';
+
+export default function Home() {
+  const dispatch = useDispatch();
+  const { lists } = useSelector(state => state.lists);
+
+  console.log("Redux lists state:", lists);
+
+  useEffect(() => {
+    console.log("Dispatching getItems action...");
+    dispatch(getItems());
+  }, [dispatch]);
+
+  return (
+    <div>
+      {lists && lists.map(list => {
+        console.log("Rendering list item:", list);
+        return <div key={list.id}>{list.title}</div>;
+      })}
+    </div>
+  );
+}
+
+//CRUD REDUCER 
+const LIST_ITEM = "LIST_ITEM";
+
+const initialState = {
+  lists: [],
+  item: {},
+};
+
+export default function rootReducer(state = initialState, action) {
+  console.log("Reducer called with action:", action); // Logs every action
+  console.log("Current state before update:", state);
+
+  switch (action.type) {
+    case LIST_ITEM:
+      console.log("LIST_ITEM action detected");
+      console.log("Payload received:", action.payload);
+
+      return {
+        ...state,
+        lists: action.payload,
+      };
+
+    default:
+      console.log("No matching action type, returning current state");
+      return state;
+  }
+}
+//INDEX.JS
+import { combineReducers } from "redux";
+import crudReducer from "./crudReducers";
+
+console.log("Combining reducers...");
+
+const rootReducer = combineReducers({
+    lists: crudReducer
+});
+
+console.log("Initial combined state shape:", {
+    lists: crudReducer(undefined, {}) // simulate initial state
+});
+
+export default rootReducer;
+
+        </script>
 </body>
 </html>
