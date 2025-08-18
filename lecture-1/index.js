@@ -1,135 +1,105 @@
-import React, { useState } from "react";
-import ReactDOM from "react-dom";
-import { Provider, useDispatch, useSelector } from "react-redux";
-import { configureStore } from "@reduxjs/toolkit";
-import { persistStore, persistReducer } from "redux-persist";
-import storage from "redux-persist/lib/storage";
-import { combineReducers } from "redux";
-import { PersistGate } from "redux-persist/integration/react";
+import "./Login.css";
+import { Link, useNavigate } from "react-router";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { login } from "../features/userSlice";
 
-// ---------------- Reducer ----------------
-const initialState = { todos: [] };
-
-function todoReducer(state = initialState, action) {
-  switch (action.type) {
-    case "ADD_TODO":
-      return { ...state, todos: [...state.todos, action.payload] };
-    case "REMOVE_TODO":
-      return { ...state, todos: state.todos.filter(todo => todo.id !== action.payload) };
-    case "EDIT_TODO":
-      return {
-        ...state,
-        todos: state.todos.map(todo =>
-          todo.id === action.payload.id ? action.payload : todo
-        ),
-      };
-    default:
-      return state;
-  }
-}
-
-// ---------------- Root Reducer ----------------
-const rootReducer = combineReducers({
-  counter: todoReducer
-});
-
-// ---------------- Persist Config ----------------
-const persistConfig = {
-  key: "root",
-  storage
-};
-
-const persistedReducer = persistReducer(persistConfig, rootReducer);
-
-// ---------------- Store & Persistor ----------------
-const store = configureStore({
-  reducer: persistedReducer
-});
-const persistor = persistStore(store);
-
-// ---------------- App Component ----------------
-function App() {
-  const User = {
-    firstName: "",
-    lastName: "",
-    rollNo: "",
-    email: "",
-    contact: "",
-  };
-
-  const [todo, setTodo] = useState(User);
-  const [edit, setEdit] = useState(null);
-
+const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const dispatch = useDispatch();
-  const todos = useSelector(state => state.counter.todos);
-
-  function handleAdd() {
-    if (edit) {
-      dispatch({ type: "EDIT_TODO", payload: { ...todo, id: edit } });
-      setEdit(null);
-    } else {
-      dispatch({ type: "ADD_TODO", payload: { ...todo, id: Date.now() } });
-    }
-    setTodo(User);
-  }
-
-  function handleRemove(id) {
-    dispatch({ type: "REMOVE_TODO", payload: id });
-  }
-
-  function handleEdit(item) {
-    setTodo(item);
-    setEdit(item.id);
-  }
-
+  const navigate = useNavigate(); 
+  const handelSubmit = (e) => {
+    e.preventDefault();
+    dispatch(
+      login({
+        email: email,
+        password: password,
+      })
+    );
+    navigate("/home");
+  };
   return (
-    <div style={{ padding: 20 }}>
-      <input
-        placeholder="First Name"
-        value={todo.firstName}
-        onChange={e => setTodo({ ...todo, firstName: e.target.value })}
-      />
-      <input
-        placeholder="Last Name"
-        value={todo.lastName}
-        onChange={e => setTodo({ ...todo, lastName: e.target.value })}
-      />
-      <input
-        placeholder="Roll No"
-        value={todo.rollNo}
-        onChange={e => setTodo({ ...todo, rollNo: e.target.value })}
-      />
-      <input
-        placeholder="Email"
-        value={todo.email}
-        onChange={e => setTodo({ ...todo, email: e.target.value })}
-      />
-      <input
-        placeholder="Contact"
-        value={todo.contact}
-        onChange={e => setTodo({ ...todo, contact: e.target.value })}
-      />
-      <button onClick={handleAdd}>{edit ? "Update" : "Add"}</button>
-
-      <ul>
-        {todos.map(item => (
-          <li key={item.id}>
-            {item.firstName} {item.lastName} - {item.email} - {item.contact}
-            <button onClick={() => handleEdit(item)}>Edit</button>
-            <button onClick={() => handleRemove(item.id)}>Remove</button>
-          </li>
-        ))}
-      </ul>
+    <div>
+      <div className="flex justify-center pt-25 ">
+        <div className="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
+          <form className="space-y-6" onSubmit={(e) => handelSubmit(e)}>
+            <div className="">
+              <h4 className="text-3xl font-medium text-gray-900 dark:text-white">
+                Login
+              </h4>
+            </div>
+            <div>
+              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                Enter email
+              </label>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                id="email"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                placeholder="Enter email Address..."
+              />
+              <p className="mt-2 text-sm text-red-600 dark:text-red-500">
+                {/* <span className="font-medium">Email  !</span>  */}
+              </p>
+            </div>
+            <div>
+              <label
+              
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >
+                Enter password
+              </label>
+              <input
+                type="password"
+                name="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Enter Password"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+              />
+              <p className="mt-2 text-sm text-red-600 dark:text-red-500">
+                {/* <span className="font-medium">Password  !</span> */}
+              </p>
+            </div>
+            <button
+              type="submit"
+              className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            >
+              Login
+            </button>
+            <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
+              Not registered? <Link to="/">Create account</Link>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   );
-}
+};
 
-// ---------------- Render ----------------
-ReactDOM.render(
-  <Provider store={store}>
-    <PersistGate loading={null} persistor={persistor}>
-      <App />
-    </PersistGate>
-  </Provider>,
-  document.getElementById("root")
-);
+export default Login;
+//APP.JSX 
+import Login from "./components/Login/Login";
+import { useSelector } from "react-redux";
+import { selectUser } from "./components/features/userSlice";
+import { BrowserRouter, Routes, Route } from "react-router";
+import Signup from "./components/Signup/Signup";
+import Home from "./components/Home/Home";
+const App = () => {
+  const user = useSelector(selectUser);
+  return (
+    <div>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Signup />}></Route>
+          <Route path="/login" element={<Login />}></Route>
+          <Route path="/Home" element={user ? <Home /> : <Login />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
+  );
+};
+export default App;
