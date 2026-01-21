@@ -338,3 +338,11 @@ const AdmindashBoard = () => {
 };
 
 export default AdmindashBoard;
+///////////////////////////////////////
+{user
+  .filter((p) => p.role !== "superadmin")
+  .map((p) => (
+    <tr key={p._id}>
+      ...
+    </tr>
+  ))}
