@@ -346,3 +346,124 @@ export default AdmindashBoard;
       ...
     </tr>
   ))}
+////////////////////////////////////////
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
+
+const SuperDashboard = () => {
+  const [users, setUsers] = useState([]);
+  const [page, setPage] = useState(1);
+  const [totalPage, setTotalPage] = useState(1);
+  const [limit, setLimit] = useState(5);
+  const [role, setRole] = useState("all");
+
+  const navigate = useNavigate();
+
+  const fetchUsers = async (pageNumber) => {
+    const res = await axios.get(
+      `http://localhost:7070/users?page=${pageNumber}&limit=${limit}`
+    );
+
+    // ✅ FRONTEND FILTER FIRST
+    const filteredUsers =
+      role === "all"
+        ? res.data.users
+        : res.data.users.filter((u) => u.role === role);
+
+    setUsers(filteredUsers);
+
+    // ✅ FIX PAGINATION COUNT
+    setTotalPage(
+      Math.ceil(
+        (role === "all"
+          ? res.data.users.length
+          : filteredUsers.length) / limit
+      )
+    );
+  };
+
+  useEffect(() => {
+    fetchUsers(page);
+  }, [page, limit, role]);
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate("/login");
+  };
+
+  return (
+    <div>
+      <button onClick={handleLogout}>Logout</button>
+      <h2>Super Admin Dashboard</h2>
+
+      {/* ROLE FILTER */}
+      <select
+        value={role}
+        onChange={(e) => {
+          setRole(e.target.value);
+          setPage(1);
+        }}
+      >
+        <option value="all">All</option>
+        <option value="user">User</option>
+        <option value="admin">Admin</option>
+        <option value="superadmin">SuperAdmin</option>
+      </select>
+
+      <table border="1">
+        <thead>
+          <tr>
+            <th>First</th>
+            <th>Last</th>
+            <th>Email</th>
+            <th>Gender</th>
+            <th>Role</th>
+          </tr>
+        </thead>
+        <tbody>
+          {users.map((u) => (
+            <tr key={u._id}>
+              <td>{u.firstName}</td>
+              <td>{u.lastName}</td>
+              <td>{u.email}</td>
+              <td>{u.gender}</td>
+              <td>{u.role}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+      {/* PAGINATION */}
+      <select
+        value={limit}
+        onChange={(e) => {
+          setLimit(Number(e.target.value));
+          setPage(1);
+        }}
+      >
+        <option value={5}>5</option>
+        <option value={10}>10</option>
+        <option value={25}>25</option>
+      </select>
+
+      <button disabled={page === 1} onClick={() => setPage(page - 1)}>
+        <ChevronLeftIcon width={15} />
+      </button>
+
+      <span>
+        Page {page} of {totalPage}
+      </span>
+
+      <button
+        disabled={page === totalPage}
+        onClick={() => setPage(page + 1)}
+      >
+        <ChevronRightIcon width={15} />
+      </button>
+    </div>
+  );
+};
+
+export default SuperDashboard;
