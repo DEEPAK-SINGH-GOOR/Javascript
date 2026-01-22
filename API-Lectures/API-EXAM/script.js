@@ -57,3 +57,55 @@ const calculat = async () => {
 };
 
 calculat();
+////////
+import jwt from "jsonwebtoken";
+
+const checkToken = (req, res, next) => {
+  const token = req.headers.authorization;
+
+  if (!token) {
+    return res.status(401).send({ message: "No Token" });
+  }
+
+  const decoded = jwt.decode(token);
+  const currentTime = Date.now() / 1000;
+
+  if (decoded.exp < currentTime) {
+    return res.status(401).send({ message: "Token Expired" });
+  }
+
+  req.user = decoded;
+  next();
+};
+
+export default checkToken;
+//
+import { jwtDecode } from "jwt-decode";
+import { Navigate } from "react-router-dom";
+
+const AuthRoute = ({ children }) => {
+  const token = localStorage.getItem("token");
+
+  if (!token) {
+    return children;
+  }
+
+  fetch("/check-token", {
+    headers: {
+      Authorization: token,
+    },
+  }).then(res => {
+    if (res.status === 401) {
+      localStorage.removeItem("token");
+      window.location.href = "/login";
+    }
+  });
+
+  const { role } = jwtDecode(token);
+
+  if (role === "superadmin") return <Navigate to="/superDashboard" />;
+  if (role === "admin") return <Navigate to="/adminDashboard" />;
+  if (role === "user") return <Navigate to="/userDashboard" />;
+};
+
+export default AuthRoute;
